@@ -1,0 +1,150 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "proteus"
+version = "0.1.0"
+description = "Multimodal protein fitness prediction: inference and feature extraction"
+# Upper bound is real, not caution: numpy is held below 2.0 for fair-esm and
+# the vendored ProteinGym code, and numpy 1.26.4 publishes no cp313 wheel.
+# Without the bound, `uv sync` on a machine whose default python is 3.13
+# fails while building numpy from source, which reads as a compiler problem.
+# .python-version pins 3.10 so uv picks it without being told.
+requires-python = ">=3.10,<3.13"
+readme = {file = "README.md", content-type = "text/markdown"}
+dependencies = [
+    "torch>=2.1.0",
+    "numpy>=1.26.4,<2.0.0",
+    "pandas>=1.5.2",
+    "scipy>=1.10.0",
+    "scikit_learn>=1.1.3",
+    "PyYAML>=6.0",
+    "tqdm>=4.64.1",
+    # Already present transitively via huggingface_hub; declared because
+    # proteus/third_party/colabfold_msa.py imports it directly to talk to the
+    # MMseqs2 server, and a transitive dependency is not a promise.
+    "requests>=2.28",
+    # pandas needs this to read the .xlsx that CombinGym ships its cleaned DMS
+    # tables as, which is the first command of the demo the README points a new
+    # install at. Not a transitive dependency of anything here, so a clean
+    # `uv sync` without it leaves that command failing on an ImportError.
+    "openpyxl>=3.1",
+    "einops>=0.7.0",
+    "huggingface_hub>=0.20.0,<3.0.0",
+    "biopython>=1.81",
+    "numba>=0.57.0",
+    # EvolutionaryScale's ESM3/ESM C. A hard dependency, not optional:
+    # proteus.models.encoder_embeddings imports esm.models.esm3 at module
+    # level. Installing the package is unrestricted; only the *weights* are
+    # gated (accept the licence on Hugging Face, then set HF_TOKEN).
+    "esm>=3.0.0",
+    # Not imported anywhere in Proteus. It is declared because `esm` requires
+    # it, and a torchvision wheel pins one exact torch version -- so leaving it
+    # to be resolved transitively is how an install ends up with a different
+    # torch than the one asked for (seen for real: a conda-installed 2.7.1+cu126
+    # replaced by 2.14.1+cu130). Declaring it directly puts it under the
+    # [tool.uv.sources] pin below, so torch and torchvision come from the same
+    # index and stay a matched pair.
+    "torchvision",
+    # esm 3.2.1 imports httpx from esm/sdk/base_forge_client.py but does not
+    # declare it, so `pip install esm` on its own leaves
+    # `import esm.models.esm3` raising ModuleNotFoundError. Declared here so a
+    # fresh install works; drop it once esm ships the dependency itself.
+    "httpx>=0.24",
+]
+
+# Meta's ESM2 / ESM-MSA-1b are NOT listed here on purpose. `fair-esm` installs
+# a top-level package called `esm`, the same name EvolutionaryScale's `esm`
+# uses, so pip silently lets whichever lands second overwrite the other.
+# Proteus imports Meta's as `fair_esm`; run `python tools/install_fair_esm.py`
+# after this install to put it there. `proteus-doctor` checks for it.
+
+[project.scripts]
+proteus-doctor = "proteus.cli.doctor:main"
+proteus-prepare = "proteus.cli.prepare:main"
+proteus-score = "proteus.cli.score:main"
+proteus-candidates = "proteus.cli.candidates:main"
+proteus-select = "proteus.cli.select:main"
+proteus-audit = "proteus.cli.audit:main"
+
+[project.optional-dependencies]
+# Reading structures out of PDB files, for structure tokenization and the
+# structure-conditioned zero-shot channel. Not needed if you consume
+# pre-tokenized structure inputs.
+structure = [
+    # scorer.compute_structure_logits parses PDB files with biotite
+    "biotite>=0.40",
+]
+fast = [
+    "xformers>=0.0.24",
+]
+
+# --- uv ----------------------------------------------------------------------
+# `uv sync` is the recommended install; uv.lock is committed, so it pins every
+# package by hash and two people installing on different days get the same
+# environment. Nothing here affects a plain `pip install -e .`.
+
+[tool.uv]
+# The pipeline is linux/x86_64 only in practice: the CUDA wheels below are
+# published for nothing else, and `pymol` and `hhfilter` have no macOS or
+# Windows story here. Saying so keeps the lockfile from being resolved for
+# platforms where it cannot work.
+environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]
+
+# `dependencies` above keeps loose floors so a pip install is not forced onto
+# one version. The lockfile is where reproducibility lives, so it is held at
+# the versions the published numbers were produced with.
+#
+# scikit-learn is the one that would quietly change results: the surrogate is
+# a RandomForestRegressor(n_estimators=100, random_state=42), and a minor
+# release is free to alter splitting or tie-breaking, so the same labels would
+# pick a different batch. The rest are pinned for the same reason, one step
+# weaker: they shape the features the forest sees.
+#
+# Raise any of these and re-run `uv lock` if you want newer; then re-check the
+# embeddings and the selected batch, not just that it imports.
+constraint-dependencies = [
+    "torch==2.7.*",
+    "scikit-learn==1.6.*",
+    "numpy==1.26.*",
+    "pandas==2.2.*",
+    "scipy==1.15.*",
+    "numba==0.61.*",
+    "biopython==1.85",
+]
+
+# torch is distributed by PyTorch, not by PyPI, once you want a specific CUDA
+# build. cu126 matches the driver these results were produced under; for a
+# different CUDA, change the URL (cu128, cu129, ...) and re-run `uv lock`. For
+# CPU only, use .../whl/cpu.
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu126" }]
+torchvision = [{ index = "pytorch-cu126" }]
+
+# There is no pytest suite for the pipeline itself. This stanza exists so that a
+# bare `pytest` at the repository root does not descend into proteusfold/, whose
+# tests/test_kernels.py starts a Triton benchmark at import time and whose
+# tests/test_regression.py targets a different upstream revision than the one
+# vendored here. The predictor's collectible tests run from its own directory,
+# where its pyproject's own testpaths applies:
+#     cd proteusfold && pytest        -> tests/model
+[tool.pytest.ini_options]
+norecursedirs = ["proteusfold", ".venv", "examples/data", "docs"]
+
+# proteusfold* is the structure predictor, which lives in this repository but is
+# a separate distribution with its own pyproject.toml and its own environment.
+# Auto-discovery does not reach it today (no __init__.py at proteusfold/ or
+# proteusfold/src/), so this is here to keep it that way if one ever appears.
+[tool.setuptools.packages.find]
+# A whitelist, not a blacklist. setuptools treats any directory as a namespace
+# package, so an exclude list shipped `examples` and `docs` as importable
+# top-level names in site-packages, where they would collide with anything
+# else of those names.
+include = ["proteus", "proteus.*"]   # not "proteus*": that matches proteusfold
+

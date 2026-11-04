@@ -1,0 +1,20 @@
+# Demo: CreiLOV from CombinGym (MIT, https://www.combingym.org/).
+#
+# CreiLOV is a small LOV-domain fluorescent protein, 119 residues, so it stays
+# under the 512-position encoder input and never exercises the crop window --
+# which makes it a good first run. Its library ships measured fitness for every
+# variant, so you can drive the whole closed loop in silico and then
+# score your own picks against ground truth.
+#
+# Fetch the inputs first:
+#   python examples/prepare_creilov.py --combingym /path/to/CombinGym --out examples/data
+#
+root: data
+
+proteins:
+  CreiLOV:
+    library_csv: libraries/CreiLOV.csv
+    wt_pdb:      proteins/CreiLOV/structure/CreiLOV.pdb
+    msa_a3m:     proteins/CreiLOV/msa/CreiLOV.a3m
+    # msa_weights is computed on first use and cached beside the MSA.
+    crop: dataset

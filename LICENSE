@@ -1,0 +1,174 @@
+Internal Research End User Agreement for Academic and other Non-Profit Research
+Institutions
+
+Foundry Biosciences Inc. (hereafter "Foundry") is the owner of certain rights,
+title and interest in the software and associated model weights, parameters,
+and documentation made available in this repository (as further defined herein,
+the "Software"), and has the right to grant licenses thereunder.
+
+This Internal Research End User Agreement for Academic and other Non-Profit
+Research Institutions (the "Agreement") sets forth the terms of use governing
+your (the "End User") use of the Software. The Software is being released on
+GitHub for free by Foundry to the End User solely for academic and/or internal
+research purposes (the "Purpose").
+
+FOR AVOIDANCE OF DOUBT, THE PURPOSE DOES NOT PERMIT: (1) USE OF THE SOFTWARE IN
+HUMANS OR IN CONNECTION WITH HUMAN SUBJECTS, INCLUDING FOR DIAGNOSTIC OR OTHER
+CLINICAL RESEARCH PURPOSES AND (2) USE OF THE SOFTWARE FOR COMMERCIAL RESEARCH
+AND DEVELOPMENT PURPOSES.
+
+Absent your agreement to the terms below, you (the "End User") have no right to
+access or use the Software whatsoever.
+
+Foundry agrees to grant, hereunder, a non-exclusive, non-transferable,
+non-sublicensable license to End User for the use of the Software solely for
+the Purpose on the following terms and conditions:
+
+1. NO REDISTRIBUTION; RESTRICTIONS ON USE
+
+Software remains the property of Foundry and End User shall not:
+
+(a) publish, distribute, or otherwise transfer or make available the Software,
+or any modification or derivative work of the Software (including any
+fine-tuned, retrained or distilled model weights or parameters derived from the
+Software), to any other third party for any purpose whatsoever, including by
+hosting the Software or any outputs thereof as a service or making the Software
+available through a public application programming interface or web interface;
+
+(b) merge, reverse engineer, decompile or reverse assemble the Software or any
+portion thereof;
+
+Notwithstanding the foregoing, End User may modify, adapt, fine-tune, retrain
+or otherwise create derivative works of the Software as reasonably necessary
+for the Purpose, provided that any such modification or derivative work (i) is
+used solely by End User for the Purpose, (ii) is subject to all of the terms
+and conditions of this Agreement, including the restrictions set forth in
+Section 1(a) and Section 2, and (iii) retains all notices as required by
+Section 3. For the avoidance of doubt, nothing in this Section 1 limits End
+User's right to publish results as provided in Section 4.
+
+2. NO COMMERCIAL USE
+
+End User shall use the Software for the Purpose only and shall not use the
+Software for commercial purposes; any such use of the Software is expressly
+prohibited. Commercial purposes include, but are not limited to, use of the
+Software in fee-for-service arrangements, core facilities or laboratories, to
+create or include within commercial products or services, or to provide
+research services to third parties for a fee. If End User wishes to use
+Software for commercial purposes, or for other purposes not permitted herein,
+End User must execute a separate written license agreement with Foundry.
+
+In order to request use of the Software for commercial purposes, or for other
+purposes not permitted herein, please contact:
+
+    Foundry Biosciences Inc.
+
+    Email: licensing@foundrybio.ai
+
+Notwithstanding the foregoing, and for avoidance of doubt, Foundry is under no
+obligation to grant any commercial rights to an End User.
+
+3. OWNERSHIP AND COPYRIGHT NOTICE
+
+This Agreement does not transfer any ownership of the Software to End User. All
+right, title and interest in and to the Software, and any intellectual property
+or proprietary rights therein, will remain with Foundry. End User acknowledges
+that the Software may be covered by Foundry's copyrights, patents, or patent
+applications. End User acknowledges that there may be third party code, models,
+or datasets contained within or used to produce the Software that may be
+governed by separate terms and conditions and End User agrees to comply with
+such separate terms and conditions. End User shall not remove or delete and
+shall retain in the Software and any modifications to Software, the copyright,
+trademark, or other notices pertaining to the Software as are provided with the
+Software.
+
+4. PUBLICATION & ATTRIBUTION
+
+End User has the right to publish, present, or share results derived from the
+use of the Software. If utilization of the Software results in outcomes which
+will be published, End User shall acknowledge Foundry as the provider and owner
+of the Software, shall specify the version of Software used, and include the
+following:
+
+"Copyright Notice and Disclaimer. © Foundry Biosciences Inc. 2026 used with
+permission. All Rights Reserved."
+
+5. LIMITATION OF LIABILITY
+
+IN NO EVENT SHALL FOUNDRY BE LIABLE TO END USER, IN CONTRACT, TORT OR
+OTHERWISE, FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL, PUNITIVE
+OR OTHER DAMAGES OF ANY KIND WHATSOEVER ARISING OUT OF OR IN CONNECTION WITH
+THIS AGREEMENT, THE SOFTWARE AND/OR USE OF THE SOFTWARE, EVEN IF FOUNDRY IS
+NEGLIGENT OR OTHERWISE AT FAULT, AND REGARDLESS OF WHETHER FOUNDRY IS ADVISED
+OF THE POSSIBILITY OF SUCH DAMAGES. USE OF THE SOFTWARE IS AT END USER'S OWN
+RISK. IF END USER IS DISSATISFIED WITH THE SOFTWARE, ITS EXCLUSIVE REMEDY IS TO
+STOP USING IT.
+
+6. DATA AND OTHER INFORMATION SUPPLIED BY END USERS
+
+Any data, communication or other information End User transmits to Foundry will
+be deemed to be non-confidential and non-proprietary.
+
+7. NO WARRANTIES
+
+THE SOFTWARE IS PROVIDED "AS IS." TO THE FULLEST EXTENT PERMITTED BY LAW,
+FOUNDRY HEREBY DISCLAIMS ALL WARRANTIES OF ANY KIND (EXPRESS, IMPLIED OR
+OTHERWISE) REGARDING THE SOFTWARE, INCLUDING BUT NOT LIMITED TO ANY IMPLIED
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OWNERSHIP, AND
+NON-INFRINGEMENT. FOUNDRY MAKES NO WARRANTY ABOUT THE ACCURACY, RELIABILITY,
+COMPLETENESS, TIMELINESS, SUFFICIENCY OR QUALITY OF THE SOFTWARE, OR ABOUT ANY
+PREDICTIONS, DESIGNS, SEQUENCES OR OTHER OUTPUTS GENERATED BY THE SOFTWARE.
+FOUNDRY DOES NOT WARRANT THAT THE SOFTWARE WILL OPERATE WITHOUT ERROR OR
+INTERRUPTION, OR THAT THE SOFTWARE IS FREE OF COMPUTER VIRUSES OR OTHER HARMFUL
+COMPUTER CODE.
+
+8. INDEMNIFICATION
+
+To the fullest extent permitted by law, End User shall indemnify, defend and
+hold harmless Foundry and its respective affiliates, current or future
+directors, officers, employees, contractors, consultants, scientific advisors
+and agents and their respective successors, heirs and assigns (the
+"Indemnitees"), against any liability, damage, loss or expense (including
+reasonable attorney's fees and expenses of litigation) incurred by or imposed
+upon the Indemnitees or any one of them in connection with any claims, suits,
+actions, demands or judgments arising from End User's access to and/or use of
+the Software except to the extent directly caused by the gross negligence or
+willful misconduct of an Indemnitee.
+
+9. GOVERNING LAW
+
+This Agreement and all disputes arising hereunder shall be construed and
+governed by the laws of the State of Delaware, without regard to its conflict
+of laws principles. End User consents to the exclusive jurisdiction and venue
+of the state and federal courts located in the State of Delaware for the
+resolution of any dispute arising out of or relating to this Agreement.
+
+10. NON-USE OF NAME
+
+Nothing in this Agreement shall be construed as granting End Users or their
+institutions any rights or licenses to use any trademarks, service marks or
+logos displayed on the Software. End User shall not otherwise use or allow the
+use of the name of "Foundry Biosciences Inc.," "Foundry Bio," "Foundry," or any
+variation, adaptation, or abbreviation thereof, or of any of its directors,
+officers, employees, contractors, consultants, scientific advisors or agents,
+or any trademark owned by Foundry, in any other public announcement or
+disclosure without prior written consent. Foundry consent can be requested by
+email (via licensing@foundrybio.ai), which Foundry may withhold in its sole
+discretion. If End User seeks to use the name of an individual director,
+officer, employee, contractor, consultant, scientific advisor or agent, End
+User must receive the written consent of such individual.
+
+11. MISCELLANEOUS
+
+This Agreement represents the entire agreement between the parties with respect
+to the subject matter hereof and supersedes any prior negotiations or
+discussions, whether written or oral. End User shall use the Software in
+compliance with all applicable laws and regulations, including all applicable
+export control, sanctions, and biosecurity laws and regulations. These terms
+may be modified or amended only in writing signed by authorized representatives
+of Foundry. This Agreement may not be assigned. The failure of Foundry to
+enforce at any time any of the provisions of the Agreement will in no way be
+construed to be a present or future waiver of such provisions, nor in any way
+affect the ability to enforce each and every such provision thereafter.
+
+END OF LICENSE

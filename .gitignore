@@ -1,0 +1,31 @@
+*.swp
+*.DS_Store
+**/__pycache__/**
+*.egg-info
+# Anchored: setuptools writes a full second copy of the package into build/
+# when a wheel or sdist is built, and an unanchored rule would also hide
+# proteusfold/'s own build output, which its nested .gitignore already covers.
+/build/
+/dist/
+.ruff_cache/
+.pytest_cache/
+.idea/*
+.vscode/
+**/.ipynb_checkpoints/**
+/output/
+/wandb/
+# Anchored: an unanchored `data/` also matches any nested directory called
+# `data`, which is how a leaked path in a vendored config once escaped a
+# repo-wide grep (the search honoured this file).
+/data/
+examples/data/
+/.venv/
+# uv.lock is deliberately NOT ignored: it is what makes `uv sync` reproducible.
+*.pth
+# Editable figure sources. Figure1.ai is a 4.35 MB PDF-compatible Illustrator
+# file whose XMP metadata carries the author's local Windows path; the rendered
+# docs/img/*.png is what the README shows and what ships.
+*.ai
+*pkl
+nohup.out
+*.log

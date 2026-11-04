@@ -1,0 +1,35 @@
+# For an existing Python 3.10 environment that already has a working torch.
+# Prefer environment.yml -- it also installs the pymol and hhsuite binaries,
+# which pip cannot provide.
+#
+# Install torch first, matched to your CUDA: https://pytorch.org/get-started/
+#
+# Then, after this file:
+#     python tools/install_fair_esm.py
+#
+# That step is not optional. Meta's ESM2 / ESM-MSA-1b ship as `fair-esm`,
+# whose top-level package is called `esm` -- the same name EvolutionaryScale's
+# `esm` (listed below, needed for ESM3) uses. pip will happily install both
+# and let the second overwrite the first, with no warning. Proteus imports
+# Meta's as `fair_esm`, and that script is what puts it there. `proteus-doctor`
+# verifies it.
+torch>=2.1
+numpy>=1.26,<2.0
+pandas>=1.5
+scipy>=1.10
+scikit-learn>=1.1
+numba>=0.57
+biopython>=1.81
+pyyaml>=6.0
+tqdm>=4.64
+einops>=0.7
+huggingface_hub>=0.20,<3.0
+# pandas needs this to read the .xlsx that CombinGym ships its cleaned DMS
+# tables as -- the first command of the demo. Not transitive here.
+openpyxl>=3.1
+esm>=3.0.0
+# esm 3.2.1 imports httpx without declaring it; without this line
+# `import esm.models.esm3` fails on a fresh install.
+httpx>=0.24
+# Reading structures out of PDB files; omit if you consume pre-tokenized inputs:
+#   biotite>=0.40

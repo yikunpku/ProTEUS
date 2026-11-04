@@ -1,0 +1,89 @@
+# One-command environment for Proteus.
+#
+#   conda env create -f environment.yml      # or: mamba env create -f ...
+#   conda activate proteus
+#   pip install -e .
+#   python tools/install_fair_esm.py         # see the note under `pip:` below
+#   proteus-doctor                           # verifies the result
+#
+# Versions are pinned to the ones these results were produced with. CUDA 12.6
+# wheels are requested; change the pytorch-cuda pin if your driver is older.
+#
+# Deliberately NOT a conda-pack of a working machine. A pack would carry along
+# whatever local modifications that machine had -- a patched fair-esm whose MSA
+# batch converter hardcodes its padding width is one that occurs in practice.
+# Proteus does not depend on that patch, and `proteus-doctor` detects it, but an
+# install should start from the published packages.
+name: proteus
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.10
+  - pip
+
+  # Compute. Both come from conda-forge, not from the `pytorch` channel: that
+  # channel stopped publishing and is frozen at pytorch 2.5.1 / pytorch-cuda
+  # 12.4, so a 2.7 pin cannot be satisfied there. On conda-forge the CUDA
+  # variant is selected by asking for `pytorch-gpu` and pinning `cuda-version`.
+  # For a CPU-only machine, swap `pytorch-gpu` for `pytorch-cpu` and drop
+  # `cuda-version`. The CPU path works, but zero-shot scoring is impractical on
+  # it: every residue needs its own forward pass, per MSA sample.
+  - pytorch=2.7.*
+  - pytorch-gpu=2.7.*
+  - cuda-version=12.6
+
+  # torchvision is here only to stop pip from replacing the pytorch above.
+  # Proteus never imports it, but `esm` lists it as a dependency, and a
+  # torchvision wheel from PyPI pins an exact torch version -- so the pip step
+  # below would pull torchvision, which pulls its own torch, which overwrites
+  # the CUDA 12.6 build conda just installed (observed: torch 2.7.1 replaced by
+  # 2.14.1+cu130 plus a full set of CUDA 13 wheels). Letting conda install a
+  # torchvision matched to this pytorch leaves pip with nothing to resolve.
+  # Version deliberately unpinned: conda's own metadata knows which torchvision
+  # goes with which pytorch, and hand-pinning it only breaks that.
+  - torchvision
+
+  # Scientific stack. numpy is held below 2.0 because fair-esm and the
+  # vendored ProteinGym code have not been ported.
+  - numpy=1.26.*
+  - pandas=2.2.*
+  - scipy=1.15.*
+  - scikit-learn=1.6.*
+  - numba=0.61.*
+  - biopython=1.85
+  - pyyaml=6.0.*
+  - tqdm
+  - einops
+
+  # External binaries the pipeline shells out to.
+  #   pymol     builds mutant structures (featurize.structure_prep)
+  #   hhsuite   provides hhfilter for optional MSA filtering
+  - pymol-open-source
+  - hhsuite
+
+  - pip:
+      # pandas needs this to read CombinGym's .xlsx DMS tables, which the
+      # demo's first command does.
+      - openpyxl>=3.1
+      - huggingface_hub>=0.20,<3.0
+      # EvolutionaryScale's ESM3 / ESM C. Required: encoder_embeddings imports
+      # esm.models.esm3 at module level. The package is unrestricted; only the
+      # weights are gated (accept the licence on Hugging Face, set HF_TOKEN).
+      - esm>=3.1
+      # esm 3.2.1 imports httpx from its Forge client without declaring
+      # it as a dependency, so `import esm.models.esm3` fails without this.
+      - httpx>=0.24
+
+      # Meta's ESM2 / ESM-MSA-1b are NOT listed here, and `pip install
+      # fair-esm` on its own will not work. `fair-esm` ships a top-level
+      # package named `esm` -- exactly the name the line above occupies -- so
+      # installing both leaves you with whichever came second and no warning
+      # that the other is gone. Proteus imports Meta's as `fair_esm`. After
+      # `pip install -e .`, run:
+      #
+      #     python tools/install_fair_esm.py
+      #
+      # which installs fair-esm==2.0.0 off to one side, renames it and fixes
+      # its internal references. It is idempotent, and proteus-doctor fails
+      # loudly until it has been run.

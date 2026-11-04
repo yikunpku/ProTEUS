@@ -1,0 +1,19 @@
+# The build only needs pyproject.toml, uv.lock, and the three source trees the
+# Dockerfile COPYs. Everything here would either bloat the context or leak a
+# local environment into the image.
+.git
+.venv
+*.egg-info
+**/__pycache__
+*.pyc
+output
+wandb
+data
+examples/data
+*.pth
+*.pkl
+*.log
+nohup.out
+# The structure predictor is a separate install in its own environment; the
+# image builds only the pipeline, so this keeps 4 MB out of the build context.
+proteusfold
