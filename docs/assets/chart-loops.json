@@ -1,0 +1,98 @@
+{
+  "assets": [
+    {
+      "id": "sacb-activity",
+      "mp4": "sacb-activity-loop.mp4",
+      "poster": "sacb-activity-poster.png",
+      "gif": "sacb-activity-loop.gif",
+      "duration": 6,
+      "fps": 24,
+      "width": 1280,
+      "height": 720,
+      "gifWidth": 640,
+      "gifHeight": 360,
+      "gifFps": 12,
+      "audio": false,
+      "loop": true,
+      "background": "#07121A",
+      "alt": "Levansucrase screening activity relative to wild type across three rounds; cumulative top ten variants per round, maximum 14.03-fold.",
+      "bytes": {
+        "mp4": 172571,
+        "png": 105510,
+        "gif": 896252
+      },
+      "sha256": {
+        "sacb-activity-loop.mp4": "ed91411f161217404c16f07fd79145e4d55cb302c39391b650b46b7cd33f64fd",
+        "sacb-activity-poster.png": "620768738687a2b2ae09842da2c824b44d553e2f00358222aacd5a73d4a686fc",
+        "sacb-activity-loop.gif": "c9b0b5c23462b66f7180e6d9bd0674aadaa58ca74d2f06714474383293132b5f"
+      },
+      "faststart": true,
+      "loopBoundaryMeanRgbDifference": 0.20039207175925924
+    },
+    {
+      "id": "aldh-activity",
+      "mp4": "aldh-activity-loop.mp4",
+      "poster": "aldh-activity-poster.png",
+      "gif": "aldh-activity-loop.gif",
+      "duration": 7,
+      "fps": 24,
+      "width": 1280,
+      "height": 720,
+      "gifWidth": 640,
+      "gifHeight": 360,
+      "gifFps": 12,
+      "audio": false,
+      "loop": true,
+      "background": "#07121A",
+      "alt": "ALDH screening activity relative to wild type across five rounds; cumulative top ten variants per round, maximum 6.85-fold.",
+      "bytes": {
+        "mp4": 240460,
+        "png": 110355,
+        "gif": 1093440
+      },
+      "sha256": {
+        "aldh-activity-loop.mp4": "a9abd4bb331e3ce1b956eaa10e02591454ca408ae9e0899e8f3aaa4efa44c0b6",
+        "aldh-activity-poster.png": "45025d2e1156b55ba12677102e79717f3f78c119285ee97b56f5a822361908c1",
+        "aldh-activity-loop.gif": "52236129f8cd97d7fcc8f34cc85b4ace69479c59e4786f81972265d5baaffd1e"
+      },
+      "faststart": true,
+      "loopBoundaryMeanRgbDifference": 0.2167133246527778
+    },
+    {
+      "id": "data-scaling",
+      "mp4": "data-scaling-loop.mp4",
+      "poster": "data-scaling-poster.png",
+      "gif": "data-scaling-loop.gif",
+      "duration": 7,
+      "fps": 24,
+      "width": 1280,
+      "height": 720,
+      "gifWidth": 640,
+      "gifHeight": 360,
+      "gifFps": 12,
+      "audio": false,
+      "loop": true,
+      "background": "#07121A",
+      "alt": "Increasing functional training data from 1.25 to 100 percent lowers test MSE from 0.262 to 0.115 and raises Spearman correlation from 0.842 to 0.933 at fixed model architecture and evaluation split.",
+      "bytes": {
+        "mp4": 269088,
+        "png": 145703,
+        "gif": 1416420
+      },
+      "sha256": {
+        "data-scaling-loop.mp4": "909a0442dec8d709c8ffb18f63633a3b6076577b0b3a2f7b2693728c5f5f85e8",
+        "data-scaling-poster.png": "f873b2a43616412797f94ebd045cc37e202e36c0460415b419a19386781c4809",
+        "data-scaling-loop.gif": "179db865d5ef6223a7605d6e3976b47bd6175a630131b5311bbd7c0685ea656d"
+      },
+      "faststart": true,
+      "loopBoundaryMeanRgbDifference": 0.27945384837962967
+    }
+  ],
+  "nativeCharts": true,
+  "rasterChartImages": 0,
+  "filmHeaders": false,
+  "filmSubtitles": false,
+  "videoDecodePassed": true,
+  "sourceDataUnchanged": true,
+  "visualQA": "Passed: full-resolution posters and decoded MP4 middle frames inspected. Axes, scientific values and callouts are clear; no film headers/subtitles or figure references. All GIFs are under 3 MiB; MP4 files have fast-start metadata and quiet loop boundaries."
+}
