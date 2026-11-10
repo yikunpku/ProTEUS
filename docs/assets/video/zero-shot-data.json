@@ -1,0 +1,2285 @@
+{
+  "schema_version": 1,
+  "figure": "Figure 2E",
+  "metric": "Spearman correlation",
+  "metric_symbol": "ρ",
+  "n_assays": 19,
+  "n_models": 15,
+  "scope": "Zero-shot variant ranking on 19 DMS assays excluded from pretraining; single- and multi-substitution variants as available.",
+  "ordering": "values and published_values rows follow assays; columns follow models (source figure ascending mean, ProTEUS last).",
+  "model_aliases": {
+    "ZEUS": "ProTEUS",
+    "Prot4M": "ProTEUS"
+  },
+  "aggregation": {
+    "figure_rule": "Missing or undefined Spearman values are zero-filled before taking the unweighted mean across all 19 assays.",
+    "sem_rule": "Sample standard deviation (ddof=1) of the same 19 zero-filled values, divided by sqrt(19).",
+    "heatmap_rule": "Use values, where missing or undefined metrics are null; do not display these cells as measured zero correlations.",
+    "missing_reconstruction": "The distributed source matrix already contains zero fills. Four null cells are restored using the explicitly documented per-model zero-fill counts, the four and only four zeros in that source table, and the independently supplied observed-only sample counts and means. Missing/undefined does not by itself imply that a model was not run.",
+    "statistical_claim": "Highest mean is descriptive; no claim of a significant difference from every comparator."
+  },
+  "sources": [
+    {
+      "role": "raw_table",
+      "path": "/Users/mhg/Dropbox/PROTEUS/_rawdata/main_fig/fig1f/fig1f_zeroshot_spearman.csv",
+      "sha256": "3901f7c110a248d937a77d74a38e746638021fe627ba5c5a95b2f80b1a56b2c8"
+    },
+    {
+      "role": "figure_summary",
+      "path": "/Users/mhg/Dropbox/PROTEUS/Main Figure/proteus_figures/scripts/cell_v1/data/fig1/fig1f_zeroshot_model_summary.csv",
+      "sha256": "ca491d5945e40169b261c1d238949f58cb267a88b53be9efbef8a9afad7efaed"
+    },
+    {
+      "role": "metric_summary",
+      "path": "/Users/mhg/Dropbox/PROTEUS/_rawdata/sp_fig/sp_fig2_zeroshot/panelA_holdout19_permodel_bar_4metrics.csv",
+      "sha256": "3ce557921a8fb12f9cf87223d08d2f3aa645067964f5fbb3e93866f7e42d804c"
+    },
+    {
+      "role": "missing_policy",
+      "path": "/Users/mhg/Dropbox/PROTEUS/_rawdata/main_fig/fig1f/README.md",
+      "sha256": "bdde68256124624ff6e9b6b8d42b48a6c1fb40362b32f04d81d1f59eade28eee"
+    },
+    {
+      "role": "aggregation_documentation",
+      "path": "/Users/mhg/Dropbox/PROTEUS/_rawdata/sp_fig/sp_fig2_zeroshot/README.md",
+      "sha256": "d11a86bcf625e956c232b3f667363cc55d406e347b9d14ba17b5bd06228c8bd3"
+    }
+  ],
+  "assays": [
+    {
+      "id": "AAV",
+      "name": "AAV",
+      "label": "AAV",
+      "short_label": "AAV",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "GB1",
+      "name": "GB1",
+      "label": "GB1",
+      "short_label": "GB1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "GFP",
+      "name": "GFP",
+      "label": "GFP",
+      "short_label": "GFP",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "TrpB",
+      "name": "TrpB",
+      "label": "TrpB",
+      "short_label": "TrpB",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00000072-a-1",
+      "name": "urn_mavedb_00000072-a-1",
+      "label": "MaveDB 72-a-1",
+      "short_label": "72-a-1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00000077-a-1",
+      "name": "urn_mavedb_00000077-a-1",
+      "label": "MaveDB 77-a-1",
+      "short_label": "77-a-1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00000077-b-1",
+      "name": "urn_mavedb_00000077-b-1",
+      "label": "MaveDB 77-b-1",
+      "short_label": "77-b-1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00000079-a-1",
+      "name": "urn_mavedb_00000079-a-1",
+      "label": "MaveDB 79-a-1",
+      "short_label": "79-a-1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00000090-a-1",
+      "name": "urn_mavedb_00000090-a-1",
+      "label": "MaveDB 90-a-1",
+      "short_label": "90-a-1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00000091-a-1",
+      "name": "urn_mavedb_00000091-a-1",
+      "label": "MaveDB 91-a-1",
+      "short_label": "91-a-1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00000105-a-1",
+      "name": "urn_mavedb_00000105-a-1",
+      "label": "MaveDB 105-a-1",
+      "short_label": "105-a-1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00000659-a-1",
+      "name": "urn_mavedb_00000659-a-1",
+      "label": "MaveDB 659-a-1",
+      "short_label": "659-a-1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00000665-a-1",
+      "name": "urn_mavedb_00000665-a-1",
+      "label": "MaveDB 665-a-1",
+      "short_label": "665-a-1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00001207-a-1",
+      "name": "urn_mavedb_00001207-a-1",
+      "label": "MaveDB 1207-a-1",
+      "short_label": "1207-a-1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00001212-a-1",
+      "name": "urn_mavedb_00001212-a-1",
+      "label": "MaveDB 1212-a-1",
+      "short_label": "1212-a-1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00001217-a-3",
+      "name": "urn_mavedb_00001217-a-3",
+      "label": "MaveDB 1217-a-3",
+      "short_label": "1217-a-3",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00001227-a-1",
+      "name": "urn_mavedb_00001227-a-1",
+      "label": "MaveDB 1227-a-1",
+      "short_label": "1227-a-1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00001239-a-1",
+      "name": "urn_mavedb_00001239-a-1",
+      "label": "MaveDB 1239-a-1",
+      "short_label": "1239-a-1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    },
+    {
+      "id": "urn_mavedb_00001243-a-1",
+      "name": "urn_mavedb_00001243-a-1",
+      "label": "MaveDB 1243-a-1",
+      "short_label": "1243-a-1",
+      "name_note": "Original source assay identifier; no unverified protein-name expansion."
+    }
+  ],
+  "models": [
+    {
+      "id": "AMPLIFY-350M",
+      "source_key": "AMPLIFY-350M",
+      "label": "AMPLIFY-350M",
+      "short_label": "AMPLIFY-350M",
+      "mean": 0.1250163969958043,
+      "sem": 0.04400432505379175,
+      "source_mean": 0.12501639699580433,
+      "source_sem": 0.04400432505379175,
+      "n_assays": 19,
+      "n_observed": 18,
+      "n_missing": 1,
+      "mean_observed_only": 0.1319617523844601,
+      "summary_max_abs_error": 2.7755575615628914e-17,
+      "name": "AMPLIFY-350M",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": null
+        },
+        {
+          "dataset": "GB1",
+          "value": 0.0005401969237792
+        },
+        {
+          "dataset": "GFP",
+          "value": 0.0047878311042452
+        },
+        {
+          "dataset": "TrpB",
+          "value": 0.0045113823444614
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.3037684436030111
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": -0.120490026852867
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": -0.1013116387869588
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.2104466139756685
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.4516004159783394
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.0393372824879674
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.2456822204541147
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.2149060585784472
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.277427154650995
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.0884510702081339
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.2100140404065593
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.4338654131247966
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.2225539825920628
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.227455226555946
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": -0.2595595594524852
+        }
+      ]
+    },
+    {
+      "id": "AMPLIFY-120M",
+      "source_key": "AMPLIFY-120M",
+      "label": "AMPLIFY-120M",
+      "short_label": "AMPLIFY-120M",
+      "mean": 0.13138111528179605,
+      "sem": 0.04578138233041406,
+      "source_mean": 0.13138111528179605,
+      "source_sem": 0.04578138233041406,
+      "n_assays": 19,
+      "n_observed": 18,
+      "n_missing": 1,
+      "mean_observed_only": 0.1386800661307847,
+      "summary_max_abs_error": 0.0,
+      "name": "AMPLIFY-120M",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": null
+        },
+        {
+          "dataset": "GB1",
+          "value": 0.0016643579455718
+        },
+        {
+          "dataset": "GFP",
+          "value": 0.004454206978867
+        },
+        {
+          "dataset": "TrpB",
+          "value": 0.0023884534558633
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.247189051765793
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": -0.1437316105269253
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": -0.0949232509215773
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.2265686332880601
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.5208904102722943
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.0003393804763667
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.2247324617095756
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.2427491593015161
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.2564622049816114
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.1055439334576797
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.2013661279601135
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.4388675705901867
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.3012184990477231
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.2258491941490406
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": -0.2647088326249021
+        }
+      ]
+    },
+    {
+      "id": "ESM-1v",
+      "source_key": "ESM-1v",
+      "label": "ESM-1v",
+      "short_label": "ESM-1v",
+      "mean": 0.17827962313537,
+      "sem": 0.051349766861308675,
+      "source_mean": 0.17827962313536996,
+      "source_sem": 0.051349766861308675,
+      "n_assays": 19,
+      "n_observed": 19,
+      "n_missing": 0,
+      "mean_observed_only": 0.17827962313537,
+      "summary_max_abs_error": 2.7755575615628914e-17,
+      "name": "ESM-1v",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": 0.2036232562901741
+        },
+        {
+          "dataset": "GB1",
+          "value": 0.1053183120831981
+        },
+        {
+          "dataset": "GFP",
+          "value": 0.1038076756602961
+        },
+        {
+          "dataset": "TrpB",
+          "value": 0.1784058531687422
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.3814889967126284
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": -0.1352161009886817
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": -0.090867255018897
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.2190162834125256
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.582814001186581
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.1017215845982969
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.2035308434700092
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.1414038963535007
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.4636924897203432
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.1055032562452433
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.226064529382802
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.4250999547517848
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.3518129465578339
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.3256365397462127
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": -0.3021010545639701
+        }
+      ]
+    },
+    {
+      "id": "PoET-2",
+      "source_key": "PoET-2",
+      "label": "PoET-2",
+      "short_label": "PoET-2",
+      "mean": 0.18793820648966078,
+      "sem": 0.04392280521808117,
+      "source_mean": 0.18793820648966078,
+      "source_sem": 0.043922805218081167,
+      "n_assays": 19,
+      "n_observed": 19,
+      "n_missing": 0,
+      "mean_observed_only": 0.18793820648966078,
+      "summary_max_abs_error": 6.938893903907228e-18,
+      "name": "PoET-2",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": -0.0367111933607623
+        },
+        {
+          "dataset": "GB1",
+          "value": -0.0014100060761517
+        },
+        {
+          "dataset": "GFP",
+          "value": 0.0083575628812031
+        },
+        {
+          "dataset": "TrpB",
+          "value": -0.0030532956938627
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.4353516710237547
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": 0.1063426456096709
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": 0.2561104686766484
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.1940053467496184
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.4988071414766387
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.0103357578658963
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.3596447307826865
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.2584279368334656
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.3523585706221896
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.0886125106978076
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.2784619504973
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.4495515795587701
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.2648644032740588
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.254797374678244
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": -0.1833577170618285
+        }
+      ]
+    },
+    {
+      "id": "MSA-Pairformer",
+      "source_key": "MSA-Pairformer",
+      "label": "MSA-Pairformer",
+      "short_label": "MSA-Pairformer",
+      "mean": 0.19562121829871637,
+      "sem": 0.04797354196804022,
+      "source_mean": 0.1956212182987164,
+      "source_sem": 0.04797354196804021,
+      "n_assays": 19,
+      "n_observed": 19,
+      "n_missing": 0,
+      "mean_observed_only": 0.19562121829871637,
+      "summary_max_abs_error": 2.7755575615628914e-17,
+      "name": "MSA-Pairformer",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": -0.0329365714625985
+        },
+        {
+          "dataset": "GB1",
+          "value": -0.0003974186303411
+        },
+        {
+          "dataset": "GFP",
+          "value": -0.0026906107535851
+        },
+        {
+          "dataset": "TrpB",
+          "value": 0.0029096272730719
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.3060138231366766
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": 0.2149600557736399
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": 0.3217367357914525
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.2550392519240108
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.4338384788367656
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.0438417869924719
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.3951525502706561
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.2633575417247977
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.3446736609022875
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.0993772719288293
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.4408987752657808
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.4241439851564537
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.1786097183177723
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.4097188216757789
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": -0.2937607624633657
+        }
+      ]
+    },
+    {
+      "id": "ESM-C-300M",
+      "source_key": "ESM-C-300M",
+      "label": "ESM-C-300M",
+      "short_label": "ESM-C-300M",
+      "mean": 0.19675501573002582,
+      "sem": 0.05303146338606109,
+      "source_mean": 0.19675501573002582,
+      "source_sem": 0.05303146338606109,
+      "n_assays": 19,
+      "n_observed": 19,
+      "n_missing": 0,
+      "mean_observed_only": 0.19675501573002582,
+      "summary_max_abs_error": 0.0,
+      "name": "ESM-C-300M",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": 0.2083112247148055
+        },
+        {
+          "dataset": "GB1",
+          "value": 0.1247522482580979
+        },
+        {
+          "dataset": "GFP",
+          "value": 0.1141880822735474
+        },
+        {
+          "dataset": "TrpB",
+          "value": 0.1826077457253772
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.3640750515028623
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": -0.0925974595964356
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": -0.087928585241808
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.2375320305774191
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.5987397790321286
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.0913170327548356
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.2990906323982873
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.1865083993721573
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.4787555177723143
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.1074826449139416
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.2482559295154373
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.4592744126977001
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.3808512122587527
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.3541948843662167
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": -0.3344314189154752
+        }
+      ]
+    },
+    {
+      "id": "ESM-C-600M",
+      "source_key": "ESM-C-600M",
+      "label": "ESM-C-600M",
+      "short_label": "ESM-C-600M",
+      "mean": 0.19766608923387255,
+      "sem": 0.052400085183651635,
+      "source_mean": 0.19766608923387255,
+      "source_sem": 0.05240008518365164,
+      "n_assays": 19,
+      "n_observed": 19,
+      "n_missing": 0,
+      "mean_observed_only": 0.19766608923387255,
+      "summary_max_abs_error": 6.938893903907228e-18,
+      "name": "ESM-C-600M",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": 0.1796326059010684
+        },
+        {
+          "dataset": "GB1",
+          "value": 0.132756475138774
+        },
+        {
+          "dataset": "GFP",
+          "value": 0.1205658614992903
+        },
+        {
+          "dataset": "TrpB",
+          "value": 0.1841495178826501
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.3912003222628514
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": -0.0696896442273413
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": -0.0392815493676423
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.2433903430517648
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.5494043094898767
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.1932082402399587
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.2988724126771523
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.2659420712057432
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.4834627330592079
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.1065200522640023
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.2666680723912892
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.4406666661469448
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.3428095476169915
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.3693627511103558
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": -0.3175686124194422
+        }
+      ]
+    },
+    {
+      "id": "Tranception",
+      "source_key": "Tranception",
+      "label": "Tranception",
+      "short_label": "Tranception",
+      "mean": 0.205008849997937,
+      "sem": 0.04903239083641996,
+      "source_mean": 0.205008849997937,
+      "source_sem": 0.04903239083641996,
+      "n_assays": 19,
+      "n_observed": 17,
+      "n_missing": 2,
+      "mean_observed_only": 0.2291275382329884,
+      "summary_max_abs_error": 0.0,
+      "name": "Tranception",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": 0.502677375088636
+        },
+        {
+          "dataset": "GB1",
+          "value": 0.0446498875192626
+        },
+        {
+          "dataset": "GFP",
+          "value": 0.6434063171610751
+        },
+        {
+          "dataset": "TrpB",
+          "value": null
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.297336223732646
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": -0.0421402799209588
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": -0.0823936609268124
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.1955868373680132
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.4175464300779108
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.1417067752684191
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.1704695747278154
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.2233828622173266
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.3995499222289161
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.0985132607529573
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.1520220889660057
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.4056322292029561
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.2990889818348247
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.3115468751986476
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "ESM-2-650M",
+      "source_key": "ESM-2-650M",
+      "label": "ESM-2-650M",
+      "short_label": "ESM-2-650M",
+      "mean": 0.212701053252733,
+      "sem": 0.05286298514526325,
+      "source_mean": 0.212701053252733,
+      "source_sem": 0.05286298514526325,
+      "n_assays": 19,
+      "n_observed": 19,
+      "n_missing": 0,
+      "mean_observed_only": 0.212701053252733,
+      "summary_max_abs_error": 0.0,
+      "name": "ESM-2-650M",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": 0.2817639574017547
+        },
+        {
+          "dataset": "GB1",
+          "value": 0.125671080743577
+        },
+        {
+          "dataset": "GFP",
+          "value": 0.0911647607706747
+        },
+        {
+          "dataset": "TrpB",
+          "value": 0.1835102141068178
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.3725369563299365
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": -0.0867644324707393
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": 0.0053388099546666
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.2213445619003434
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.5516418456079397
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.116068122917438
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.2797409009101526
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.2576870797431033
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.5080663727366953
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.1068098246924519
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.2754855484141019
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.4841761207960656
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.4404720564582377
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.379205314176798
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": -0.3204628375532126
+        }
+      ]
+    },
+    {
+      "id": "ESM-2-3B",
+      "source_key": "ESM-2-3B",
+      "label": "ESM-2-3B",
+      "short_label": "ESM-2-3B",
+      "mean": 0.22402423137160768,
+      "sem": 0.047168696543224385,
+      "source_mean": 0.22402423137160768,
+      "source_sem": 0.047168696543224385,
+      "n_assays": 19,
+      "n_observed": 19,
+      "n_missing": 0,
+      "mean_observed_only": 0.22402423137160768,
+      "summary_max_abs_error": 0.0,
+      "name": "ESM-2-3B",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": 0.1915933650895485
+        },
+        {
+          "dataset": "GB1",
+          "value": 0.0671760693919187
+        },
+        {
+          "dataset": "GFP",
+          "value": 0.1472590100875566
+        },
+        {
+          "dataset": "TrpB",
+          "value": 0.1847531093524695
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.3182369216145905
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": 0.0936034951940116
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": 0.2422140769064437
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.2176981116672276
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.5140681862977322
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.0539306429717388
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.2304852883446503
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.2192441270816049
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.5615753092040429
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.1047064505528984
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.3016502920806687
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.4724848289050499
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.3752085471556164
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.3872544645225976
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": -0.318820614416343
+        }
+      ]
+    },
+    {
+      "id": "SaProt-650M",
+      "source_key": "SaProt-650M",
+      "label": "SaProt-650M",
+      "short_label": "SaProt-650M",
+      "mean": 0.23067843000754523,
+      "sem": 0.05554350694874763,
+      "source_mean": 0.23067843000754523,
+      "source_sem": 0.05554350694874763,
+      "n_assays": 19,
+      "n_observed": 19,
+      "n_missing": 0,
+      "mean_observed_only": 0.23067843000754523,
+      "summary_max_abs_error": 0.0,
+      "name": "SaProt-650M",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": 0.2255568455754953
+        },
+        {
+          "dataset": "GB1",
+          "value": 0.1516095471010531
+        },
+        {
+          "dataset": "GFP",
+          "value": 0.6096103515200229
+        },
+        {
+          "dataset": "TrpB",
+          "value": 0.1088288782094439
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.3837904531158409
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": -0.076413674393506
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": 0.0089606076075336
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.2310284917910126
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.5044995306139901
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.136986301369863
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.3564428238282577
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.2365991024130791
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.4902982909899319
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.1122234256424461
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.2852566245313391
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.4712626119575014
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.3518224702472217
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.3971070303850757
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": -0.3286069396225167
+        }
+      ]
+    },
+    {
+      "id": "MSA Transformer",
+      "source_key": "MSA Transformer",
+      "label": "MSA Transformer",
+      "short_label": "MSA Transformer",
+      "mean": 0.24337352829603262,
+      "sem": 0.05063111632193234,
+      "source_mean": 0.24337352829603262,
+      "source_sem": 0.05063111632193234,
+      "n_assays": 19,
+      "n_observed": 19,
+      "n_missing": 0,
+      "mean_observed_only": 0.24337352829603262,
+      "summary_max_abs_error": 0.0,
+      "name": "MSA Transformer",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": 0.4730983363796934
+        },
+        {
+          "dataset": "GB1",
+          "value": 0.1049325679900447
+        },
+        {
+          "dataset": "GFP",
+          "value": 0.6580609799088106
+        },
+        {
+          "dataset": "TrpB",
+          "value": 0.1788178364770343
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.331080748084658
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": 0.1073793602124282
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": 0.2839791835403151
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.2252094710477341
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.4941309575607158
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.1621621621621622
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.1395620739102717
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.2124199228023499
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.3293476293192891
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.0946058092896727
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.3923897473364993
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.4435481103956106
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.2614118041416431
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.3253252277651084
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": -0.2690405663750969
+        }
+      ]
+    },
+    {
+      "id": "ESM3-1.4B",
+      "source_key": "ESM3-1.4B",
+      "label": "ESM3-1.4B",
+      "short_label": "ESM3-1.4B",
+      "mean": 0.2553539991367496,
+      "sem": 0.05373793038766104,
+      "source_mean": 0.2553539991367496,
+      "source_sem": 0.05373793038766104,
+      "n_assays": 19,
+      "n_observed": 19,
+      "n_missing": 0,
+      "mean_observed_only": 0.2553539991367496,
+      "summary_max_abs_error": 0.0,
+      "name": "ESM3-1.4B",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": 0.2731656511878863
+        },
+        {
+          "dataset": "GB1",
+          "value": 0.1830549657783
+        },
+        {
+          "dataset": "GFP",
+          "value": 0.6496042193663453
+        },
+        {
+          "dataset": "TrpB",
+          "value": 0.1710528364055714
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.4264267971013317
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": -0.0855964258690198
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": 0.0412365646388516
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.2290950378190988
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.533511521173392
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.0641737628038998
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.4057224232993942
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.2802451648273279
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.5315640874483013
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.0716164755556888
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.2186420056484085
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.5223761272139376
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.3465513504768664
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.3385571424115663
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": -0.220926198081106
+        }
+      ]
+    },
+    {
+      "id": "ESM-IF1",
+      "source_key": "ESM-IF1",
+      "label": "ESM-IF1",
+      "short_label": "ESM-IF1",
+      "mean": 0.2579818735518448,
+      "sem": 0.04552624384056674,
+      "source_mean": 0.2579818735518448,
+      "source_sem": 0.04552624384056675,
+      "n_assays": 19,
+      "n_observed": 19,
+      "n_missing": 0,
+      "mean_observed_only": 0.2579818735518448,
+      "summary_max_abs_error": 6.938893903907228e-18,
+      "name": "ESM-IF1",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": 0.377972476178167
+        },
+        {
+          "dataset": "GB1",
+          "value": 0.2571705523508572
+        },
+        {
+          "dataset": "GFP",
+          "value": 0.7051059856512725
+        },
+        {
+          "dataset": "TrpB",
+          "value": 0.1386509631059527
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.3339446245724235
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": 0.0030548976557728
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": 0.114410404291308
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.1582965497844785
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.4310504147346933
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.0127113414784647
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.4648148826925882
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.3314962485756957
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.407055577718779
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.1010837456476274
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.2618618201818122
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.5045167586945125
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.1918568196980193
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.2106714144384137
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": -0.0786471970088574
+        }
+      ]
+    },
+    {
+      "id": "ProTEUS",
+      "source_key": "ZEUS",
+      "label": "ProTEUS",
+      "short_label": "ProTEUS",
+      "mean": 0.2708966009335355,
+      "sem": 0.05342189930450411,
+      "source_mean": 0.2708966009335355,
+      "source_sem": 0.05342189930450411,
+      "n_assays": 19,
+      "n_observed": 19,
+      "n_missing": 0,
+      "mean_observed_only": 0.2708966009335355,
+      "summary_max_abs_error": 0.0,
+      "name": "ProTEUS",
+      "values": [
+        {
+          "dataset": "AAV",
+          "value": 0.4408921299658648
+        },
+        {
+          "dataset": "GB1",
+          "value": 0.1016256755130329
+        },
+        {
+          "dataset": "GFP",
+          "value": 0.6510703826273097
+        },
+        {
+          "dataset": "TrpB",
+          "value": 0.1858601264938329
+        },
+        {
+          "dataset": "urn_mavedb_00000072-a-1",
+          "value": 0.3725220836036955
+        },
+        {
+          "dataset": "urn_mavedb_00000077-a-1",
+          "value": 0.1158764675080977
+        },
+        {
+          "dataset": "urn_mavedb_00000077-b-1",
+          "value": 0.2779636572729966
+        },
+        {
+          "dataset": "urn_mavedb_00000079-a-1",
+          "value": 0.2308749551858192
+        },
+        {
+          "dataset": "urn_mavedb_00000090-a-1",
+          "value": 0.5324417037406518
+        },
+        {
+          "dataset": "urn_mavedb_00000091-a-1",
+          "value": -0.1189374305812662
+        },
+        {
+          "dataset": "urn_mavedb_00000105-a-1",
+          "value": 0.2068818132322859
+        },
+        {
+          "dataset": "urn_mavedb_00000659-a-1",
+          "value": 0.2300730972014606
+        },
+        {
+          "dataset": "urn_mavedb_00000665-a-1",
+          "value": 0.4877948603478242
+        },
+        {
+          "dataset": "urn_mavedb_00001207-a-1",
+          "value": 0.1055833068429008
+        },
+        {
+          "dataset": "urn_mavedb_00001212-a-1",
+          "value": 0.3996266166901676
+        },
+        {
+          "dataset": "urn_mavedb_00001217-a-3",
+          "value": 0.4733707444288703
+        },
+        {
+          "dataset": "urn_mavedb_00001227-a-1",
+          "value": 0.3734443856942312
+        },
+        {
+          "dataset": "urn_mavedb_00001239-a-1",
+          "value": 0.3974688159703464
+        },
+        {
+          "dataset": "urn_mavedb_00001243-a-1",
+          "value": -0.3173979740009472
+        }
+      ]
+    }
+  ],
+  "values": [
+    [
+      null,
+      null,
+      0.2036232562901741,
+      -0.0367111933607623,
+      -0.0329365714625985,
+      0.2083112247148055,
+      0.1796326059010684,
+      0.502677375088636,
+      0.2817639574017547,
+      0.1915933650895485,
+      0.2255568455754953,
+      0.4730983363796934,
+      0.2731656511878863,
+      0.377972476178167,
+      0.4408921299658648
+    ],
+    [
+      0.0005401969237792,
+      0.0016643579455718,
+      0.1053183120831981,
+      -0.0014100060761517,
+      -0.0003974186303411,
+      0.1247522482580979,
+      0.132756475138774,
+      0.0446498875192626,
+      0.125671080743577,
+      0.0671760693919187,
+      0.1516095471010531,
+      0.1049325679900447,
+      0.1830549657783,
+      0.2571705523508572,
+      0.1016256755130329
+    ],
+    [
+      0.0047878311042452,
+      0.004454206978867,
+      0.1038076756602961,
+      0.0083575628812031,
+      -0.0026906107535851,
+      0.1141880822735474,
+      0.1205658614992903,
+      0.6434063171610751,
+      0.0911647607706747,
+      0.1472590100875566,
+      0.6096103515200229,
+      0.6580609799088106,
+      0.6496042193663453,
+      0.7051059856512725,
+      0.6510703826273097
+    ],
+    [
+      0.0045113823444614,
+      0.0023884534558633,
+      0.1784058531687422,
+      -0.0030532956938627,
+      0.0029096272730719,
+      0.1826077457253772,
+      0.1841495178826501,
+      null,
+      0.1835102141068178,
+      0.1847531093524695,
+      0.1088288782094439,
+      0.1788178364770343,
+      0.1710528364055714,
+      0.1386509631059527,
+      0.1858601264938329
+    ],
+    [
+      0.3037684436030111,
+      0.247189051765793,
+      0.3814889967126284,
+      0.4353516710237547,
+      0.3060138231366766,
+      0.3640750515028623,
+      0.3912003222628514,
+      0.297336223732646,
+      0.3725369563299365,
+      0.3182369216145905,
+      0.3837904531158409,
+      0.331080748084658,
+      0.4264267971013317,
+      0.3339446245724235,
+      0.3725220836036955
+    ],
+    [
+      -0.120490026852867,
+      -0.1437316105269253,
+      -0.1352161009886817,
+      0.1063426456096709,
+      0.2149600557736399,
+      -0.0925974595964356,
+      -0.0696896442273413,
+      -0.0421402799209588,
+      -0.0867644324707393,
+      0.0936034951940116,
+      -0.076413674393506,
+      0.1073793602124282,
+      -0.0855964258690198,
+      0.0030548976557728,
+      0.1158764675080977
+    ],
+    [
+      -0.1013116387869588,
+      -0.0949232509215773,
+      -0.090867255018897,
+      0.2561104686766484,
+      0.3217367357914525,
+      -0.087928585241808,
+      -0.0392815493676423,
+      -0.0823936609268124,
+      0.0053388099546666,
+      0.2422140769064437,
+      0.0089606076075336,
+      0.2839791835403151,
+      0.0412365646388516,
+      0.114410404291308,
+      0.2779636572729966
+    ],
+    [
+      0.2104466139756685,
+      0.2265686332880601,
+      0.2190162834125256,
+      0.1940053467496184,
+      0.2550392519240108,
+      0.2375320305774191,
+      0.2433903430517648,
+      0.1955868373680132,
+      0.2213445619003434,
+      0.2176981116672276,
+      0.2310284917910126,
+      0.2252094710477341,
+      0.2290950378190988,
+      0.1582965497844785,
+      0.2308749551858192
+    ],
+    [
+      0.4516004159783394,
+      0.5208904102722943,
+      0.582814001186581,
+      0.4988071414766387,
+      0.4338384788367656,
+      0.5987397790321286,
+      0.5494043094898767,
+      0.4175464300779108,
+      0.5516418456079397,
+      0.5140681862977322,
+      0.5044995306139901,
+      0.4941309575607158,
+      0.533511521173392,
+      0.4310504147346933,
+      0.5324417037406518
+    ],
+    [
+      -0.0393372824879674,
+      -0.0003393804763667,
+      -0.1017215845982969,
+      -0.0103357578658963,
+      -0.0438417869924719,
+      -0.0913170327548356,
+      -0.1932082402399587,
+      -0.1417067752684191,
+      -0.116068122917438,
+      -0.0539306429717388,
+      -0.136986301369863,
+      -0.1621621621621622,
+      -0.0641737628038998,
+      -0.0127113414784647,
+      -0.1189374305812662
+    ],
+    [
+      0.2456822204541147,
+      0.2247324617095756,
+      0.2035308434700092,
+      0.3596447307826865,
+      0.3951525502706561,
+      0.2990906323982873,
+      0.2988724126771523,
+      0.1704695747278154,
+      0.2797409009101526,
+      0.2304852883446503,
+      0.3564428238282577,
+      0.1395620739102717,
+      0.4057224232993942,
+      0.4648148826925882,
+      0.2068818132322859
+    ],
+    [
+      0.2149060585784472,
+      0.2427491593015161,
+      0.1414038963535007,
+      0.2584279368334656,
+      0.2633575417247977,
+      0.1865083993721573,
+      0.2659420712057432,
+      0.2233828622173266,
+      0.2576870797431033,
+      0.2192441270816049,
+      0.2365991024130791,
+      0.2124199228023499,
+      0.2802451648273279,
+      0.3314962485756957,
+      0.2300730972014606
+    ],
+    [
+      0.277427154650995,
+      0.2564622049816114,
+      0.4636924897203432,
+      0.3523585706221896,
+      0.3446736609022875,
+      0.4787555177723143,
+      0.4834627330592079,
+      0.3995499222289161,
+      0.5080663727366953,
+      0.5615753092040429,
+      0.4902982909899319,
+      0.3293476293192891,
+      0.5315640874483013,
+      0.407055577718779,
+      0.4877948603478242
+    ],
+    [
+      0.0884510702081339,
+      0.1055439334576797,
+      0.1055032562452433,
+      0.0886125106978076,
+      0.0993772719288293,
+      0.1074826449139416,
+      0.1065200522640023,
+      0.0985132607529573,
+      0.1068098246924519,
+      0.1047064505528984,
+      0.1122234256424461,
+      0.0946058092896727,
+      0.0716164755556888,
+      0.1010837456476274,
+      0.1055833068429008
+    ],
+    [
+      0.2100140404065593,
+      0.2013661279601135,
+      0.226064529382802,
+      0.2784619504973,
+      0.4408987752657808,
+      0.2482559295154373,
+      0.2666680723912892,
+      0.1520220889660057,
+      0.2754855484141019,
+      0.3016502920806687,
+      0.2852566245313391,
+      0.3923897473364993,
+      0.2186420056484085,
+      0.2618618201818122,
+      0.3996266166901676
+    ],
+    [
+      0.4338654131247966,
+      0.4388675705901867,
+      0.4250999547517848,
+      0.4495515795587701,
+      0.4241439851564537,
+      0.4592744126977001,
+      0.4406666661469448,
+      0.4056322292029561,
+      0.4841761207960656,
+      0.4724848289050499,
+      0.4712626119575014,
+      0.4435481103956106,
+      0.5223761272139376,
+      0.5045167586945125,
+      0.4733707444288703
+    ],
+    [
+      0.2225539825920628,
+      0.3012184990477231,
+      0.3518129465578339,
+      0.2648644032740588,
+      0.1786097183177723,
+      0.3808512122587527,
+      0.3428095476169915,
+      0.2990889818348247,
+      0.4404720564582377,
+      0.3752085471556164,
+      0.3518224702472217,
+      0.2614118041416431,
+      0.3465513504768664,
+      0.1918568196980193,
+      0.3734443856942312
+    ],
+    [
+      0.227455226555946,
+      0.2258491941490406,
+      0.3256365397462127,
+      0.254797374678244,
+      0.4097188216757789,
+      0.3541948843662167,
+      0.3693627511103558,
+      0.3115468751986476,
+      0.379205314176798,
+      0.3872544645225976,
+      0.3971070303850757,
+      0.3253252277651084,
+      0.3385571424115663,
+      0.2106714144384137,
+      0.3974688159703464
+    ],
+    [
+      -0.2595595594524852,
+      -0.2647088326249021,
+      -0.3021010545639701,
+      -0.1833577170618285,
+      -0.2937607624633657,
+      -0.3344314189154752,
+      -0.3175686124194422,
+      null,
+      -0.3204628375532126,
+      -0.318820614416343,
+      -0.3286069396225167,
+      -0.2690405663750969,
+      -0.220926198081106,
+      -0.0786471970088574,
+      -0.3173979740009472
+    ]
+  ],
+  "published_values": [
+    [
+      0.0,
+      0.0,
+      0.2036232562901741,
+      -0.0367111933607623,
+      -0.0329365714625985,
+      0.2083112247148055,
+      0.1796326059010684,
+      0.502677375088636,
+      0.2817639574017547,
+      0.1915933650895485,
+      0.2255568455754953,
+      0.4730983363796934,
+      0.2731656511878863,
+      0.377972476178167,
+      0.4408921299658648
+    ],
+    [
+      0.0005401969237792,
+      0.0016643579455718,
+      0.1053183120831981,
+      -0.0014100060761517,
+      -0.0003974186303411,
+      0.1247522482580979,
+      0.132756475138774,
+      0.0446498875192626,
+      0.125671080743577,
+      0.0671760693919187,
+      0.1516095471010531,
+      0.1049325679900447,
+      0.1830549657783,
+      0.2571705523508572,
+      0.1016256755130329
+    ],
+    [
+      0.0047878311042452,
+      0.004454206978867,
+      0.1038076756602961,
+      0.0083575628812031,
+      -0.0026906107535851,
+      0.1141880822735474,
+      0.1205658614992903,
+      0.6434063171610751,
+      0.0911647607706747,
+      0.1472590100875566,
+      0.6096103515200229,
+      0.6580609799088106,
+      0.6496042193663453,
+      0.7051059856512725,
+      0.6510703826273097
+    ],
+    [
+      0.0045113823444614,
+      0.0023884534558633,
+      0.1784058531687422,
+      -0.0030532956938627,
+      0.0029096272730719,
+      0.1826077457253772,
+      0.1841495178826501,
+      0.0,
+      0.1835102141068178,
+      0.1847531093524695,
+      0.1088288782094439,
+      0.1788178364770343,
+      0.1710528364055714,
+      0.1386509631059527,
+      0.1858601264938329
+    ],
+    [
+      0.3037684436030111,
+      0.247189051765793,
+      0.3814889967126284,
+      0.4353516710237547,
+      0.3060138231366766,
+      0.3640750515028623,
+      0.3912003222628514,
+      0.297336223732646,
+      0.3725369563299365,
+      0.3182369216145905,
+      0.3837904531158409,
+      0.331080748084658,
+      0.4264267971013317,
+      0.3339446245724235,
+      0.3725220836036955
+    ],
+    [
+      -0.120490026852867,
+      -0.1437316105269253,
+      -0.1352161009886817,
+      0.1063426456096709,
+      0.2149600557736399,
+      -0.0925974595964356,
+      -0.0696896442273413,
+      -0.0421402799209588,
+      -0.0867644324707393,
+      0.0936034951940116,
+      -0.076413674393506,
+      0.1073793602124282,
+      -0.0855964258690198,
+      0.0030548976557728,
+      0.1158764675080977
+    ],
+    [
+      -0.1013116387869588,
+      -0.0949232509215773,
+      -0.090867255018897,
+      0.2561104686766484,
+      0.3217367357914525,
+      -0.087928585241808,
+      -0.0392815493676423,
+      -0.0823936609268124,
+      0.0053388099546666,
+      0.2422140769064437,
+      0.0089606076075336,
+      0.2839791835403151,
+      0.0412365646388516,
+      0.114410404291308,
+      0.2779636572729966
+    ],
+    [
+      0.2104466139756685,
+      0.2265686332880601,
+      0.2190162834125256,
+      0.1940053467496184,
+      0.2550392519240108,
+      0.2375320305774191,
+      0.2433903430517648,
+      0.1955868373680132,
+      0.2213445619003434,
+      0.2176981116672276,
+      0.2310284917910126,
+      0.2252094710477341,
+      0.2290950378190988,
+      0.1582965497844785,
+      0.2308749551858192
+    ],
+    [
+      0.4516004159783394,
+      0.5208904102722943,
+      0.582814001186581,
+      0.4988071414766387,
+      0.4338384788367656,
+      0.5987397790321286,
+      0.5494043094898767,
+      0.4175464300779108,
+      0.5516418456079397,
+      0.5140681862977322,
+      0.5044995306139901,
+      0.4941309575607158,
+      0.533511521173392,
+      0.4310504147346933,
+      0.5324417037406518
+    ],
+    [
+      -0.0393372824879674,
+      -0.0003393804763667,
+      -0.1017215845982969,
+      -0.0103357578658963,
+      -0.0438417869924719,
+      -0.0913170327548356,
+      -0.1932082402399587,
+      -0.1417067752684191,
+      -0.116068122917438,
+      -0.0539306429717388,
+      -0.136986301369863,
+      -0.1621621621621622,
+      -0.0641737628038998,
+      -0.0127113414784647,
+      -0.1189374305812662
+    ],
+    [
+      0.2456822204541147,
+      0.2247324617095756,
+      0.2035308434700092,
+      0.3596447307826865,
+      0.3951525502706561,
+      0.2990906323982873,
+      0.2988724126771523,
+      0.1704695747278154,
+      0.2797409009101526,
+      0.2304852883446503,
+      0.3564428238282577,
+      0.1395620739102717,
+      0.4057224232993942,
+      0.4648148826925882,
+      0.2068818132322859
+    ],
+    [
+      0.2149060585784472,
+      0.2427491593015161,
+      0.1414038963535007,
+      0.2584279368334656,
+      0.2633575417247977,
+      0.1865083993721573,
+      0.2659420712057432,
+      0.2233828622173266,
+      0.2576870797431033,
+      0.2192441270816049,
+      0.2365991024130791,
+      0.2124199228023499,
+      0.2802451648273279,
+      0.3314962485756957,
+      0.2300730972014606
+    ],
+    [
+      0.277427154650995,
+      0.2564622049816114,
+      0.4636924897203432,
+      0.3523585706221896,
+      0.3446736609022875,
+      0.4787555177723143,
+      0.4834627330592079,
+      0.3995499222289161,
+      0.5080663727366953,
+      0.5615753092040429,
+      0.4902982909899319,
+      0.3293476293192891,
+      0.5315640874483013,
+      0.407055577718779,
+      0.4877948603478242
+    ],
+    [
+      0.0884510702081339,
+      0.1055439334576797,
+      0.1055032562452433,
+      0.0886125106978076,
+      0.0993772719288293,
+      0.1074826449139416,
+      0.1065200522640023,
+      0.0985132607529573,
+      0.1068098246924519,
+      0.1047064505528984,
+      0.1122234256424461,
+      0.0946058092896727,
+      0.0716164755556888,
+      0.1010837456476274,
+      0.1055833068429008
+    ],
+    [
+      0.2100140404065593,
+      0.2013661279601135,
+      0.226064529382802,
+      0.2784619504973,
+      0.4408987752657808,
+      0.2482559295154373,
+      0.2666680723912892,
+      0.1520220889660057,
+      0.2754855484141019,
+      0.3016502920806687,
+      0.2852566245313391,
+      0.3923897473364993,
+      0.2186420056484085,
+      0.2618618201818122,
+      0.3996266166901676
+    ],
+    [
+      0.4338654131247966,
+      0.4388675705901867,
+      0.4250999547517848,
+      0.4495515795587701,
+      0.4241439851564537,
+      0.4592744126977001,
+      0.4406666661469448,
+      0.4056322292029561,
+      0.4841761207960656,
+      0.4724848289050499,
+      0.4712626119575014,
+      0.4435481103956106,
+      0.5223761272139376,
+      0.5045167586945125,
+      0.4733707444288703
+    ],
+    [
+      0.2225539825920628,
+      0.3012184990477231,
+      0.3518129465578339,
+      0.2648644032740588,
+      0.1786097183177723,
+      0.3808512122587527,
+      0.3428095476169915,
+      0.2990889818348247,
+      0.4404720564582377,
+      0.3752085471556164,
+      0.3518224702472217,
+      0.2614118041416431,
+      0.3465513504768664,
+      0.1918568196980193,
+      0.3734443856942312
+    ],
+    [
+      0.227455226555946,
+      0.2258491941490406,
+      0.3256365397462127,
+      0.254797374678244,
+      0.4097188216757789,
+      0.3541948843662167,
+      0.3693627511103558,
+      0.3115468751986476,
+      0.379205314176798,
+      0.3872544645225976,
+      0.3971070303850757,
+      0.3253252277651084,
+      0.3385571424115663,
+      0.2106714144384137,
+      0.3974688159703464
+    ],
+    [
+      -0.2595595594524852,
+      -0.2647088326249021,
+      -0.3021010545639701,
+      -0.1833577170618285,
+      -0.2937607624633657,
+      -0.3344314189154752,
+      -0.3175686124194422,
+      0.0,
+      -0.3204628375532126,
+      -0.318820614416343,
+      -0.3286069396225167,
+      -0.2690405663750969,
+      -0.220926198081106,
+      -0.0786471970088574,
+      -0.3173979740009472
+    ]
+  ],
+  "missing_cells": [
+    {
+      "assay": "AAV",
+      "model": "AMPLIFY-120M",
+      "source_filled_value": 0.0,
+      "value": null
+    },
+    {
+      "assay": "AAV",
+      "model": "AMPLIFY-350M",
+      "source_filled_value": 0.0,
+      "value": null
+    },
+    {
+      "assay": "TrpB",
+      "model": "Tranception",
+      "source_filled_value": 0.0,
+      "value": null
+    },
+    {
+      "assay": "urn_mavedb_00001243-a-1",
+      "model": "Tranception",
+      "source_filled_value": 0.0,
+      "value": null
+    }
+  ],
+  "validation": {
+    "shape": [
+      19,
+      15
+    ],
+    "total_cells": 285,
+    "observed_cells": 281,
+    "null_cells": 4,
+    "max_abs_mean_error": 2.7755575615628914e-17,
+    "max_abs_sem_error": 6.938893903907228e-18,
+    "observed_only_means_match_independent_summary": true,
+    "checks_passed": true
+  },
+  "original_csv": "dataset,AMPLIFY-350M,AMPLIFY-120M,ESM-1v,PoET-2,MSA-Pairformer,ESM-2-650M,ESM-2-3B,Tranception,SaProt-650M,MSA Transformer,ESM-C-300M,ESM-C-600M,ESM-IF1,ESM3-1.4B,ZEUS\nAAV,0.0,0.0,0.2036232562901741,-0.0367111933607623,-0.0329365714625985,0.2817639574017547,0.1915933650895485,0.502677375088636,0.2255568455754953,0.4730983363796934,0.2083112247148055,0.1796326059010684,0.377972476178167,0.2731656511878863,0.4408921299658648\nGB1,0.0005401969237792,0.0016643579455718,0.1053183120831981,-0.0014100060761517,-0.0003974186303411,0.125671080743577,0.0671760693919187,0.0446498875192626,0.1516095471010531,0.1049325679900447,0.1247522482580979,0.132756475138774,0.2571705523508572,0.1830549657783,0.1016256755130329\nGFP,0.0047878311042452,0.004454206978867,0.1038076756602961,0.0083575628812031,-0.0026906107535851,0.0911647607706747,0.1472590100875566,0.6434063171610751,0.6096103515200229,0.6580609799088106,0.1141880822735474,0.1205658614992903,0.7051059856512725,0.6496042193663453,0.6510703826273097\nTrpB,0.0045113823444614,0.0023884534558633,0.1784058531687422,-0.0030532956938627,0.0029096272730719,0.1835102141068178,0.1847531093524695,0.0,0.1088288782094439,0.1788178364770343,0.1826077457253772,0.1841495178826501,0.1386509631059527,0.1710528364055714,0.1858601264938329\nurn_mavedb_00000072-a-1,0.3037684436030111,0.247189051765793,0.3814889967126284,0.4353516710237547,0.3060138231366766,0.3725369563299365,0.3182369216145905,0.297336223732646,0.3837904531158409,0.331080748084658,0.3640750515028623,0.3912003222628514,0.3339446245724235,0.4264267971013317,0.3725220836036955\nurn_mavedb_00000077-a-1,-0.120490026852867,-0.1437316105269253,-0.1352161009886817,0.1063426456096709,0.2149600557736399,-0.0867644324707393,0.0936034951940116,-0.0421402799209588,-0.076413674393506,0.1073793602124282,-0.0925974595964356,-0.0696896442273413,0.0030548976557728,-0.0855964258690198,0.1158764675080977\nurn_mavedb_00000077-b-1,-0.1013116387869588,-0.0949232509215773,-0.090867255018897,0.2561104686766484,0.3217367357914525,0.0053388099546666,0.2422140769064437,-0.0823936609268124,0.0089606076075336,0.2839791835403151,-0.087928585241808,-0.0392815493676423,0.114410404291308,0.0412365646388516,0.2779636572729966\nurn_mavedb_00000079-a-1,0.2104466139756685,0.2265686332880601,0.2190162834125256,0.1940053467496184,0.2550392519240108,0.2213445619003434,0.2176981116672276,0.1955868373680132,0.2310284917910126,0.2252094710477341,0.2375320305774191,0.2433903430517648,0.1582965497844785,0.2290950378190988,0.2308749551858192\nurn_mavedb_00000090-a-1,0.4516004159783394,0.5208904102722943,0.582814001186581,0.4988071414766387,0.4338384788367656,0.5516418456079397,0.5140681862977322,0.4175464300779108,0.5044995306139901,0.4941309575607158,0.5987397790321286,0.5494043094898767,0.4310504147346933,0.533511521173392,0.5324417037406518\nurn_mavedb_00000091-a-1,-0.0393372824879674,-0.0003393804763667,-0.1017215845982969,-0.0103357578658963,-0.0438417869924719,-0.116068122917438,-0.0539306429717388,-0.1417067752684191,-0.136986301369863,-0.1621621621621622,-0.0913170327548356,-0.1932082402399587,-0.0127113414784647,-0.0641737628038998,-0.1189374305812662\nurn_mavedb_00000105-a-1,0.2456822204541147,0.2247324617095756,0.2035308434700092,0.3596447307826865,0.3951525502706561,0.2797409009101526,0.2304852883446503,0.1704695747278154,0.3564428238282577,0.1395620739102717,0.2990906323982873,0.2988724126771523,0.4648148826925882,0.4057224232993942,0.2068818132322859\nurn_mavedb_00000659-a-1,0.2149060585784472,0.2427491593015161,0.1414038963535007,0.2584279368334656,0.2633575417247977,0.2576870797431033,0.2192441270816049,0.2233828622173266,0.2365991024130791,0.2124199228023499,0.1865083993721573,0.2659420712057432,0.3314962485756957,0.2802451648273279,0.2300730972014606\nurn_mavedb_00000665-a-1,0.277427154650995,0.2564622049816114,0.4636924897203432,0.3523585706221896,0.3446736609022875,0.5080663727366953,0.5615753092040429,0.3995499222289161,0.4902982909899319,0.3293476293192891,0.4787555177723143,0.4834627330592079,0.407055577718779,0.5315640874483013,0.4877948603478242\nurn_mavedb_00001207-a-1,0.0884510702081339,0.1055439334576797,0.1055032562452433,0.0886125106978076,0.0993772719288293,0.1068098246924519,0.1047064505528984,0.0985132607529573,0.1122234256424461,0.0946058092896727,0.1074826449139416,0.1065200522640023,0.1010837456476274,0.0716164755556888,0.1055833068429008\nurn_mavedb_00001212-a-1,0.2100140404065593,0.2013661279601135,0.226064529382802,0.2784619504973,0.4408987752657808,0.2754855484141019,0.3016502920806687,0.1520220889660057,0.2852566245313391,0.3923897473364993,0.2482559295154373,0.2666680723912892,0.2618618201818122,0.2186420056484085,0.3996266166901676\nurn_mavedb_00001217-a-3,0.4338654131247966,0.4388675705901867,0.4250999547517848,0.4495515795587701,0.4241439851564537,0.4841761207960656,0.4724848289050499,0.4056322292029561,0.4712626119575014,0.4435481103956106,0.4592744126977001,0.4406666661469448,0.5045167586945125,0.5223761272139376,0.4733707444288703\nurn_mavedb_00001227-a-1,0.2225539825920628,0.3012184990477231,0.3518129465578339,0.2648644032740588,0.1786097183177723,0.4404720564582377,0.3752085471556164,0.2990889818348247,0.3518224702472217,0.2614118041416431,0.3808512122587527,0.3428095476169915,0.1918568196980193,0.3465513504768664,0.3734443856942312\nurn_mavedb_00001239-a-1,0.227455226555946,0.2258491941490406,0.3256365397462127,0.254797374678244,0.4097188216757789,0.379205314176798,0.3872544645225976,0.3115468751986476,0.3971070303850757,0.3253252277651084,0.3541948843662167,0.3693627511103558,0.2106714144384137,0.3385571424115663,0.3974688159703464\nurn_mavedb_00001243-a-1,-0.2595595594524852,-0.2647088326249021,-0.3021010545639701,-0.1833577170618285,-0.2937607624633657,-0.3204628375532126,-0.318820614416343,0.0,-0.3286069396225167,-0.2690405663750969,-0.3344314189154752,-0.3175686124194422,-0.0786471970088574,-0.220926198081106,-0.3173979740009472\n"
+}

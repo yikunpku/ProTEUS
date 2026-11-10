@@ -1,0 +1,74 @@
+{
+  "asset": "aldh",
+  "name": "aldh-structure",
+  "frames": 192,
+  "fps": 24,
+  "seconds": 8,
+  "dimensions": [
+    1280,
+    720
+  ],
+  "palette": {
+    "helix": "#7BD0AC",
+    "strand": "#6B9BD1",
+    "coil": "#E6DED3",
+    "shell": "#BFC7D1",
+    "rose": "#C85F6B",
+    "wine": "#6B2233",
+    "ligand": "#F2B632",
+    "nad": "#D9962F"
+  },
+  "motion": "Orthographic camera yaw, \u00b118 degrees; atom coordinates unchanged.",
+  "annotations": {
+    "structure": "WT AlphaFold reference AF-P46368-F1, 506 residues.",
+    "evolved_positions": [
+      103,
+      116,
+      332,
+      358
+    ],
+    "catalytic_positions": [
+      262,
+      301
+    ]
+  },
+  "models": [
+    {
+      "name": "AF-P46368-F1.pdb",
+      "coordinates_sha256": "0e6a9b31ad189c59c26f28cdc881cbfeda063f4209448c6e87363b59fb9d780e",
+      "secondary_structure_sha256": "4670dbb9402f3028d7aa0161248c619cfa3937c2b9a6d83325b31f5a6219573d",
+      "model_matrix": [
+        [
+          0.2577613839590432,
+          -0.7146309306843734,
+          -0.6502781726682089,
+          0.4440036904684527
+        ],
+        [
+          0.9619785811644186,
+          0.2527194648712161,
+          0.10358610648199042,
+          -0.3986722174482094
+        ],
+        [
+          0.09031211613294661,
+          -0.6522541720712811,
+          0.7526009677745551,
+          -0.9004242302607374
+        ]
+      ],
+      "residues": 506
+    }
+  ],
+  "sources": [
+    {
+      "path": "/Users/mhg/Dropbox/PROTEUS/Main Figure/proteus_figures/figures/RAW/cell_v9/protein_structures/fig3f_aldh.cxs",
+      "sha256": "6f8d8298fbebcd6cc03bd67a3977d647646aadfc8e912e0276784390fb0b8537"
+    }
+  ],
+  "elapsed_seconds": 48.58432525000535,
+  "preview": false,
+  "rendered_frames": 192,
+  "supersample": 2,
+  "coordinate_integrity_verified": true
+}

@@ -1,0 +1,27 @@
+{
+  "source": "/Users/mhg/Dropbox/PROTEUS/Main Figure/proteus_figures/energy_landscape/revision5_brighter_blue/landscape_blue_gold_brighter.blend",
+  "surface_vertices_sha256": "b81b3485f4335b17a37a4ecd2f2a55cb7d9e4256a5bbdcb18d63918617354add",
+  "geometry_preserved": true,
+  "palette_source": "scripts/cell_v11/restyle.py:228",
+  "concept": "Illustrative state-space exploration, not measured fitness data.",
+  "original_scene_changes": [
+    "Hide historical 23-node tree",
+    "Pale paper palette",
+    "Three selected steps; three dashed candidates from every current state",
+    "7-degree camera arc"
+  ],
+  "selected_lineage": [
+    "WT",
+    "Q34N",
+    "Q34N:G240W",
+    "G23A:Q34N:G240W"
+  ],
+  "coordinates_are_conceptual": true,
+  "resolution": [
+    1280,
+    720
+  ],
+  "fps": 24,
+  "frames": 288,
+  "engine": "BLENDER_EEVEE"
+}

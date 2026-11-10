@@ -1,43 +1,287 @@
 'use strict';
-const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
-const navToggle=document.querySelector('.menu-toggle'),navigation=document.querySelector('.navigation nav');
-navToggle.addEventListener('click',()=>{const open=navToggle.getAttribute('aria-expanded')!=='true';navToggle.setAttribute('aria-expanded',String(open));navToggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');navigation.classList.toggle('open',open);});
-navigation.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navigation.classList.remove('open');navToggle.setAttribute('aria-expanded','false');navToggle.setAttribute('aria-label','Open navigation');}));
 
-const film=document.querySelector('#main-film');
-document.querySelectorAll('[data-seek]').forEach(button=>button.addEventListener('click',()=>{const target=Number(button.dataset.seek),start=()=>{film.currentTime=target;film.play().catch(()=>{});};if(film.readyState>=1)start();else{film.addEventListener('loadedmetadata',start,{once:true});film.load();}film.focus({preventScroll:true});}));
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const filmDetails = document.querySelector('#film');
+const film = document.querySelector('#project-film');
+document.querySelectorAll('[data-open-film]').forEach(link => {
+  link.addEventListener('click', () => { filmDetails.open = true; });
+});
+function revealFilm() {
+  if (location.hash === '#film') filmDetails.open = true;
+}
+window.addEventListener('hashchange', revealFilm);
+revealFilm();
+filmDetails.addEventListener('toggle', () => { if (!filmDetails.open) film.pause(); });
+let pendingSeek = null;
+document.querySelectorAll('[data-seek]').forEach(button => {
+  button.addEventListener('click', () => {
+    if (pendingSeek) film.removeEventListener('loadedmetadata', pendingSeek);
+    const start = () => {
+      pendingSeek = null;
+      if (!filmDetails.open) return;
+      film.currentTime = Number(button.dataset.seek);
+      film.play().catch(() => {});
+    };
+    if (film.readyState >= 1) start();
+    else {
+      pendingSeek = start;
+      film.addEventListener('loadedmetadata', start, { once: true });
+      film.load();
+      // Start within the click gesture; Safari may reject an unmuted play()
+      // first issued by the later loadedmetadata event.
+      film.play().catch(() => {});
+    }
+    film.focus({ preventScroll: true });
+  });
+});
 
-const methodData={
- world:{src:'world-model',label:'Represent the variant',title:'Variants are states.<br>Mutations are actions.',description:'A mutation moves a protein to a new state in a joint latent space. ProTEUS predicts the resulting function using the variant’s sequence, evolutionary and structural context.',note:'Experimental feedback updates predictions for the target being engineered.',alt:'Protein variants as states and mutations as actions'},
- structure:{src:'mutation-context',label:'Why structure matters',title:'Multiple mutations can<br>alter structure.',description:'Higher-order mutations can change the spatial context of a candidate. Our fast all-atom predictor supplies candidate-specific structural information using two denoising steps and explicit geometric and stereochemical refinement.',note:'The structural features return to the joint representation alongside sequence and MSA features.',alt:'Why multiple mutations need a fast physics-constrained structural predictor'},
- attention:{src:'attention',label:'Focus on the changed residues',title:'Combine the context.<br>Focus on the mutations.',description:'MutationFormer aligns sequence, evolutionary and structural features residue by residue. A mutation mask biases attention toward substituted positions while retaining the surrounding protein context.',note:'Mutation-biased attention connects local substitutions with their broader context.',alt:'Mutation-biased attention highlights altered residues while preserving protein context'},
- search:{src:'latent',label:'From predictions to candidates',title:'Explore beyond<br>a single mutation.',description:'Successive mutation actions define candidate states. ProTEUS evaluates their predicted function, selects variants for testing and incorporates returned measurements into the next round.',note:'The animation illustrates exploration; the latent landscape is a schematic, not a measured energy surface.',alt:'Latent-space exploration from wild type through one, two and three mutations'}
+const videos = [...document.querySelectorAll('.loop-video')];
+const visibleVideos = new Set();
+function syncVideo(video) {
+  const allowed = visibleVideos.has(video) && !document.hidden && !video.closest('[hidden]') &&
+    !video.dataset.userPaused && (!reducedMotion.matches || video.dataset.userPlaying === 'true');
+  if (allowed) video.play().catch(() => {});
+  else video.pause();
+}
+const motionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) visibleVideos.add(entry.target);
+    else visibleVideos.delete(entry.target);
+    syncVideo(entry.target);
+  });
+}, { threshold: .2 });
+videos.forEach(video => {
+  const button = document.querySelector(`[data-video="${video.id}"]`);
+  function label() {
+    button.textContent = video.paused ? 'Play' : 'Pause';
+    button.setAttribute('aria-label', `${video.paused ? 'Play' : 'Pause'} animation`);
+  }
+  video.addEventListener('play', label);
+  video.addEventListener('pause', label);
+  button.addEventListener('click', () => {
+    if (video.paused) {
+      delete video.dataset.userPaused;
+      video.dataset.userPlaying = 'true';
+      video.play().catch(() => {});
+    } else {
+      video.dataset.userPaused = 'true';
+      delete video.dataset.userPlaying;
+      video.pause();
+    }
+  });
+  label();
+  motionObserver.observe(video);
+});
+document.addEventListener('visibilitychange', () => videos.forEach(syncVideo));
+
+function selectTab(button, selector, panel) {
+  document.querySelectorAll(selector).forEach(tab => {
+    const selected = tab === button;
+    tab.setAttribute('aria-selected', String(selected));
+    tab.tabIndex = selected ? 0 : -1;
+  });
+  panel.setAttribute('aria-labelledby', button.id);
+}
+const methods = {
+  world: { src: 'world-model-loop', title: 'Mutation-resolved world model with a closed wet-lab loop' },
+  modalities: { src: 'architecture', title: 'Three modalities, one joint embedding space' },
+  attention: { src: 'attention-comparison', title: 'Mutation-resolved attention: ProTEUS and ESM-2' },
+  search: { src: 'guided-exploration', title: 'Mutation-guided exploration through three real SacB mutation steps' }
 };
-const methodVideo=document.querySelector('#method-video');
-function setMethod(key){const m=methodData[key];document.querySelectorAll('[data-method]').forEach(b=>{const active=b.dataset.method===key;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;});document.querySelector('#method-panel').setAttribute('aria-labelledby','tab-'+key);document.querySelector('#method-label').textContent=m.label;document.querySelector('#method-title').innerHTML=m.title;document.querySelector('#method-description').textContent=m.description;document.querySelector('#method-note').textContent=m.note;methodVideo.poster='assets/'+m.src+'-poster.jpg?v=12';methodVideo.setAttribute('aria-label',m.alt);methodVideo.querySelector('source').src='assets/'+m.src+'.mp4?v=12';methodVideo.load();delete methodVideo.dataset.userPaused;if(!reducedMotion.matches)methodVideo.play().catch(()=>{});}
-document.querySelectorAll('[data-method]').forEach(b=>b.addEventListener('click',()=>setMethod(b.dataset.method)));
+const methodVideo = document.querySelector('#method-video');
+const methodButtons = [...document.querySelectorAll('[data-method]')];
+methodVideo.loop = false;
+function showMethod(button, userInitiated = false) {
+  const method = methods[button.dataset.method];
+  selectTab(button, '[data-method]', document.querySelector('#method-panel'));
+  methodVideo.poster = `assets/video/${method.src}-poster.webp?v=layout-v12`;
+  methodVideo.querySelector('source').src = `assets/video/${method.src}.mp4?v=layout-v12`;
+  document.querySelector('#method-enlarge').href = `assets/video/${method.src}.mp4?v=layout-v12`;
+  methodVideo.setAttribute('aria-label', method.title);
+  if (userInitiated) {
+    delete methodVideo.dataset.userPaused;
+    methodVideo.dataset.userPlaying = 'true';
+  }
+  // Keep the user's play/pause choice across automatic transitions. Initial
+  // playback still honors reduced motion and viewport visibility.
+  methodVideo.load();
+  syncVideo(methodVideo);
+}
+methodButtons.forEach(button => button.addEventListener('click', () => showMethod(button, true)));
+methodVideo.addEventListener('ended', () => {
+  if (!methodVideo.ended) return;
+  const current = methodButtons.findIndex(button => button.getAttribute('aria-selected') === 'true');
+  showMethod(methodButtons[(current + 1) % methodButtons.length]);
+});
+document.querySelectorAll('[data-study]').forEach(button => {
+  button.addEventListener('click', () => {
+    const { study, view } = button.dataset;
+    ['activity', 'function'].forEach(name => {
+      document.getElementById(`${study}-${name}-panel`).hidden = name !== view;
+    });
+    selectTab(button, `[data-study="${study}"]`, document.getElementById(`${study}-${view}-panel`));
+    videos.forEach(syncVideo);
+  });
+});
+document.querySelectorAll('[role="tablist"]').forEach(list => {
+  list.addEventListener('keydown', event => {
+    const tabs = [...list.querySelectorAll('[role="tab"]')];
+    const at = tabs.indexOf(document.activeElement);
+    if (at < 0) return;
+    let next;
+    if (event.key === 'ArrowRight') next = (at + 1) % tabs.length;
+    else if (event.key === 'ArrowLeft') next = (at + tabs.length - 1) % tabs.length;
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = tabs.length - 1;
+    else return;
+    event.preventDefault();
+    tabs[next].focus();
+    tabs[next].click();
+  });
+});
 
-const benchmarks={
- transfer:{chart:'Fig2G',label:'19 assays excluded from pretraining',title:'Adapt with target measurements',value:'0.549 <span>vs 0.367</span>',description:'Mean Spearman correlation after supervised fivefold cross-validation within each held-out assay. Comparator: ProteinNPT.',note:'In a separate zero-shot evaluation, ProTEUS achieved the highest macro-average Spearman among 15 evaluated models.',alt:'Supervised adaptation: mean Spearman 0.549 for ProTEUS versus 0.367 for ProteinNPT'},
- higher:{chart:'Fig3F',label:'Train on lower mutation orders; test above them',title:'Predict higher-order variants',value:'0.448 <span>vs 0.295</span>',description:'Mean Spearman correlation across 40 dataset–mutation-order comparisons from 15 datasets. Comparator: MULTI-evolve.',note:'Each comparison trains on variants with at most K substitutions and tests variants with more than K.',alt:'Higher-order prediction across forty paired comparisons: ProTEUS 0.448 versus MULTI-evolve 0.295'},
- speed:{chart:'Fig3D',label:'Fast, physics-constrained structural inference',title:'Make structural context practical',value:'7.8–10.8× <span>faster than AlphaFold 3</span>',description:'Measured inference speed across five atom-count bins on CASP15 using an NVIDIA RTX A6000.',note:'Two denoising steps and 20 projection sweeps. Projected predictions pass seven specified validity checks across six complex benchmarks.',alt:'Runtime comparison: our predictor is 7.8 to 10.8 times faster across five CASP15 atom-count bins'},
- evolution:{chart:'Fig3G',label:'17 multi-mutant datasets',title:'Improve through simulated evolution',value:'5 rounds <span>30 variants per round</span>',description:'ProTEUS reached the highest mean best normalized fitness in each model-guided round among the evaluated methods.',note:'DMS-based simulation, not a new wet-lab experiment. Initial 30 plus five batches of 30: 180 variants per dataset.',alt:'Multi-mutant simulated evolution on seventeen datasets, five model-guided rounds'}
+const chartStates = new Map();
+function createChart(prefix, name) {
+  const canvas = document.querySelector(`#${prefix}-chart`);
+  const ctx = canvas.getContext('2d');
+  const state = { canvas, name, frame: 0, width: 0, height: 0, progress: 1 };
+  function draw(progress = state.progress) {
+    state.progress = progress;
+    const { width, height } = state;
+    if (!width) return;
+    ctx.fillStyle = window.ProTEUSCharts.background;
+    ctx.fillRect(0, 0, width, height);
+    const box = width < 600 ? [0, 0, width, height] : [35, 30, width - 70, height - 70];
+    window.ProTEUSCharts.drawChart(ctx, state.name, box, progress);
+  }
+  function resize() {
+    const cssWidth = canvas.parentElement.clientWidth;
+    if (!cssWidth) return;
+    const size = window.ProTEUSCharts.layoutForWidth(cssWidth,state.name);
+    state.width = size.width;
+    state.height = size.height;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(size.width * dpr);
+    canvas.height = Math.round(size.height * dpr);
+    canvas.style.height = `${cssWidth * size.height / size.width}px`;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.proteusCssUnit = cssWidth / (size.width * dpr);
+    draw();
+  }
+  state.resize = resize;
+  state.animate = () => {
+    cancelAnimationFrame(state.frame);
+    if (reducedMotion.matches) { draw(1); return; }
+    const start = performance.now();
+    const tick = now => {
+      const p = Math.min(1, (now - start) / 1000);
+      draw(p * p * (3 - 2 * p));
+      if (p < 1) state.frame = requestAnimationFrame(tick);
+    };
+    state.frame = requestAnimationFrame(tick);
+  };
+  state.finish = () => { cancelAnimationFrame(state.frame); draw(1); };
+  new ResizeObserver(resize).observe(canvas.parentElement);
+  resize();
+  const observer = new IntersectionObserver(entries => {
+    if (entries.some(entry => entry.isIntersecting)) { state.animate(); observer.disconnect(); }
+  }, { threshold: .15 });
+  observer.observe(canvas);
+  document.querySelector(`[data-replay="${prefix}"]`).addEventListener('click', state.animate);
+  chartStates.set(prefix, state);
+  return state;
+}
+createChart('scaling', 'Fig2C');
+const predictionChart = createChart('prediction', 'Fig2E');
+const benchmarkChart = createChart('benchmark', 'Fig3D');
+const predictions = {
+  "zero": {
+    "chart": "Fig2E",
+    "description": "Zero-shot prediction and first-round selection.",
+    "note": "19 prediction assays; 13 single-mutant selection assays. No target fitness labels. Mean ± SEM. MULTI-evolve: the paper’s rank-fusion adaptation (Figures 2E–F)."
+  },
+  "assays": {
+    "chart": "SelectionQuality",
+    "description": "First-round selection on 13 held-out single-mutant assays.",
+    "note": "Spearman, AUROC, AUPR and hit fraction; mean ± SEM. Hit threshold: assay mean. Comparator: MULTI-evolve rank fusion."
+  },
+  "selection": {
+    "chart": "Fig2F_selection",
+    "description": "Mean top-10 hit fraction: 75.4%.",
+    "note": "13 single-mutant assays; mean ± SEM. Hits meet or exceed the assay mean, not necessarily WT. At most one substitution per residue position. MULTI-evolve: the paper’s zero-shot rank-fusion adaptation."
+  },
+  "guided": {
+    "chart": "Fig3G",
+    "description": "Guided evolution on 17 multi-mutant DMS datasets, compared with EVOLVEpro and MULTI-evolve.",
+    "note": "In silico · 30 initial variants + 5 rounds of 30 · matched libraries and budgets. Normalized best fitness, mean ± SEM."
+  }
 };
-const chart=document.querySelector('#benchmark-chart'),ctx=chart.getContext('2d');let currentBenchmark='transfer',animationRequest=0;
-function drawBenchmark(progress){ctx.fillStyle='#07121A';ctx.fillRect(0,0,chart.width,chart.height);if(window.ProTEUSCharts)window.ProTEUSCharts.drawChart(ctx,benchmarks[currentBenchmark].chart,[35,30,1210,690],progress);}
-function animateBenchmark(){cancelAnimationFrame(animationRequest);if(reducedMotion.matches){drawBenchmark(1);return;}const start=performance.now();function frame(now){const p=Math.min(1,(now-start)/1250);drawBenchmark(p*p*(3-2*p));if(p<1)animationRequest=requestAnimationFrame(frame);}animationRequest=requestAnimationFrame(frame);}
-function setBenchmark(key){currentBenchmark=key;const b=benchmarks[key];document.querySelectorAll('[data-benchmark]').forEach(el=>{const active=el.dataset.benchmark===key;el.setAttribute('aria-selected',String(active));el.tabIndex=active?0:-1;});document.querySelector('#benchmark-panel').setAttribute('aria-labelledby','bench-tab-'+key);['label','title','description','note'].forEach(field=>document.querySelector('#benchmark-'+field).textContent=b[field]);document.querySelector('#benchmark-value').innerHTML=b.value;chart.setAttribute('aria-label',b.alt);animateBenchmark();}
-document.querySelectorAll('[data-benchmark]').forEach(b=>b.addEventListener('click',()=>setBenchmark(b.dataset.benchmark)));
-document.querySelector('#replay-chart').addEventListener('click',animateBenchmark);
-document.querySelectorAll('[role=tablist]').forEach(list=>list.addEventListener('keydown',event=>{const tabs=[...list.querySelectorAll('[role=tab]')],at=tabs.indexOf(document.activeElement);if(at<0)return;let next=at;if(event.key==='ArrowRight')next=(at+1)%tabs.length;else if(event.key==='ArrowLeft')next=(at-1+tabs.length)%tabs.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=tabs.length-1;else return;event.preventDefault();tabs[next].focus();tabs[next].click();}));
+document.querySelectorAll('[data-prediction]').forEach(button => {
+  button.addEventListener('click', () => {
+    const item = predictions[button.dataset.prediction];
+    selectTab(button, '[data-prediction]', document.querySelector('#prediction-panel'));
+    ['description', 'note'].forEach(key => { document.querySelector('#prediction-' + key).textContent = item[key]; });
+    document.querySelector('#prediction-references').hidden = button.dataset.prediction !== 'guided';
+    predictionChart.name = item.chart;
+    predictionChart.resize();
+    predictionChart.canvas.setAttribute('aria-label', item.description + ' ' + item.note);
+    predictionChart.canvas.textContent = item.description + ' ' + item.note;
+    predictionChart.animate();
+  });
+});
+const benchmarks = {
+  speed: { chart: 'Fig3D', title: '7.8–10.8× faster', description: 'Than AlphaFold 3 across five CASP15 atom-count bins on an NVIDIA RTX A6000.', note: 'Projected structures passed all seven specified validity checks in the reported benchmarks.' },
+  higher: { chart: 'Fig3F', title: '0.448 vs 0.295', description: 'Mean Spearman, compared with the MULTI-evolve one-hot predictor, across 40 dataset–mutation-order comparisons.', note: 'Train on variants with at most K substitutions; test on variants with more than K. Figure 3F.' },
+  evolution: { chart: 'Fig3G', title: 'Five model-guided rounds', description: 'Compared with EVOLVEpro and MULTI-evolve, ProTEUS reached the highest mean normalized best fitness in each round.', note: 'In silico, across 17 DMS datasets: 30 initial variants + five rounds of 30, with matched candidate libraries and nomination budgets. Figure 3G.' }
+};
+document.querySelectorAll('[data-benchmark]').forEach(button => {
+  button.addEventListener('click', () => {
+    const item = benchmarks[button.dataset.benchmark];
+    document.querySelector('#benchmark-panel').dataset.component = button.dataset.benchmark === 'speed' ? 'structure' : 'prediction';
+    selectTab(button, '[data-benchmark]', document.querySelector('#benchmark-panel'));
+    ['title', 'description', 'note'].forEach(key => { document.querySelector('#benchmark-' + key).textContent = item[key]; });
+    benchmarkChart.name = item.chart;
+    benchmarkChart.canvas.setAttribute('aria-label', item.title + '. ' + item.description);
+    benchmarkChart.animate();
+  });
+});
+reducedMotion.addEventListener('change', () => {
+  videos.forEach(video => { delete video.dataset.userPlaying; syncVideo(video); });
+  chartStates.forEach(state => state.finish());
+});
 
-const motionObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{const video=entry.target;if(entry.isIntersecting&&!reducedMotion.matches&&!video.dataset.userPaused)video.play().catch(()=>{});else video.pause();}),{threshold:.22});
-document.querySelectorAll('.loop-video').forEach(video=>{motionObserver.observe(video);const button=document.querySelector('[data-video="'+video.id+'"]');const name=button.getAttribute('aria-label').replace(/^Pause /,'').replace(/^Play /,'');video.addEventListener('play',()=>{button.textContent='Ⅱ';button.setAttribute('aria-label','Pause '+name);});video.addEventListener('pause',()=>{button.textContent='▶';button.setAttribute('aria-label','Play '+name);});button.addEventListener('click',()=>{if(video.paused){delete video.dataset.userPaused;video.play().catch(()=>{});}else{video.dataset.userPaused='true';video.pause();}});if(reducedMotion.matches){button.textContent='▶';button.setAttribute('aria-label','Play '+name);}});
-document.addEventListener('visibilitychange',()=>{if(document.hidden)document.querySelectorAll('.loop-video').forEach(v=>v.pause());});
-const benchmarkObserver=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){animateBenchmark();benchmarkObserver.disconnect();}},{threshold:.15});benchmarkObserver.observe(chart);drawBenchmark(1);
-
-const reviewButton=document.querySelector('#review-example'),decision=document.querySelector('#review-decision');
-reviewButton.addEventListener('click',()=>{reviewButton.hidden=true;decision.hidden=false;document.querySelector('#reset-review').focus({preventScroll:true});});
-document.querySelector('#reset-review').addEventListener('click',()=>{decision.hidden=true;reviewButton.hidden=false;reviewButton.focus({preventScroll:true});});
-document.querySelector('#copy-citation').addEventListener('click',async()=>{const value=document.querySelector('#bibtex').textContent;try{await navigator.clipboard.writeText(value);document.querySelector('#copy-status').textContent='BibTeX copied.';}catch{const selection=window.getSelection(),range=document.createRange();range.selectNodeContents(document.querySelector('#bibtex'));selection.removeAllRanges();selection.addRange(range);document.querySelector('#copy-status').textContent='Citation selected. Press Ctrl+C or ⌘C to copy.';}});
-const sectionObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)navigation.querySelectorAll('a').forEach(a=>a.classList.toggle('active',a.hash==='#'+entry.target.id));}),{rootMargin:'-10% 0px -70% 0px'});['overview','model','experiments','benchmarks','scientists'].forEach(id=>sectionObserver.observe(document.getElementById(id)));
+document.querySelector('#copy-citation').addEventListener('click', async () => {
+  const citation = document.querySelector('#bibtex');
+  const status = document.querySelector('#copy-status');
+  try {
+    await navigator.clipboard.writeText(citation.textContent);
+    status.textContent = 'BibTeX copied.';
+  } catch {
+    const range = document.createRange();
+    range.selectNodeContents(citation);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    status.textContent = 'Citation selected. Press Ctrl+C or ⌘C to copy.';
+  }
+});
+const legacySections = { overview: 'model', benchmarks: 'structure', scaling: 'prediction', scientists: 'experiments' };
+const target = legacySections[location.hash.slice(1)];
+if (target) {
+  history.replaceState(null, '', '#' + target);
+  document.getElementById(target).scrollIntoView();
+}
+const links = [...document.querySelectorAll('.site-header nav a')];
+const visibleSections = new Set();
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) visibleSections.add(entry.target.id);
+    else visibleSections.delete(entry.target.id);
+  });
+  const active = links.find(link => visibleSections.has(link.hash.slice(1)));
+  links.forEach(link => {
+    if (link === active) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+}, { rootMargin: '-15% 0px -60% 0px' });
+document.querySelectorAll('.research-section').forEach(section => sectionObserver.observe(section));

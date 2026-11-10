@@ -1,0 +1,450 @@
+{
+  "recipe": "tools/video/render_wetlab_story.py",
+  "size": [
+    1920,
+    1080
+  ],
+  "fps": 24,
+  "model_update": "Refit target-specific predictor; fixed ProTEUS representations.",
+  "diagram": "Conceptual workflow; plate wells do not encode fabricated activities.",
+  "semantic_palette": {
+    "prediction_nomination": "#5290d3",
+    "measurement": "#51aa8e",
+    "refit": "#da6457",
+    "mutation": "#e74c3c"
+  },
+  "duration": 10,
+  "data_file": "/Users/mhg/Projects/ProTEUS/tools/video/chart-data.json",
+  "data_sha256": "7ebf2ba271a8a73771e2efac4ed8c34926e6792278c3ff03f8836fb4d7a63208",
+  "original_sources": {
+    "sacbRaw": {
+      "path": "Figure4/data/tables/master_LSC.csv",
+      "sha256": "605885e5f3e82f85d77c4c448ad3a44d2afe72a9d2afd6e121e2ddaa27a71040",
+      "bytes": 3057
+    },
+    "sacbDots": {
+      "path": "Figure4/generated/panel_activity.dots.json",
+      "sha256": "86ea6258cfd16db5bc548d210eb7ebb2a88b6ab06560f0ed6e4d82fc9b725079",
+      "bytes": 5791
+    },
+    "sacbMethod": {
+      "path": "Figure4/build_panel_activity.py",
+      "sha256": "2960ae32df7df36cafd95481505d546c624613a31cf325dcde7e9bf531200f44",
+      "bytes": 7819
+    },
+    "aldhRaw": {
+      "path": "Figure5/data/fig3b_latent_ALDH_tsne_points.csv",
+      "sha256": "095355bf7a0be70d5ac72774f105723e976bb46ef50a57b765788ae40c137c4f",
+      "bytes": 10634
+    },
+    "aldhDots": {
+      "path": "Figure5/data/cumulative_top10_ALDH.csv",
+      "sha256": "4d6b888a276dbf0caa731cfbd0fb064a28c84e538dc5bdfe0d59ed75bbd31389",
+      "bytes": 2441
+    },
+    "aldhMethod": {
+      "path": "Figure5/build_panel_b.py",
+      "sha256": "d09028fdde1f4be977aa43d56dc8333183e45b9d81acd042f94c44468614ea4f",
+      "bytes": 4064
+    }
+  },
+  "paper_panel": "Figure 5B",
+  "number_tested": 150,
+  "rounds": 5,
+  "number_snapshot_marks": 50,
+  "snapshot_points": [
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "C366L",
+      "activity": 1.4245723172628306,
+      "plot_x": 0
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "T114L",
+      "activity": 1.438396405736997,
+      "plot_x": 0.17500000000000002
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "A461L",
+      "activity": 1.4847071021254536,
+      "plot_x": -0.17500000000000002
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "C366V",
+      "activity": 1.5215137376879213,
+      "plot_x": 0.07500000000000001
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "S234A",
+      "activity": 1.5954726110247106,
+      "plot_x": 0.25
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "S38N",
+      "activity": 1.6445481251080007,
+      "plot_x": -0.30000000000000004
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "V110I",
+      "activity": 1.6480041472265423,
+      "plot_x": -0.05
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "G337E",
+      "activity": 1.6521513737687925,
+      "plot_x": -0.17500000000000002
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "Q55A",
+      "activity": 1.7212718161396234,
+      "plot_x": 0.125
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "L358I",
+      "activity": 2.020044928287541,
+      "plot_x": 0
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 0,
+      "variant": "A461L",
+      "activity": 1.4847071021254536,
+      "plot_x": 1
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 0,
+      "variant": "C366V",
+      "activity": 1.5215137376879213,
+      "plot_x": 1.175
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 0,
+      "variant": "S234A",
+      "activity": 1.5954726110247106,
+      "plot_x": 0.85
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 1,
+      "variant": "T77F:L358I",
+      "activity": 1.5982493835130356,
+      "plot_x": 0.7
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 0,
+      "variant": "S38N",
+      "activity": 1.6445481251080007,
+      "plot_x": 1.075
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 0,
+      "variant": "V110I",
+      "activity": 1.6480041472265423,
+      "plot_x": 1.275
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 0,
+      "variant": "G337E",
+      "activity": 1.6521513737687925,
+      "plot_x": 0.95
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 0,
+      "variant": "Q55A",
+      "activity": 1.7212718161396234,
+      "plot_x": 1.175
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 0,
+      "variant": "L358I",
+      "activity": 2.020044928287541,
+      "plot_x": 1
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 1,
+      "variant": "A116K:L358I",
+      "activity": 2.347825803443633,
+      "plot_x": 1
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 2,
+      "variant": "N2Q:A116K:L358I",
+      "activity": 2.198723064644853,
+      "plot_x": 2
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 2,
+      "variant": "A116K:D357N:L358I",
+      "activity": 2.260175578611333,
+      "plot_x": 2.175
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 1,
+      "variant": "A116K:L358I",
+      "activity": 2.347825803443633,
+      "plot_x": 1.875
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 2,
+      "variant": "T77D:A116K:L358I",
+      "activity": 2.449321628092578,
+      "plot_x": 2.025
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 2,
+      "variant": "R74N:A116K:L358I",
+      "activity": 3.2529928172386278,
+      "plot_x": 2
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 2,
+      "variant": "L9F:A116K:L358I",
+      "activity": 3.833200319233839,
+      "plot_x": 2
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 2,
+      "variant": "A4E:A116K:L358I",
+      "activity": 4.235434956105348,
+      "plot_x": 2
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 2,
+      "variant": "E5Q:A116K:L358I",
+      "activity": 4.501995211492418,
+      "plot_x": 2
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 2,
+      "variant": "L9W:A116K:L358I",
+      "activity": 5.440542697525937,
+      "plot_x": 2
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 2,
+      "variant": "A116K:H332N:L358I",
+      "activity": 6.080606544293695,
+      "plot_x": 2
+    },
+    {
+      "snapshot_round": 3,
+      "source_round": 2,
+      "variant": "R74N:A116K:L358I",
+      "activity": 3.2529928172386278,
+      "plot_x": 3
+    },
+    {
+      "snapshot_round": 3,
+      "source_round": 3,
+      "variant": "A116K:H332N:L358I:S499E",
+      "activity": 3.329339828025335,
+      "plot_x": 3.15
+    },
+    {
+      "snapshot_round": 3,
+      "source_round": 3,
+      "variant": "A4Y:A116K:H332N:L358I",
+      "activity": 3.461212756644896,
+      "plot_x": 2.925
+    },
+    {
+      "snapshot_round": 3,
+      "source_round": 2,
+      "variant": "L9F:A116K:L358I",
+      "activity": 3.833200319233839,
+      "plot_x": 3
+    },
+    {
+      "snapshot_round": 3,
+      "source_round": 3,
+      "variant": "I6W:A116K:H332N:L358I",
+      "activity": 4.050124739247315,
+      "plot_x": 3.075
+    },
+    {
+      "snapshot_round": 3,
+      "source_round": 2,
+      "variant": "A4E:A116K:L358I",
+      "activity": 4.235434956105348,
+      "plot_x": 2.975
+    },
+    {
+      "snapshot_round": 3,
+      "source_round": 2,
+      "variant": "E5Q:A116K:L358I",
+      "activity": 4.501995211492418,
+      "plot_x": 3
+    },
+    {
+      "snapshot_round": 3,
+      "source_round": 3,
+      "variant": "R49K:A116K:H332N:L358I",
+      "activity": 4.686005162179989,
+      "plot_x": 3.1
+    },
+    {
+      "snapshot_round": 3,
+      "source_round": 2,
+      "variant": "L9W:A116K:L358I",
+      "activity": 5.440542697525937,
+      "plot_x": 3
+    },
+    {
+      "snapshot_round": 3,
+      "source_round": 2,
+      "variant": "A116K:H332N:L358I",
+      "activity": 6.080606544293695,
+      "plot_x": 3
+    },
+    {
+      "snapshot_round": 4,
+      "source_round": 4,
+      "variant": "S12L:A116K:H332N:L358I",
+      "activity": 4.248655144264391,
+      "plot_x": 4
+    },
+    {
+      "snapshot_round": 4,
+      "source_round": 2,
+      "variant": "E5Q:A116K:L358I",
+      "activity": 4.501995211492418,
+      "plot_x": 4
+    },
+    {
+      "snapshot_round": 4,
+      "source_round": 4,
+      "variant": "I6H:A116K:H332N:L358I",
+      "activity": 4.600324386234302,
+      "plot_x": 4.15
+    },
+    {
+      "snapshot_round": 4,
+      "source_round": 4,
+      "variant": "Q8T:A116K:H332N:L358I",
+      "activity": 4.618725683779239,
+      "plot_x": 3.85
+    },
+    {
+      "snapshot_round": 4,
+      "source_round": 3,
+      "variant": "R49K:A116K:H332N:L358I",
+      "activity": 4.686005162179989,
+      "plot_x": 4.275
+    },
+    {
+      "snapshot_round": 4,
+      "source_round": 4,
+      "variant": "R80K:A116K:H332N:L358I",
+      "activity": 5.256637332003729,
+      "plot_x": 4
+    },
+    {
+      "snapshot_round": 4,
+      "source_round": 2,
+      "variant": "L9W:A116K:L358I",
+      "activity": 5.440542697525937,
+      "plot_x": 4.1
+    },
+    {
+      "snapshot_round": 4,
+      "source_round": 2,
+      "variant": "A116K:H332N:L358I",
+      "activity": 6.080606544293695,
+      "plot_x": 4
+    },
+    {
+      "snapshot_round": 4,
+      "source_round": 4,
+      "variant": "L9F:A116K:H332N:L358I",
+      "activity": 6.21146021572436,
+      "plot_x": 4.1
+    },
+    {
+      "snapshot_round": 4,
+      "source_round": 4,
+      "variant": "S103V:A116K:H332N:L358I",
+      "activity": 6.847327275332745,
+      "plot_x": 4
+    }
+  ],
+  "statistic": "Ten highest-activity variant means among all non-WT variants assayed through each round.",
+  "repeated_variants": "A variant may recur across cumulative snapshots; the 30/50 displayed marks are not independent discoveries.",
+  "density": {
+    "bandwidth_factor": 0.35,
+    "grid_points": 256,
+    "support": "observed minimum to maximum",
+    "maximum_halfwidth_categories": 0.34,
+    "fill_alpha": 0.8
+  },
+  "boxplot_elements": "None: no boxes, medians, quartiles, whiskers or connecting summary lines.",
+  "colors": {
+    "strokes": [
+      "#AC936B",
+      "#529C96",
+      "#4383AB",
+      "#85919B",
+      "#0A4363"
+    ],
+    "fills": [
+      "#F7EED8",
+      "#E8F4EF",
+      "#8BBBD5",
+      "#DADEE1",
+      "#6D9EC6"
+    ]
+  },
+  "y_range": [
+    0,
+    8
+  ],
+  "x_range": [
+    -0.6,
+    4.6
+  ],
+  "vertical_coordinate": "Exact reported variant-mean screening activity / WT; no vertical jitter.",
+  "horizontal_coordinate": "Exact original paper plot_x; no repacking.",
+  "original_methods": {
+    "selection": "At snapshot r, take the 10 highest activities among non-WT variants measured through round r; 30 candidates assayed per round.",
+    "repeated_variants": "Earlier variants may recur in later cumulative snapshots; snapshot dots are not independent discoveries.",
+    "density": "Gaussian KDE, covariance factor 0.35, unbiased sample variance, 256 points within observed min/max, maximum halfwidth 0.34 categories. Descriptive density, not uncertainty.",
+    "jitter": "Original deterministic horizontal packing only; no vertical jitter.",
+    "baseline": "Activity is fold of wild type (WT = 1)."
+  }
+}

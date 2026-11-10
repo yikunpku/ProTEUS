@@ -1,0 +1,24 @@
+{
+  "source": "/Users/mhg/Dropbox/PROTEUS/Main Figure/fig3_4_protein_structure/ALDH_sequence.fasta",
+  "source_sha256": "4871b7d00d91783cb9c5f823fd615f6343beb8724b902f8ff5709ff54579e6f5",
+  "sequence_snapshot": "tools/video/enzyme-sequences.json",
+  "molecular_clip": "aldh-structure.mp4",
+  "molecular_clip_sha256": "a8fa6950a073d98ce3453b31840d466d0cfc62842768f6e7b848a51565ce5abb",
+  "duration": 8,
+  "fps": 24,
+  "size": [
+    1920,
+    1080
+  ],
+  "mutation_positions": [
+    103,
+    116,
+    332,
+    358
+  ],
+  "geometry": "WT reference only; no mutant geometry is shown.",
+  "semantic_palette": {
+    "prediction": "#5290D3",
+    "mutation": "#E74C3C"
+  }
+}

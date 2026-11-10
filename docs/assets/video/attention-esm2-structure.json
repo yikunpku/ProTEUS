@@ -1,0 +1,140 @@
+{
+  "asset": "attention-esm2",
+  "name": "attention-esm2-structure",
+  "frames": 192,
+  "fps": 24,
+  "seconds": 8,
+  "dimensions": [
+    1280,
+    720
+  ],
+  "palette": {
+    "helix": "#7BD0AC",
+    "strand": "#6B9BD1",
+    "coil": "#E6DED3",
+    "shell": "#BFC7D1",
+    "rose": "#C85F6B",
+    "wine": "#6B2233",
+    "ligand": "#F2B632",
+    "nad": "#D9962F"
+  },
+  "preview": false,
+  "rendered_frames": 192,
+  "supersample": 2,
+  "coordinate_integrity_verified": true,
+  "motion": "Orthographic camera yaw, \u00b118 degrees; atom coordinates unchanged.",
+  "annotations": {
+    "structure": "Myoglobin reference 1MBA.",
+    "attention_model": "esm2",
+    "attention_source": "/Users/mhg/Dropbox/PROTEUS/Main Figure/proteus_figures/figures/RAW/cell_v9/attention/attention_30_residues.json",
+    "attention_scores": {
+      "1": 0.005260463417895759,
+      "7": 0.003906833858733686,
+      "13": 0.005201229218315954,
+      "18": 0.005861297118826769,
+      "24": 0.005564285141493504,
+      "25": 0.006352441229197817,
+      "30": 0.004635312675964088,
+      "36": 0.005976109961435819,
+      "42": 0.005960351979592815,
+      "47": 0.0043755523986571156,
+      "53": 0.0039952881585729,
+      "58": 0.005703634220602301,
+      "59": 0.005474306777856933,
+      "65": 0.00545681887306273,
+      "71": 0.006014451517451865,
+      "76": 0.006013865773760093,
+      "82": 0.004408099931121494,
+      "88": 0.006728519320798417,
+      "91": 0.010015041741038051,
+      "94": 0.008319543781302249,
+      "100": 0.006481020193314179,
+      "105": 0.006206058217018532,
+      "111": 0.00516540104484496,
+      "117": 0.004635377726905669,
+      "123": 0.0049909863844125844,
+      "124": 0.00517112876890072,
+      "129": 0.0048523888962032895,
+      "134": 0.005331039996235631,
+      "140": 0.0046704039986555776,
+      "146": 0.00433141075191088
+    },
+    "mutation_positions": [
+      25,
+      58,
+      91,
+      124
+    ],
+    "attention_visualization": {
+      "scale": [
+        0,
+        0.22
+      ],
+      "palette": [
+        [
+          253,
+          241,
+          240
+        ],
+        [
+          236,
+          140,
+          147
+        ],
+        [
+          199,
+          52,
+          70
+        ],
+        [
+          142,
+          23,
+          48
+        ]
+      ],
+      "encoding": "CA marker color and radius; ribbon and shell use the shared molecular palette.",
+      "marker_radius_angstrom": "0.45 + 1.25 * sqrt(clip(score / 0.22, 0, 1))",
+      "shell_transparency_percent": 73,
+      "local_marker_window_transparency_percent": 93
+    }
+  },
+  "models": [
+    {
+      "name": "1MBA.pdb",
+      "coordinates_sha256": "45f7fcd7bdfd0cb3d764db2a1eff2aae58f28a9629d1655e2720df99d6fbfc44",
+      "secondary_structure_sha256": "f1c1a2cdeeca76ac32068442538f6ba2a2fb3e5576b61a5d1dedfdb89cd5f9cc",
+      "model_matrix": [
+        [
+          0.577179264043313,
+          0.579790523952253,
+          -0.5750713394819742,
+          41.85800100888896
+        ],
+        [
+          -0.7786933057532031,
+          0.17864883876430096,
+          -0.6014327293915053,
+          -53.206333983683244
+        ],
+        [
+          -0.2459691702908487,
+          0.7949387025068907,
+          0.5545914050209332,
+          36.9612810325636
+        ]
+      ],
+      "residues": 148
+    }
+  ],
+  "sources": [
+    {
+      "path": "/Users/mhg/Dropbox/PROTEUS/Main Figure/proteus_figures/figures/RAW/cell_v9/protein_structures/figure1b_structure_1MBA.cxs",
+      "sha256": "63d53c4b8c0c2d82d467e326bbe951954295bff0e8ceb22a8e0dcb72b1f79a14"
+    },
+    {
+      "path": "/Users/mhg/Dropbox/PROTEUS/Main Figure/proteus_figures/figures/RAW/cell_v9/attention/attention_30_residues.json",
+      "sha256": "adcdc21b999ddd2fe0b7ae6627d97bcfd21b00ca278978724d6bae04bc9c70eb"
+    }
+  ],
+  "elapsed_seconds": 37.39113141602138
+}

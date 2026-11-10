@@ -1,0 +1,67 @@
+WEBVTT
+
+NOTE Newly rendered native molecular scenes and data-driven diagrams. No narration.
+
+1
+00:00:00.000 --> 00:00:08.000
+A mutation-resolved world model
+
+2
+00:00:08.000 --> 00:00:17.000
+A mutation-resolved world model
+
+3
+00:00:17.000 --> 00:00:28.000
+Three modalities, one joint embedding space
+
+4
+00:00:28.000 --> 00:00:37.000
+Attention to mutations
+
+5
+00:00:37.000 --> 00:00:52.000
+Mutation-guided exploration
+
+6
+00:00:52.000 --> 00:01:13.000
+Fast structures with physical constraints
+
+7
+00:01:13.000 --> 00:01:16.000
+Five CASP15 atom-count bins · NVIDIA RTX A6000
+
+8
+00:01:16.000 --> 00:01:25.000
+Pretraining corpus: 1.32M variant measurements
+
+9
+00:01:25.000 --> 00:01:30.000
+Held-out variants within the pretraining assays · fixed model architecture
+
+10
+00:01:30.000 --> 00:01:38.000
+Mean ± SEM · 19 prediction assays / 13 selection assays · Figure 2E–F
+
+11
+00:01:38.000 --> 00:01:43.000
+17 datasets · 30 initial variants + five guided rounds of 30
+
+12
+00:01:43.000 --> 00:01:48.000
+Levansucrase · SacB
+
+13
+00:01:48.000 --> 00:01:54.000
+SacB · Cumulative top 10 through each round
+
+14
+00:01:54.000 --> 00:01:59.000
+Aldehyde dehydrogenase · ALDH
+
+15
+00:01:59.000 --> 00:02:07.000
+ALDH · Cumulative top 10 through each round
+
+16
+00:02:07.000 --> 00:02:20.000
+Closed-loop protein evolution

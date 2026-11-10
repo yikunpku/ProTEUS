@@ -1,0 +1,1818 @@
+{
+  "description": "Exact cumulative top-10 activity observations and original horizontal packing from the supplied manuscript sources.",
+  "methods": {
+    "selection": "At snapshot r, take the 10 highest activities among non-WT variants measured through round r; 30 candidates assayed per round.",
+    "repeated_variants": "Earlier variants may recur in later cumulative snapshots; snapshot dots are not independent discoveries.",
+    "density": "Gaussian KDE, covariance factor 0.35, unbiased sample variance, 256 points within observed min/max, maximum halfwidth 0.34 categories. Descriptive density, not uncertainty.",
+    "jitter": "Original deterministic horizontal packing only; no vertical jitter.",
+    "baseline": "Activity is fold of wild type (WT = 1)."
+  },
+  "sources": {
+    "sacbRaw": {
+      "path": "Figure4/data/tables/master_LSC.csv",
+      "sha256": "605885e5f3e82f85d77c4c448ad3a44d2afe72a9d2afd6e121e2ddaa27a71040",
+      "bytes": 3057
+    },
+    "sacbDots": {
+      "path": "Figure4/generated/panel_activity.dots.json",
+      "sha256": "86ea6258cfd16db5bc548d210eb7ebb2a88b6ab06560f0ed6e4d82fc9b725079",
+      "bytes": 5791
+    },
+    "sacbMethod": {
+      "path": "Figure4/build_panel_activity.py",
+      "sha256": "2960ae32df7df36cafd95481505d546c624613a31cf325dcde7e9bf531200f44",
+      "bytes": 7819
+    },
+    "aldhRaw": {
+      "path": "Figure5/data/fig3b_latent_ALDH_tsne_points.csv",
+      "sha256": "095355bf7a0be70d5ac72774f105723e976bb46ef50a57b765788ae40c137c4f",
+      "bytes": 10634
+    },
+    "aldhDots": {
+      "path": "Figure5/data/cumulative_top10_ALDH.csv",
+      "sha256": "4d6b888a276dbf0caa731cfbd0fb064a28c84e538dc5bdfe0d59ed75bbd31389",
+      "bytes": 2441
+    },
+    "aldhMethod": {
+      "path": "Figure5/build_panel_b.py",
+      "sha256": "d09028fdde1f4be977aa43d56dc8333183e45b9d81acd042f94c44468614ea4f",
+      "bytes": 4064
+    }
+  },
+  "sacb": {
+    "rounds": 3,
+    "assayed": 90,
+    "raw": [
+      {
+        "variant": "F169L",
+        "round": 0,
+        "activity": 0.6081081081081081
+      },
+      {
+        "variant": "M315I",
+        "round": 0,
+        "activity": 2.279279279279279
+      },
+      {
+        "variant": "N207K",
+        "round": 0,
+        "activity": 3.5045045045045047
+      },
+      {
+        "variant": "H256K",
+        "round": 0,
+        "activity": 4.1635135135135135
+      },
+      {
+        "variant": "F169V",
+        "round": 0,
+        "activity": 0.6531531531531531
+      },
+      {
+        "variant": "H186N",
+        "round": 0,
+        "activity": 1.0225225225225223
+      },
+      {
+        "variant": "K254N",
+        "round": 0,
+        "activity": 0.65
+      },
+      {
+        "variant": "F169I",
+        "round": 0,
+        "activity": 0.7252252252252253
+      },
+      {
+        "variant": "M315L",
+        "round": 0,
+        "activity": 3.689189189189189
+      },
+      {
+        "variant": "H413Y",
+        "round": 0,
+        "activity": 0.7567567567567568
+      },
+      {
+        "variant": "F169M",
+        "round": 0,
+        "activity": 0.3108108108108108
+      },
+      {
+        "variant": "Q196T",
+        "round": 0,
+        "activity": 0.5373873873873874
+      },
+      {
+        "variant": "H186D",
+        "round": 0,
+        "activity": 1.768918918918919
+      },
+      {
+        "variant": "Q34S",
+        "round": 0,
+        "activity": 0.5572072072072072
+      },
+      {
+        "variant": "N207T",
+        "round": 0,
+        "activity": 0.6022522522522523
+      },
+      {
+        "variant": "P36D",
+        "round": 0,
+        "activity": 1.15
+      },
+      {
+        "variant": "N382D",
+        "round": 0,
+        "activity": 0.7252252252252253
+      },
+      {
+        "variant": "Q292K",
+        "round": 0,
+        "activity": 1.678828828828829
+      },
+      {
+        "variant": "S154P",
+        "round": 0,
+        "activity": 1.6576576576576576
+      },
+      {
+        "variant": "F15L",
+        "round": 0,
+        "activity": 1.5662162162162163
+      },
+      {
+        "variant": "M400N",
+        "round": 0,
+        "activity": 0.8288288288288288
+      },
+      {
+        "variant": "I316V",
+        "round": 0,
+        "activity": 2.702702702702702
+      },
+      {
+        "variant": "A333T",
+        "round": 0,
+        "activity": 0.6756756756756757
+      },
+      {
+        "variant": "K454D",
+        "round": 0,
+        "activity": 2.072072072072072
+      },
+      {
+        "variant": "H101K",
+        "round": 0,
+        "activity": 0.8274774774774775
+      },
+      {
+        "variant": "K454N",
+        "round": 0,
+        "activity": 4.429279279279279
+      },
+      {
+        "variant": "Q34N",
+        "round": 0,
+        "activity": 4.496846846846847
+      },
+      {
+        "variant": "N207S",
+        "round": 0,
+        "activity": 0.7058558558558559
+      },
+      {
+        "variant": "M400S",
+        "round": 0,
+        "activity": 0.9144144144144144
+      },
+      {
+        "variant": "I374V",
+        "round": 0,
+        "activity": 4.207207207207207
+      },
+      {
+        "variant": "Q34N:I451E",
+        "round": 1,
+        "activity": 3.856751893968412
+      },
+      {
+        "variant": "Q34N:I451H",
+        "round": 1,
+        "activity": 0.8972117459628147
+      },
+      {
+        "variant": "Q34N:K59P",
+        "round": 1,
+        "activity": 1.436617605259096
+      },
+      {
+        "variant": "A21N:Q34N",
+        "round": 1,
+        "activity": 1.424031468542183
+      },
+      {
+        "variant": "Q34N:G453W",
+        "round": 1,
+        "activity": 6.53939703420192
+      },
+      {
+        "variant": "Q34N:K473E",
+        "round": 1,
+        "activity": 1.4402136443210714
+      },
+      {
+        "variant": "Q34N:T456F",
+        "round": 1,
+        "activity": 5.514525901538984
+      },
+      {
+        "variant": "Q34N:P445Y",
+        "round": 1,
+        "activity": 3.3928628549736106
+      },
+      {
+        "variant": "Q34N:S239W",
+        "round": 1,
+        "activity": 4.326034991556177
+      },
+      {
+        "variant": "Q34N:L449E",
+        "round": 1,
+        "activity": 2.4363164644882045
+      },
+      {
+        "variant": "Q34N:R360F",
+        "round": 1,
+        "activity": 6.569963366228707
+      },
+      {
+        "variant": "Q34N:T267P",
+        "round": 1,
+        "activity": 2.1863917496809275
+      },
+      {
+        "variant": "Q34N:S359F",
+        "round": 1,
+        "activity": 8.909186776043581
+      },
+      {
+        "variant": "Q34N:G351Y",
+        "round": 1,
+        "activity": 2.513631304320672
+      },
+      {
+        "variant": "Q34N:D269P",
+        "round": 1,
+        "activity": 3.044047065962016
+      },
+      {
+        "variant": "Q34N:T456I",
+        "round": 1,
+        "activity": 2.9721262847225103
+      },
+      {
+        "variant": "Q34N:G240W",
+        "round": 1,
+        "activity": 8.93975310807037
+      },
+      {
+        "variant": "Q34N:G453Y",
+        "round": 1,
+        "activity": 1.424031468542183
+      },
+      {
+        "variant": "Q34N:P390F",
+        "round": 1,
+        "activity": 3.524118280735705
+      },
+      {
+        "variant": "Q34N:S441Y",
+        "round": 1,
+        "activity": 3.4971479877708918
+      },
+      {
+        "variant": "Q34N:Y258P",
+        "round": 1,
+        "activity": 0.3578058866665334
+      },
+      {
+        "variant": "Q34N:K473Y",
+        "round": 1,
+        "activity": 0.5322137811723311
+      },
+      {
+        "variant": "Q34N:A415F",
+        "round": 1,
+        "activity": 4.469876554035186
+      },
+      {
+        "variant": "Q34N:Y322C",
+        "round": 1,
+        "activity": 8.567563065155937
+      },
+      {
+        "variant": "Q34N:V199P",
+        "round": 1,
+        "activity": 3.4503994799652133
+      },
+      {
+        "variant": "Q34N:L449Q",
+        "round": 1,
+        "activity": 2.826486702712515
+      },
+      {
+        "variant": "Q34N:L384F",
+        "round": 1,
+        "activity": 1.4941542302506998
+      },
+      {
+        "variant": "M1R:Q34N",
+        "round": 1,
+        "activity": 2.1863917496809275
+      },
+      {
+        "variant": "A21K:Q34N",
+        "round": 1,
+        "activity": 0.4351207264990003
+      },
+      {
+        "variant": "Q34N:T394F",
+        "round": 1,
+        "activity": 0.3703920233834466
+      },
+      {
+        "variant": "Q34N:G222Q:G240W",
+        "round": 2,
+        "activity": 2.740063045793397
+      },
+      {
+        "variant": "Q34N:G240W:G453H",
+        "round": 2,
+        "activity": 1.0721160809371673
+      },
+      {
+        "variant": "Q34N:S359F:N423Q",
+        "round": 2,
+        "activity": 2.795092012779552
+      },
+      {
+        "variant": "Q34N:G240W:G421D",
+        "round": 2,
+        "activity": 1.0853989350372737
+      },
+      {
+        "variant": "Q34N:G184E:G240W",
+        "round": 2,
+        "activity": 2.2410072417465385
+      },
+      {
+        "variant": "I3G:Q34N:G240W",
+        "round": 2,
+        "activity": 1.3225927582534611
+      },
+      {
+        "variant": "G23A:Q34N:G240W",
+        "round": 2,
+        "activity": 14.03048903088392
+      },
+      {
+        "variant": "Q34N:G222W:G240W",
+        "round": 2,
+        "activity": 3.3548694355697557
+      },
+      {
+        "variant": "Q34N:G240W:I369H",
+        "round": 2,
+        "activity": 0.7286594249201277
+      },
+      {
+        "variant": "Q34N:G240W:T338S",
+        "round": 2,
+        "activity": 2.57497614483493
+      },
+      {
+        "variant": "Q34N:I217D:G240W",
+        "round": 2,
+        "activity": 0.6546549520766772
+      },
+      {
+        "variant": "Q34N:G240W:W353S",
+        "round": 2,
+        "activity": 1.037960170394036
+      },
+      {
+        "variant": "Q34N:G240W:I369C",
+        "round": 2,
+        "activity": 2.0303791267305646
+      },
+      {
+        "variant": "Q34N:I217P:G240W",
+        "round": 2,
+        "activity": 1.3225927582534611
+      },
+      {
+        "variant": "Q34N:G240W:Y436E",
+        "round": 2,
+        "activity": 10.563664110756124
+      },
+      {
+        "variant": "Q34N:M328L:S359F",
+        "round": 2,
+        "activity": 12.377722470713524
+      },
+      {
+        "variant": "Q34N:V228L:S359F",
+        "round": 2,
+        "activity": 0.9032340788072416
+      },
+      {
+        "variant": "Q34N:S359F:N422K",
+        "round": 2,
+        "activity": 2.296036208732694
+      },
+      {
+        "variant": "Q34N:S359F:G421K",
+        "round": 2,
+        "activity": 2.588258998935037
+      },
+      {
+        "variant": "Q34N:L324P:S359F",
+        "round": 2,
+        "activity": 3.096802555910543
+      },
+      {
+        "variant": "Q34N:Y103K:S359F",
+        "round": 2,
+        "activity": 1.007599361022364
+      },
+      {
+        "variant": "Q34N:S359F:I369H",
+        "round": 2,
+        "activity": 0.6527574014909477
+      },
+      {
+        "variant": "Q34N:G240W:D403S",
+        "round": 2,
+        "activity": 6.275199787007455
+      },
+      {
+        "variant": "Q34N:I217Q:S359F",
+        "round": 2,
+        "activity": 0.9487752928647496
+      },
+      {
+        "variant": "Q34N:S359F:V471Q",
+        "round": 2,
+        "activity": 2.3928112886048982
+      },
+      {
+        "variant": "Q34N:G240W:T456G",
+        "round": 2,
+        "activity": 1.000009158679446
+      },
+      {
+        "variant": "Q34N:S359F:V424K",
+        "round": 2,
+        "activity": 0.7362496272630457
+      },
+      {
+        "variant": "Q34N:G240W:M364E",
+        "round": 2,
+        "activity": 0.7685079872204473
+      },
+      {
+        "variant": "Q34N:G240W:G453D",
+        "round": 2,
+        "activity": 2.115768903088392
+      },
+      {
+        "variant": "Q34N:L355P:S359F",
+        "round": 2,
+        "activity": 0.8842585729499467
+      }
+    ],
+    "points": [
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "Q34N",
+        "activity": 4.496846846846847,
+        "plot_x": 0
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "K454N",
+        "activity": 4.429279279279279,
+        "plot_x": -0.1396500605106734
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "I374V",
+        "activity": 4.207207207207207,
+        "plot_x": 0.1396500605106734
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "H256K",
+        "activity": 4.1635135135135135,
+        "plot_x": -0.2793001210213468
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "M315L",
+        "activity": 3.689189189189189,
+        "plot_x": 0
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "N207K",
+        "activity": 3.5045045045045047,
+        "plot_x": -0.1396500605106734
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "I316V",
+        "activity": 2.702702702702702,
+        "plot_x": 0
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "M315I",
+        "activity": 2.279279279279279,
+        "plot_x": -0.1396500605106734
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "K454D",
+        "activity": 2.072072072072072,
+        "plot_x": 0
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "H186D",
+        "activity": 1.768918918918919,
+        "plot_x": 0.1396500605106734
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 1,
+        "variant": "Q34N:G240W",
+        "activity": 8.93975310807037,
+        "plot_x": 1
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 1,
+        "variant": "Q34N:S359F",
+        "activity": 8.909186776043581,
+        "plot_x": 0.8603499394893266
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 1,
+        "variant": "Q34N:Y322C",
+        "activity": 8.567563065155937,
+        "plot_x": 1.1396500605106734
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 1,
+        "variant": "Q34N:R360F",
+        "activity": 6.569963366228707,
+        "plot_x": 1
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 1,
+        "variant": "Q34N:G453W",
+        "activity": 6.53939703420192,
+        "plot_x": 0.8603499394893266
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 1,
+        "variant": "Q34N:T456F",
+        "activity": 5.514525901538984,
+        "plot_x": 1
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 0,
+        "variant": "Q34N",
+        "activity": 4.496846846846847,
+        "plot_x": 1
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 1,
+        "variant": "Q34N:A415F",
+        "activity": 4.469876554035186,
+        "plot_x": 0.8603499394893266
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 0,
+        "variant": "K454N",
+        "activity": 4.429279279279279,
+        "plot_x": 1.1396500605106734
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 1,
+        "variant": "Q34N:S239W",
+        "activity": 4.326034991556177,
+        "plot_x": 0.7206998789786532
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 2,
+        "variant": "G23A:Q34N:G240W",
+        "activity": 14.03048903088392,
+        "plot_x": 2
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 2,
+        "variant": "Q34N:M328L:S359F",
+        "activity": 12.377722470713524,
+        "plot_x": 2
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 2,
+        "variant": "Q34N:G240W:Y436E",
+        "activity": 10.563664110756124,
+        "plot_x": 2
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 1,
+        "variant": "Q34N:G240W",
+        "activity": 8.93975310807037,
+        "plot_x": 2
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 1,
+        "variant": "Q34N:S359F",
+        "activity": 8.909186776043581,
+        "plot_x": 1.8603499394893266
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 1,
+        "variant": "Q34N:Y322C",
+        "activity": 8.567563065155937,
+        "plot_x": 2.1396500605106734
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 1,
+        "variant": "Q34N:R360F",
+        "activity": 6.569963366228707,
+        "plot_x": 2
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 1,
+        "variant": "Q34N:G453W",
+        "activity": 6.53939703420192,
+        "plot_x": 1.8603499394893266
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 2,
+        "variant": "Q34N:G240W:D403S",
+        "activity": 6.275199787007455,
+        "plot_x": 2.1396500605106734
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 1,
+        "variant": "Q34N:T456F",
+        "activity": 5.514525901538984,
+        "plot_x": 2
+      }
+    ]
+  },
+  "aldh": {
+    "rounds": 5,
+    "assayed": 150,
+    "raw": [
+      {
+        "variant": "N373A",
+        "round": 0,
+        "activity": 1.307931570762053
+      },
+      {
+        "variant": "C366V",
+        "round": 0,
+        "activity": 1.5215137376879213
+      },
+      {
+        "variant": "S38N",
+        "round": 0,
+        "activity": 1.6445481251080007
+      },
+      {
+        "variant": "S234A",
+        "round": 0,
+        "activity": 1.5954726110247106
+      },
+      {
+        "variant": "K386Q",
+        "round": 0,
+        "activity": 0.1738379125626404
+      },
+      {
+        "variant": "I104W",
+        "round": 0,
+        "activity": 0.261620874373596
+      },
+      {
+        "variant": "Q56A",
+        "round": 0,
+        "activity": 1.134784862623121
+      },
+      {
+        "variant": "I216V",
+        "round": 0,
+        "activity": 1.310005184033178
+      },
+      {
+        "variant": "K96E",
+        "round": 0,
+        "activity": 0.6072230862277518
+      },
+      {
+        "variant": "L358I",
+        "round": 0,
+        "activity": 2.020044928287541
+      },
+      {
+        "variant": "K96D",
+        "round": 0,
+        "activity": 0.6293416277864179
+      },
+      {
+        "variant": "M3A",
+        "round": 0,
+        "activity": 0.631933644375324
+      },
+      {
+        "variant": "H332N",
+        "round": 0,
+        "activity": 1.3381717642992914
+      },
+      {
+        "variant": "H332D",
+        "round": 0,
+        "activity": 0.2268878520822533
+      },
+      {
+        "variant": "T114L",
+        "round": 0,
+        "activity": 1.438396405736997
+      },
+      {
+        "variant": "M3T",
+        "round": 0,
+        "activity": 0.9244859167098668
+      },
+      {
+        "variant": "I147V",
+        "round": 0,
+        "activity": 0.8271988940729221
+      },
+      {
+        "variant": "T77P",
+        "round": 0,
+        "activity": 0.8310005184033178
+      },
+      {
+        "variant": "F443Y",
+        "round": 0,
+        "activity": 0.5505443234836703
+      },
+      {
+        "variant": "N373V",
+        "round": 0,
+        "activity": 0.2801105927077933
+      },
+      {
+        "variant": "G337D",
+        "round": 0,
+        "activity": 0.991014342491792
+      },
+      {
+        "variant": "C366L",
+        "round": 0,
+        "activity": 1.4245723172628306
+      },
+      {
+        "variant": "T172A",
+        "round": 0,
+        "activity": 0.8341109383100053
+      },
+      {
+        "variant": "Q55A",
+        "round": 0,
+        "activity": 1.7212718161396234
+      },
+      {
+        "variant": "G337E",
+        "round": 0,
+        "activity": 1.6521513737687925
+      },
+      {
+        "variant": "V110I",
+        "round": 0,
+        "activity": 1.6480041472265423
+      },
+      {
+        "variant": "K323A",
+        "round": 0,
+        "activity": 1.2280974598237429
+      },
+      {
+        "variant": "T77A",
+        "round": 0,
+        "activity": 1.1315016416105064
+      },
+      {
+        "variant": "A461L",
+        "round": 0,
+        "activity": 1.4847071021254536
+      },
+      {
+        "variant": "T40S",
+        "round": 0,
+        "activity": 0.6974252635216865
+      },
+      {
+        "variant": "L358I:S499A",
+        "round": 1,
+        "activity": 1.1366458254766791
+      },
+      {
+        "variant": "T77M:L358I",
+        "round": 1,
+        "activity": 1.42461868737092
+      },
+      {
+        "variant": "L358I:M484Q",
+        "round": 1,
+        "activity": 0.0508187403342777
+      },
+      {
+        "variant": "L358I:T491A",
+        "round": 1,
+        "activity": 0.020920381437611
+      },
+      {
+        "variant": "K266N:L358I",
+        "round": 1,
+        "activity": 0.2546865869752887
+      },
+      {
+        "variant": "L358I:Y471D",
+        "round": 1,
+        "activity": 0.0022614339448753
+      },
+      {
+        "variant": "L358I:W455Q",
+        "round": 1,
+        "activity": 0.0056493499671605
+      },
+      {
+        "variant": "A252W:L358I",
+        "round": 1,
+        "activity": 0.0079023141219801
+      },
+      {
+        "variant": "L358I:T491K",
+        "round": 1,
+        "activity": 0.0141445493930406
+      },
+      {
+        "variant": "T113E:L358I",
+        "round": 1,
+        "activity": 0.0321852022117092
+      },
+      {
+        "variant": "L358I:Y488P",
+        "round": 1,
+        "activity": 0.0028204400885524
+      },
+      {
+        "variant": "L358I:A466N",
+        "round": 1,
+        "activity": 0
+      },
+      {
+        "variant": "L358I:G470T",
+        "round": 1,
+        "activity": 0
+      },
+      {
+        "variant": "L358I:V496M",
+        "round": 1,
+        "activity": 0.2919536632204257
+      },
+      {
+        "variant": "S267E:L358I",
+        "round": 1,
+        "activity": 0.004514398099695
+      },
+      {
+        "variant": "L358I:Q490P",
+        "round": 1,
+        "activity": 0.0079023141219801
+      },
+      {
+        "variant": "A252Y:L358I",
+        "round": 1,
+        "activity": 0.0033879160222851
+      },
+      {
+        "variant": "L358I:Q490Y",
+        "round": 1,
+        "activity": 0.0310841295044665
+      },
+      {
+        "variant": "L358I:A440W",
+        "round": 1,
+        "activity": 0.012450591381898
+      },
+      {
+        "variant": "L358I:V389F",
+        "round": 1,
+        "activity": 0.0067758320445703
+      },
+      {
+        "variant": "T77W:L358I",
+        "round": 1,
+        "activity": 1.1832296707831005
+      },
+      {
+        "variant": "P29N:L358I",
+        "round": 1,
+        "activity": 0.5126763920723055
+      },
+      {
+        "variant": "L358I:V374Y",
+        "round": 1,
+        "activity": 0.7527102422512107
+      },
+      {
+        "variant": "L358I:T491S",
+        "round": 1,
+        "activity": 0.0135516640891407
+      },
+      {
+        "variant": "T77F:L358I",
+        "round": 1,
+        "activity": 1.5982493835130356
+      },
+      {
+        "variant": "L358I:V410H",
+        "round": 1,
+        "activity": 0.0016939580111425
+      },
+      {
+        "variant": "S76V:L358I",
+        "round": 1,
+        "activity": 0.2416431102894907
+      },
+      {
+        "variant": "L358I:G470K",
+        "round": 1,
+        "activity": 0.0073433079783031
+      },
+      {
+        "variant": "A116K:L358I",
+        "round": 1,
+        "activity": 2.347825803443633
+      },
+      {
+        "variant": "H150W:L358I",
+        "round": 1,
+        "activity": 0.012450591381898
+      },
+      {
+        "variant": "A116K:H332N:L358I",
+        "round": 2,
+        "activity": 6.080606544293695
+      },
+      {
+        "variant": "T78N:A116K:L358I",
+        "round": 2,
+        "activity": 0.209656823623304
+      },
+      {
+        "variant": "L9F:A116K:L358I",
+        "round": 2,
+        "activity": 3.833200319233839
+      },
+      {
+        "variant": "A116K:E288K:L358I",
+        "round": 2,
+        "activity": 0.5145251396648045
+      },
+      {
+        "variant": "E5Q:A116K:L358I",
+        "round": 2,
+        "activity": 4.501995211492418
+      },
+      {
+        "variant": "T77N:A116K:L358I",
+        "round": 2,
+        "activity": 2.092577813248204
+      },
+      {
+        "variant": "S12Y:A116K:L358I",
+        "round": 2,
+        "activity": 0.9728651237031124
+      },
+      {
+        "variant": "T77D:A116K:L358I",
+        "round": 2,
+        "activity": 2.449321628092578
+      },
+      {
+        "variant": "A64L:A116K:L358I",
+        "round": 2,
+        "activity": 0.9792498004788508
+      },
+      {
+        "variant": "P14W:A116K:L358I",
+        "round": 2,
+        "activity": 0.9505187549880288
+      },
+      {
+        "variant": "P14F:A116K:L358I",
+        "round": 2,
+        "activity": 1.0143655227454111
+      },
+      {
+        "variant": "L9W:A116K:L358I",
+        "round": 2,
+        "activity": 5.440542697525937
+      },
+      {
+        "variant": "A116K:D357N:L358I",
+        "round": 2,
+        "activity": 2.260175578611333
+      },
+      {
+        "variant": "A4E:A116K:L358I",
+        "round": 2,
+        "activity": 4.235434956105348
+      },
+      {
+        "variant": "A68L:A116K:L358I",
+        "round": 2,
+        "activity": 0.3256185155626497
+      },
+      {
+        "variant": "T77Y:A116K:L358I",
+        "round": 2,
+        "activity": 1.440542697525938
+      },
+      {
+        "variant": "N2Q:A116K:L358I",
+        "round": 2,
+        "activity": 2.198723064644853
+      },
+      {
+        "variant": "A116K:L276I:L358I",
+        "round": 2,
+        "activity": 2.165203511572227
+      },
+      {
+        "variant": "T77E:A116K:L358I",
+        "round": 2,
+        "activity": 0.1351157222665602
+      },
+      {
+        "variant": "R90P:A116K:L358I",
+        "round": 2,
+        "activity": 0.0037270550678371
+      },
+      {
+        "variant": "A116K:V259D:L358I",
+        "round": 2,
+        "activity": 0.0037270550678371
+      },
+      {
+        "variant": "A116K:T338M:L358I",
+        "round": 2,
+        "activity": -0.002657621707901
+      },
+      {
+        "variant": "A116K:T336N:L358I",
+        "round": 2,
+        "activity": 1.7805267358339985
+      },
+      {
+        "variant": "A116K:L261N:L358I",
+        "round": 2,
+        "activity": 0.0031923383878691
+      },
+      {
+        "variant": "R74N:A116K:L358I",
+        "round": 2,
+        "activity": 3.2529928172386278
+      },
+      {
+        "variant": "A81I:A116K:L358I",
+        "round": 2,
+        "activity": 0.0185953711093375
+      },
+      {
+        "variant": "A116K:R320L:L358I",
+        "round": 2,
+        "activity": 0.5501197126895451
+      },
+      {
+        "variant": "Y15N:A116K:L358I",
+        "round": 2,
+        "activity": 0.1005586592178771
+      },
+      {
+        "variant": "A64N:A116K:L358I",
+        "round": 2,
+        "activity": 1.876296887470072
+      },
+      {
+        "variant": "A116K:I257L:L358I",
+        "round": 2,
+        "activity": 0.5288906624102155
+      },
+      {
+        "variant": "R49K:A116K:H332N:L358I",
+        "round": 3,
+        "activity": 4.686005162179989
+      },
+      {
+        "variant": "A116K:R316P:H332N:L358I",
+        "round": 3,
+        "activity": 2.420681155482338
+      },
+      {
+        "variant": "E20K:A116K:H332N:L358I",
+        "round": 3,
+        "activity": 2.7855898072789294
+      },
+      {
+        "variant": "A4Y:A116K:H332N:L358I",
+        "round": 3,
+        "activity": 3.461212756644896
+      },
+      {
+        "variant": "Q18E:A116K:H332N:L358I",
+        "round": 3,
+        "activity": 2.314098925502146
+      },
+      {
+        "variant": "A116K:H332N:L358I:M483E",
+        "round": 3,
+        "activity": 0
+      },
+      {
+        "variant": "A116K:P226E:H332N:L358I",
+        "round": 3,
+        "activity": 0.9303364142338838
+      },
+      {
+        "variant": "A116K:H332N:L358I:L420D",
+        "round": 3,
+        "activity": 0
+      },
+      {
+        "variant": "I6W:A116K:H332N:L358I",
+        "round": 3,
+        "activity": 4.050124739247315
+      },
+      {
+        "variant": "G44T:A116K:H332N:L358I",
+        "round": 3,
+        "activity": 0.0010314992087913
+      },
+      {
+        "variant": "A116K:D315S:H332N:L358I",
+        "round": 3,
+        "activity": 1.728438604153359
+      },
+      {
+        "variant": "K16E:A116K:H332N:L358I",
+        "round": 3,
+        "activity": 2.899397951156084
+      },
+      {
+        "variant": "A116K:H332N:L358I:R478V",
+        "round": 3,
+        "activity": 0.1517441918362063
+      },
+      {
+        "variant": "L84C:A116K:H332N:L358I",
+        "round": 3,
+        "activity": 0.7755212089914686
+      },
+      {
+        "variant": "A116K:H332N:L358I:A364Y",
+        "round": 3,
+        "activity": 0
+      },
+      {
+        "variant": "Q8Y:A116K:H332N:L358I",
+        "round": 3,
+        "activity": 2.026868848097898
+      },
+      {
+        "variant": "A116K:H332N:L358I:G477F",
+        "round": 3,
+        "activity": 0
+      },
+      {
+        "variant": "R80T:A116K:H332N:L358I",
+        "round": 3,
+        "activity": 0.7316237820674231
+      },
+      {
+        "variant": "A116K:Q310E:H332N:L358I",
+        "round": 3,
+        "activity": 0.3558762594253885
+      },
+      {
+        "variant": "A116K:H332N:L358I:R397K",
+        "round": 3,
+        "activity": 2.0810632023251148
+      },
+      {
+        "variant": "A116K:H332N:L358I:S499E",
+        "round": 3,
+        "activity": 3.329339828025335
+      },
+      {
+        "variant": "A116K:R316Y:H332N:L358I",
+        "round": 3,
+        "activity": 0.8967359146130094
+      },
+      {
+        "variant": "I42N:A116K:H332N:L358I",
+        "round": 3,
+        "activity": 0.0216777416908866
+      },
+      {
+        "variant": "A116K:A129V:H332N:L358I",
+        "round": 3,
+        "activity": 0.3491922890706985
+      },
+      {
+        "variant": "A116K:R126L:H332N:L358I",
+        "round": 3,
+        "activity": 2.043127154366063
+      },
+      {
+        "variant": "E5Y:A116K:H332N:L358I",
+        "round": 3,
+        "activity": 3.1486919806012805
+      },
+      {
+        "variant": "A116K:I204F:H332N:L358I",
+        "round": 3,
+        "activity": 0.9325041884029724
+      },
+      {
+        "variant": "A116K:Q310G:H332N:L358I",
+        "round": 3,
+        "activity": 0
+      },
+      {
+        "variant": "A116K:E319F:H332N:L358I",
+        "round": 3,
+        "activity": 1.0929194769155333
+      },
+      {
+        "variant": "R52K:A116K:H332N:L358I",
+        "round": 3,
+        "activity": 1.555919909863387
+      },
+      {
+        "variant": "L9F:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 6.21146021572436
+      },
+      {
+        "variant": "R90S:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 2.392168680841837
+      },
+      {
+        "variant": "R90A:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 2.639563903390437
+      },
+      {
+        "variant": "I104V:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 3.330634855633635
+      },
+      {
+        "variant": "Q8T:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 4.618725683779239
+      },
+      {
+        "variant": "G10V:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 2.0670790908812795
+      },
+      {
+        "variant": "S12L:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 4.248655144264391
+      },
+      {
+        "variant": "A7V:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 2.864468651161892
+      },
+      {
+        "variant": "Q8V:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 3.344946975946364
+      },
+      {
+        "variant": "T78Y:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 0.0214681804690934
+      },
+      {
+        "variant": "I6H:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 4.600324386234302
+      },
+      {
+        "variant": "Q8F:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 2.377856560529108
+      },
+      {
+        "variant": "G10K:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 2.154996401373758
+      },
+      {
+        "variant": "A116K:H332N:L358I:M445F",
+        "round": 4,
+        "activity": 0.6256441165278651
+      },
+      {
+        "variant": "W27Y:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 1.0413089821818358
+      },
+      {
+        "variant": "S103V:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 6.847327275332745
+      },
+      {
+        "variant": "R49D:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 1.336343119485662
+      },
+      {
+        "variant": "W72Y:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 3.0546153924595765
+      },
+      {
+        "variant": "A116K:H332N:D357F:L358I",
+        "round": 4,
+        "activity": 0.3285653906079343
+      },
+      {
+        "variant": "R52Y:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 2.8746915942424125
+      },
+      {
+        "variant": "W27D:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 0.2823576878839809
+      },
+      {
+        "variant": "R90I:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 2.825621467455914
+      },
+      {
+        "variant": "R80K:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 5.256637332003729
+      },
+      {
+        "variant": "A116K:H332N:A342Y:L358I",
+        "round": 4,
+        "activity": 0
+      },
+      {
+        "variant": "V50H:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 0.064813459130501
+      },
+      {
+        "variant": "I91E:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 0.0141281073372795
+      },
+      {
+        "variant": "D105W:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 0.0107136443483856
+      },
+      {
+        "variant": "A116K:R246L:H332N:L358I",
+        "round": 4,
+        "activity": 0.241874833285119
+      },
+      {
+        "variant": "R52N:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 0.3888807547830064
+      },
+      {
+        "variant": "T48W:A116K:H332N:L358I",
+        "round": 4,
+        "activity": 0.0278064051790162
+      }
+    ],
+    "points": [
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "C366L",
+        "activity": 1.4245723172628306,
+        "plot_x": 0
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "T114L",
+        "activity": 1.438396405736997,
+        "plot_x": 0.17500000000000002
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "A461L",
+        "activity": 1.4847071021254536,
+        "plot_x": -0.17500000000000002
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "C366V",
+        "activity": 1.5215137376879213,
+        "plot_x": 0.07500000000000001
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "S234A",
+        "activity": 1.5954726110247106,
+        "plot_x": 0.25
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "S38N",
+        "activity": 1.6445481251080007,
+        "plot_x": -0.30000000000000004
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "V110I",
+        "activity": 1.6480041472265423,
+        "plot_x": -0.05
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "G337E",
+        "activity": 1.6521513737687925,
+        "plot_x": -0.17500000000000002
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "Q55A",
+        "activity": 1.7212718161396234,
+        "plot_x": 0.125
+      },
+      {
+        "snapshot_round": 0,
+        "source_round": 0,
+        "variant": "L358I",
+        "activity": 2.020044928287541,
+        "plot_x": 0
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 0,
+        "variant": "A461L",
+        "activity": 1.4847071021254536,
+        "plot_x": 1
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 0,
+        "variant": "C366V",
+        "activity": 1.5215137376879213,
+        "plot_x": 1.175
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 0,
+        "variant": "S234A",
+        "activity": 1.5954726110247106,
+        "plot_x": 0.85
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 1,
+        "variant": "T77F:L358I",
+        "activity": 1.5982493835130356,
+        "plot_x": 0.7
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 0,
+        "variant": "S38N",
+        "activity": 1.6445481251080007,
+        "plot_x": 1.075
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 0,
+        "variant": "V110I",
+        "activity": 1.6480041472265423,
+        "plot_x": 1.275
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 0,
+        "variant": "G337E",
+        "activity": 1.6521513737687925,
+        "plot_x": 0.95
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 0,
+        "variant": "Q55A",
+        "activity": 1.7212718161396234,
+        "plot_x": 1.175
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 0,
+        "variant": "L358I",
+        "activity": 2.020044928287541,
+        "plot_x": 1
+      },
+      {
+        "snapshot_round": 1,
+        "source_round": 1,
+        "variant": "A116K:L358I",
+        "activity": 2.347825803443633,
+        "plot_x": 1
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 2,
+        "variant": "N2Q:A116K:L358I",
+        "activity": 2.198723064644853,
+        "plot_x": 2
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 2,
+        "variant": "A116K:D357N:L358I",
+        "activity": 2.260175578611333,
+        "plot_x": 2.175
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 1,
+        "variant": "A116K:L358I",
+        "activity": 2.347825803443633,
+        "plot_x": 1.875
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 2,
+        "variant": "T77D:A116K:L358I",
+        "activity": 2.449321628092578,
+        "plot_x": 2.025
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 2,
+        "variant": "R74N:A116K:L358I",
+        "activity": 3.2529928172386278,
+        "plot_x": 2
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 2,
+        "variant": "L9F:A116K:L358I",
+        "activity": 3.833200319233839,
+        "plot_x": 2
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 2,
+        "variant": "A4E:A116K:L358I",
+        "activity": 4.235434956105348,
+        "plot_x": 2
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 2,
+        "variant": "E5Q:A116K:L358I",
+        "activity": 4.501995211492418,
+        "plot_x": 2
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 2,
+        "variant": "L9W:A116K:L358I",
+        "activity": 5.440542697525937,
+        "plot_x": 2
+      },
+      {
+        "snapshot_round": 2,
+        "source_round": 2,
+        "variant": "A116K:H332N:L358I",
+        "activity": 6.080606544293695,
+        "plot_x": 2
+      },
+      {
+        "snapshot_round": 3,
+        "source_round": 2,
+        "variant": "R74N:A116K:L358I",
+        "activity": 3.2529928172386278,
+        "plot_x": 3
+      },
+      {
+        "snapshot_round": 3,
+        "source_round": 3,
+        "variant": "A116K:H332N:L358I:S499E",
+        "activity": 3.329339828025335,
+        "plot_x": 3.15
+      },
+      {
+        "snapshot_round": 3,
+        "source_round": 3,
+        "variant": "A4Y:A116K:H332N:L358I",
+        "activity": 3.461212756644896,
+        "plot_x": 2.925
+      },
+      {
+        "snapshot_round": 3,
+        "source_round": 2,
+        "variant": "L9F:A116K:L358I",
+        "activity": 3.833200319233839,
+        "plot_x": 3
+      },
+      {
+        "snapshot_round": 3,
+        "source_round": 3,
+        "variant": "I6W:A116K:H332N:L358I",
+        "activity": 4.050124739247315,
+        "plot_x": 3.075
+      },
+      {
+        "snapshot_round": 3,
+        "source_round": 2,
+        "variant": "A4E:A116K:L358I",
+        "activity": 4.235434956105348,
+        "plot_x": 2.975
+      },
+      {
+        "snapshot_round": 3,
+        "source_round": 2,
+        "variant": "E5Q:A116K:L358I",
+        "activity": 4.501995211492418,
+        "plot_x": 3
+      },
+      {
+        "snapshot_round": 3,
+        "source_round": 3,
+        "variant": "R49K:A116K:H332N:L358I",
+        "activity": 4.686005162179989,
+        "plot_x": 3.1
+      },
+      {
+        "snapshot_round": 3,
+        "source_round": 2,
+        "variant": "L9W:A116K:L358I",
+        "activity": 5.440542697525937,
+        "plot_x": 3
+      },
+      {
+        "snapshot_round": 3,
+        "source_round": 2,
+        "variant": "A116K:H332N:L358I",
+        "activity": 6.080606544293695,
+        "plot_x": 3
+      },
+      {
+        "snapshot_round": 4,
+        "source_round": 4,
+        "variant": "S12L:A116K:H332N:L358I",
+        "activity": 4.248655144264391,
+        "plot_x": 4
+      },
+      {
+        "snapshot_round": 4,
+        "source_round": 2,
+        "variant": "E5Q:A116K:L358I",
+        "activity": 4.501995211492418,
+        "plot_x": 4
+      },
+      {
+        "snapshot_round": 4,
+        "source_round": 4,
+        "variant": "I6H:A116K:H332N:L358I",
+        "activity": 4.600324386234302,
+        "plot_x": 4.15
+      },
+      {
+        "snapshot_round": 4,
+        "source_round": 4,
+        "variant": "Q8T:A116K:H332N:L358I",
+        "activity": 4.618725683779239,
+        "plot_x": 3.85
+      },
+      {
+        "snapshot_round": 4,
+        "source_round": 3,
+        "variant": "R49K:A116K:H332N:L358I",
+        "activity": 4.686005162179989,
+        "plot_x": 4.275
+      },
+      {
+        "snapshot_round": 4,
+        "source_round": 4,
+        "variant": "R80K:A116K:H332N:L358I",
+        "activity": 5.256637332003729,
+        "plot_x": 4
+      },
+      {
+        "snapshot_round": 4,
+        "source_round": 2,
+        "variant": "L9W:A116K:L358I",
+        "activity": 5.440542697525937,
+        "plot_x": 4.1
+      },
+      {
+        "snapshot_round": 4,
+        "source_round": 2,
+        "variant": "A116K:H332N:L358I",
+        "activity": 6.080606544293695,
+        "plot_x": 4
+      },
+      {
+        "snapshot_round": 4,
+        "source_round": 4,
+        "variant": "L9F:A116K:H332N:L358I",
+        "activity": 6.21146021572436,
+        "plot_x": 4.1
+      },
+      {
+        "snapshot_round": 4,
+        "source_round": 4,
+        "variant": "S103V:A116K:H332N:L358I",
+        "activity": 6.847327275332745,
+        "plot_x": 4
+      }
+    ]
+  }
+}

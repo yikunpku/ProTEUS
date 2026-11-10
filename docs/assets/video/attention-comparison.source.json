@@ -1,0 +1,55 @@
+{
+  "source": "/Users/mhg/Dropbox/PROTEUS/Main Figure/proteus_figures/figures/RAW/cell_v9/attention/attention_30_residues.json",
+  "source_sha256": "adcdc21b999ddd2fe0b7ae6627d97bcfd21b00ca278978724d6bae04bc9c70eb",
+  "data_snapshot": "tools/video/attention-data.json",
+  "duration": 14,
+  "fps": 24,
+  "size": [
+    1920,
+    1080
+  ],
+  "stages": {
+    "ProTEUS": [
+      0,
+      4
+    ],
+    "shift": [
+      4,
+      6.2
+    ],
+    "comparison_reveal": [
+      6,
+      7.2
+    ],
+    "comparison_hold": [
+      7.2,
+      14
+    ]
+  },
+  "molecular_coordinates_unchanged": true,
+  "matrix_values_unchanged": true,
+  "molecular_style": "Shared thin ribbon, gray 73% transparent SES shell, gentle lighting; true mean attention shown only by local marker color and radius.",
+  "molecular_assets": [
+    {
+      "path": "attention-structure.mp4",
+      "sha256": "cdc606e32c75a8a6c2fb7cf0197f96609ed01dfb83d8ea4790be03f72ba72692"
+    },
+    {
+      "path": "attention-esm2-structure.mp4",
+      "sha256": "da49902f78ee67d9242b9b99511bd571c693f5be36a05448529a81de32feb14f"
+    }
+  ],
+  "shared_scales": {
+    "marker": [
+      0,
+      0.22
+    ],
+    "matrix": [
+      0,
+      0.4
+    ]
+  },
+  "model_heading_color": "#5290d3",
+  "mutation_tick_color": "#3c78cd",
+  "mutation_annotation": "Fixed blue axis ticks at positions 25, 58, 91 and 124; separate from the red weight scale."
+}

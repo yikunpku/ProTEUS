@@ -1,0 +1,306 @@
+{
+  "recipe": "tools/video/render_wetlab_story.py",
+  "size": [
+    1920,
+    1080
+  ],
+  "fps": 24,
+  "model_update": "Refit target-specific predictor; fixed ProTEUS representations.",
+  "diagram": "Conceptual workflow; plate wells do not encode fabricated activities.",
+  "semantic_palette": {
+    "prediction_nomination": "#5290d3",
+    "measurement": "#51aa8e",
+    "refit": "#da6457",
+    "mutation": "#e74c3c"
+  },
+  "duration": 10,
+  "data_file": "/Users/mhg/Projects/ProTEUS/tools/video/chart-data.json",
+  "data_sha256": "7ebf2ba271a8a73771e2efac4ed8c34926e6792278c3ff03f8836fb4d7a63208",
+  "original_sources": {
+    "sacbRaw": {
+      "path": "Figure4/data/tables/master_LSC.csv",
+      "sha256": "605885e5f3e82f85d77c4c448ad3a44d2afe72a9d2afd6e121e2ddaa27a71040",
+      "bytes": 3057
+    },
+    "sacbDots": {
+      "path": "Figure4/generated/panel_activity.dots.json",
+      "sha256": "86ea6258cfd16db5bc548d210eb7ebb2a88b6ab06560f0ed6e4d82fc9b725079",
+      "bytes": 5791
+    },
+    "sacbMethod": {
+      "path": "Figure4/build_panel_activity.py",
+      "sha256": "2960ae32df7df36cafd95481505d546c624613a31cf325dcde7e9bf531200f44",
+      "bytes": 7819
+    },
+    "aldhRaw": {
+      "path": "Figure5/data/fig3b_latent_ALDH_tsne_points.csv",
+      "sha256": "095355bf7a0be70d5ac72774f105723e976bb46ef50a57b765788ae40c137c4f",
+      "bytes": 10634
+    },
+    "aldhDots": {
+      "path": "Figure5/data/cumulative_top10_ALDH.csv",
+      "sha256": "4d6b888a276dbf0caa731cfbd0fb064a28c84e538dc5bdfe0d59ed75bbd31389",
+      "bytes": 2441
+    },
+    "aldhMethod": {
+      "path": "Figure5/build_panel_b.py",
+      "sha256": "d09028fdde1f4be977aa43d56dc8333183e45b9d81acd042f94c44468614ea4f",
+      "bytes": 4064
+    }
+  },
+  "paper_panel": "Figure 4C",
+  "number_tested": 90,
+  "rounds": 3,
+  "number_snapshot_marks": 30,
+  "snapshot_points": [
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "Q34N",
+      "activity": 4.496846846846847,
+      "plot_x": 0
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "K454N",
+      "activity": 4.429279279279279,
+      "plot_x": -0.1396500605106734
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "I374V",
+      "activity": 4.207207207207207,
+      "plot_x": 0.1396500605106734
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "H256K",
+      "activity": 4.1635135135135135,
+      "plot_x": -0.2793001210213468
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "M315L",
+      "activity": 3.689189189189189,
+      "plot_x": 0
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "N207K",
+      "activity": 3.5045045045045047,
+      "plot_x": -0.1396500605106734
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "I316V",
+      "activity": 2.702702702702702,
+      "plot_x": 0
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "M315I",
+      "activity": 2.279279279279279,
+      "plot_x": -0.1396500605106734
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "K454D",
+      "activity": 2.072072072072072,
+      "plot_x": 0
+    },
+    {
+      "snapshot_round": 0,
+      "source_round": 0,
+      "variant": "H186D",
+      "activity": 1.768918918918919,
+      "plot_x": 0.1396500605106734
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 1,
+      "variant": "Q34N:G240W",
+      "activity": 8.93975310807037,
+      "plot_x": 1
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 1,
+      "variant": "Q34N:S359F",
+      "activity": 8.909186776043581,
+      "plot_x": 0.8603499394893266
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 1,
+      "variant": "Q34N:Y322C",
+      "activity": 8.567563065155937,
+      "plot_x": 1.1396500605106734
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 1,
+      "variant": "Q34N:R360F",
+      "activity": 6.569963366228707,
+      "plot_x": 1
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 1,
+      "variant": "Q34N:G453W",
+      "activity": 6.53939703420192,
+      "plot_x": 0.8603499394893266
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 1,
+      "variant": "Q34N:T456F",
+      "activity": 5.514525901538984,
+      "plot_x": 1
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 0,
+      "variant": "Q34N",
+      "activity": 4.496846846846847,
+      "plot_x": 1
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 1,
+      "variant": "Q34N:A415F",
+      "activity": 4.469876554035186,
+      "plot_x": 0.8603499394893266
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 0,
+      "variant": "K454N",
+      "activity": 4.429279279279279,
+      "plot_x": 1.1396500605106734
+    },
+    {
+      "snapshot_round": 1,
+      "source_round": 1,
+      "variant": "Q34N:S239W",
+      "activity": 4.326034991556177,
+      "plot_x": 0.7206998789786532
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 2,
+      "variant": "G23A:Q34N:G240W",
+      "activity": 14.03048903088392,
+      "plot_x": 2
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 2,
+      "variant": "Q34N:M328L:S359F",
+      "activity": 12.377722470713524,
+      "plot_x": 2
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 2,
+      "variant": "Q34N:G240W:Y436E",
+      "activity": 10.563664110756124,
+      "plot_x": 2
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 1,
+      "variant": "Q34N:G240W",
+      "activity": 8.93975310807037,
+      "plot_x": 2
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 1,
+      "variant": "Q34N:S359F",
+      "activity": 8.909186776043581,
+      "plot_x": 1.8603499394893266
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 1,
+      "variant": "Q34N:Y322C",
+      "activity": 8.567563065155937,
+      "plot_x": 2.1396500605106734
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 1,
+      "variant": "Q34N:R360F",
+      "activity": 6.569963366228707,
+      "plot_x": 2
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 1,
+      "variant": "Q34N:G453W",
+      "activity": 6.53939703420192,
+      "plot_x": 1.8603499394893266
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 2,
+      "variant": "Q34N:G240W:D403S",
+      "activity": 6.275199787007455,
+      "plot_x": 2.1396500605106734
+    },
+    {
+      "snapshot_round": 2,
+      "source_round": 1,
+      "variant": "Q34N:T456F",
+      "activity": 5.514525901538984,
+      "plot_x": 2
+    }
+  ],
+  "statistic": "Ten highest-activity variant means among all non-WT variants assayed through each round.",
+  "repeated_variants": "A variant may recur across cumulative snapshots; the 30/50 displayed marks are not independent discoveries.",
+  "density": {
+    "bandwidth_factor": 0.35,
+    "grid_points": 256,
+    "support": "observed minimum to maximum",
+    "maximum_halfwidth_categories": 0.34,
+    "fill_alpha": 0.8
+  },
+  "boxplot_elements": "None: no boxes, medians, quartiles, whiskers or connecting summary lines.",
+  "colors": {
+    "strokes": [
+      "#AC936B",
+      "#529C96",
+      "#4383AB"
+    ],
+    "fills": [
+      "#F7EED8",
+      "#E8F4EF",
+      "#8BBBD5"
+    ]
+  },
+  "y_range": [
+    0,
+    16
+  ],
+  "x_range": [
+    -0.5,
+    2.5
+  ],
+  "vertical_coordinate": "Exact reported variant-mean screening activity / WT; no vertical jitter.",
+  "horizontal_coordinate": "Exact original paper plot_x; no repacking.",
+  "original_methods": {
+    "selection": "At snapshot r, take the 10 highest activities among non-WT variants measured through round r; 30 candidates assayed per round.",
+    "repeated_variants": "Earlier variants may recur in later cumulative snapshots; snapshot dots are not independent discoveries.",
+    "density": "Gaussian KDE, covariance factor 0.35, unbiased sample variance, 256 points within observed min/max, maximum halfwidth 0.34 categories. Descriptive density, not uncertainty.",
+    "jitter": "Original deterministic horizontal packing only; no vertical jitter.",
+    "baseline": "Activity is fold of wild type (WT = 1)."
+  }
+}

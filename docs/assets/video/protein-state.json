@@ -1,0 +1,64 @@
+{
+  "asset": "protein",
+  "name": "protein-state",
+  "frames": 192,
+  "fps": 24,
+  "seconds": 8,
+  "dimensions": [
+    1280,
+    720
+  ],
+  "palette": {
+    "helix": "#7BD0AC",
+    "strand": "#6B9BD1",
+    "coil": "#E6DED3",
+    "shell": "#BFC7D1",
+    "rose": "#C85F6B",
+    "wine": "#6B2233",
+    "ligand": "#F2B632",
+    "nad": "#D9962F"
+  },
+  "motion": "Orthographic camera yaw, \u00b118 degrees; atom coordinates unchanged.",
+  "annotations": {
+    "structure": "Protein G B1-domain WT reference 1PGA; illustrative model state."
+  },
+  "models": [
+    {
+      "name": "fig1b_1PGA.pdb",
+      "coordinates_sha256": "33753dbc1128fdc29e68d65f762aed668c4bc179dd8aecbcaef8f33e957149ad",
+      "secondary_structure_sha256": "de1f57ad855c96c7121e053b9c6e3036899316ea62f7620610e16858eb18d345",
+      "model_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ]
+      ],
+      "residues": 76
+    }
+  ],
+  "sources": [
+    {
+      "path": "/Users/mhg/Dropbox/PROTEUS/Main Figure/fig1b_1PGA.pdb",
+      "sha256": "908f8dbf3bb7567f36eec4683eb8cfab5ac0c011dfee1b9c940cab7f482bc841"
+    }
+  ],
+  "elapsed_seconds": 15.049660374992527,
+  "preview": false,
+  "rendered_frames": 192,
+  "supersample": 2,
+  "coordinate_integrity_verified": true
+}

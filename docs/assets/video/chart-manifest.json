@@ -1,0 +1,84 @@
+{
+  "description": "Original quantitative data re-rendered as Georgia Canvas graphics. No screenshot or previously encoded movie is an input.",
+  "width": 1920,
+  "height": 1080,
+  "fps": 24,
+  "duration_seconds": 6,
+  "reveal_seconds": 3,
+  "animation": "Measured positions are revealed. Connecting lines and aggregate marks animate as visual transitions, not additional observations or simulated trajectories.",
+  "renderer": "tools/video/render_charts.cjs",
+  "chart_engine": "docs/chart-engine.js",
+  "chart_engine_sha256": "495c7e7a3d69d4ade80b390cd2066ca04932898735528e93ff26d3156e1e6c50",
+  "chart_data_sha256": "778d19d7b723cdc9c5156c4014c26c8b4f66833874a04efe272adaa573de02d7",
+  "activity_snapshot": "tools/video/chart-data.json",
+  "activity_snapshot_sha256": "7ebf2ba271a8a73771e2efac4ed8c34926e6792278c3ff03f8836fb4d7a63208",
+  "fonts": [
+    "Georgia.ttf",
+    "Georgia Bold.ttf"
+  ],
+  "clips": [
+    {
+      "name": "scaling",
+      "chart": "Fig2C",
+      "source": "Figure 2C",
+      "semantics": "Eight measured scaling markers; original SVG coordinates and fitted exponent. Both axes explicitly mark logarithmic scales where used.",
+      "video": "scaling.mp4",
+      "poster": "scaling-poster.webp",
+      "sha256": "467a3acd1d1d08bfa724caa2ee0690eb1eb3a05018d73bff367c99472c5a2489"
+    },
+    {
+      "name": "zero-shot",
+      "chart": "Fig2E",
+      "source": "Figures 2E and 2F",
+      "semantics": "Zero-shot fitness prediction: all 15 model means/SEM across 19 excluded assays. First-round selection on 13 single-mutant assays: Spearman, AUROC, AUPR and top-K hit fractions; mean/SEM. MULTI-evolve rank-fusion adaptation. Figure 2F axis ranges and broken baselines; no significance stars. Hits are at or above assay mean, not WT.",
+      "video": "zero-shot.mp4",
+      "poster": "zero-shot-poster.webp",
+      "sha256": "2292393dc3b0264fafd6bd2c5ebfbaf00007e1f0725fcc3d2f9c33da83a51ade"
+    },
+    {
+      "name": "structure-speed",
+      "chart": "Fig3D",
+      "source": "Figure 3D",
+      "semantics": "Mean inference time in five atom-count bins; log time axis, exact measured ratios.",
+      "video": "structure-speed.mp4",
+      "poster": "structure-speed-poster.webp",
+      "sha256": "171ab22baae538d69830c319c697ef587debb5fd5d6cae0693a496436fab3f6f"
+    },
+    {
+      "name": "higher-order",
+      "chart": "Fig3F",
+      "source": "Figure 3F",
+      "semantics": "All 40 protein-phenotype-K comparisons, K=1/2/3; means, SEM and individual values.",
+      "video": "higher-order.mp4",
+      "poster": "higher-order-poster.webp",
+      "sha256": "4ca4a4de5f7f2dff29cf40de7b0d91787672f0db23e13feb5fd666fe6e22300c"
+    },
+    {
+      "name": "closed-loop",
+      "chart": "Fig3G",
+      "source": "Figure 3G",
+      "semantics": "Simulated multi-mutant evolution on 17 datasets; normalized best fitness with SEM, 5 rounds and 4 methods.",
+      "video": "closed-loop.mp4",
+      "poster": "closed-loop-poster.webp",
+      "sha256": "16f65c967eae230e06ebc34d78b83a12df45b2d26d9b5e0d8d1ffd81f6a09748"
+    },
+    {
+      "name": "sacb-activity",
+      "activity": "sacb",
+      "source": "Figure 4C",
+      "semantics": "Measured SacB cumulative top 10 per round, 90 assayed variants, 3 snapshots, WT=1.",
+      "video": "sacb-activity.mp4",
+      "poster": "sacb-activity-poster.webp",
+      "sha256": "2dabd8a7ef6d7f270948363328bed6552c0dae18b8d09cac650e1309c3a04696"
+    },
+    {
+      "name": "aldh-activity",
+      "activity": "aldh",
+      "source": "Figure 5B",
+      "semantics": "Measured ALDH cumulative top 10 per round, 150 assayed variants, 5 snapshots, WT=1.",
+      "video": "aldh-activity.mp4",
+      "poster": "aldh-activity-poster.webp",
+      "sha256": "2a43eab8b56084dadd0cabdc7670f21ed9e09808d30f9bcddd3dfc0c39b8a770"
+    }
+  ]
+}

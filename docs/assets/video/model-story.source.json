@@ -1,0 +1,134 @@
+{
+  "renderer": "tools/video/render_model_story.py",
+  "width": 1920,
+  "height": 1080,
+  "fps": 24,
+  "antialias_render_size": [
+    2560,
+    1440
+  ],
+  "sources": [
+    {
+      "path": "docs/assets/proteus-logo.png",
+      "sha256": "84e5eeb066e690dbcf93e56e584b2090367b12904a415db5dc8247a45ee217b8"
+    },
+    {
+      "path": "/Users/mhg/Dropbox/PROTEUS/Submission_V2/main_figure/scripts/Figure1/current_revision/overview/assets/original_logo_geometry.json",
+      "sha256": "af2d1390a2574eaed38993cd5288a400b451c3663c0c38a56768fd11c7664f17"
+    },
+    {
+      "path": "docs/assets/video/protein-state.mp4",
+      "sha256": "007d63c5a07c5cb8175658f5b28a7910815b70305bced10888379f99f2f73839"
+    },
+    {
+      "path": "/Users/mhg/Dropbox/PROTEUS/Main Figure/fig1b_1PGA.pdb",
+      "sha256": "908f8dbf3bb7567f36eec4683eb8cfab5ac0c011dfee1b9c940cab7f482bc841"
+    },
+    {
+      "path": "/Users/mhg/Dropbox/PROTEUS/Main Figure/proteus_figures/figures/RAW/cell_v9/benchmark_data/fig1/fig1c_scatter.csv",
+      "sha256": "e255f13b2616ec6075dcb57e68544627eb8765dc002ffe59d740e250f775a91e"
+    }
+  ],
+  "dependencies": {
+    "Pillow": "image compositing",
+    "NumPy": "projective geometry",
+    "aggdraw": "antialiased vector paths",
+    "FFmpeg": "H.264 encoding"
+  },
+  "scientific_limits": [
+    "MSA motifs, projected feature tiles and qualitative function readouts are explanatory diagrams, not additional measurements or a measured low-dimensional embedding.",
+    "Target-specific refitting updates the target predictor; pretrained representations remain fixed during the campaign.",
+    "Native 1PGA ribbon preserves structure coordinates and serves only as an input motif.",
+    "Logo motion traces the original protein ribbon including its complete left helix; the complete original symbol remains sharp and retains its original pixel colors.",
+    "All feature-tile corners and cells use one planar homography; identical aligned residue grids move into the plane.",
+    "Fig. 1E names the structure stage Fast 3D prediction / Physics-constrained. Methods p33 separately specifies ESM3 as the structural feature encoder; p36\u201337 explains the coordinate predictor and differentiable Gauss\u2013Seidel projection. These are different functions."
+  ],
+  "pretraining_corpus": {
+    "variant_measurements": 1322111,
+    "assays": 182,
+    "source": "/Users/mhg/Dropbox/PROTEUS/Main Figure/proteus_figures/figures/RAW/cell_v9/benchmark_data/fig1/fig1c_scatter.csv",
+    "count_column": "n_mutants",
+    "scope": "Full Figure 2A corpus, including train/validation/test; not the number used in the training split.",
+    "training_split_count": null,
+    "display": "Pretraining corpus / 1.32M variant measurements"
+  },
+  "cycle_shape": "Rounded hexagon with stage dwell positions measured along the path",
+  "cycle_station_fractions": [
+    0.0,
+    0.4701670644391408,
+    0.7350835322195705,
+    1.0
+  ],
+  "pipeline_hold_seconds": 3,
+  "pretrain_zoom_hold_seconds": 1.5,
+  "architecture_final_hold_seconds": 3.7,
+  "outro_final_hold_seconds": 4.5,
+  "palette": {
+    "ink": "#2C3E50",
+    "muted": "#7F8C8D",
+    "blue": "#5290D3",
+    "teal": "#51AA8E",
+    "gold": "#DA6457",
+    "coral": "#DA6457",
+    "rose": "#E74C3C",
+    "link": "#3C78CD",
+    "pale": "#EDF4FC",
+    "green": "#EDF7F3",
+    "cream": "#FBEEEB",
+    "pink": "#FBEFED",
+    "line": "#DBE3E9",
+    "gray": "#B3BFC8"
+  },
+  "semantic_color_roles": {
+    "sequence": "#5290D3",
+    "msa": "#51AA8E",
+    "structure": "#DA6457",
+    "model": "#5290D3",
+    "prediction": "#5290D3",
+    "measurement": "#51AA8E",
+    "refit": "#DA6457",
+    "mutation": "#E74C3C"
+  },
+  "semantic_role_fills": {
+    "sequence": "#EDF4FC",
+    "msa": "#EDF7F3",
+    "structure": "#FBEEEB",
+    "model": "#EDF4FC",
+    "prediction": "#EDF4FC",
+    "measurement": "#EDF7F3",
+    "refit": "#FBEEEB",
+    "mutation": "#FBEFED"
+  },
+  "cycle_color_order": [
+    "prediction",
+    "measurement",
+    "refit"
+  ],
+  "clips": {
+    "world-model-intro": {
+      "seconds": 8,
+      "video": "world-model-intro.mp4",
+      "poster": "world-model-intro-poster.webp"
+    },
+    "world-model-loop": {
+      "seconds": 12,
+      "video": "world-model-loop.mp4",
+      "poster": "world-model-loop-poster.webp"
+    },
+    "architecture": {
+      "seconds": 12,
+      "video": "architecture.mp4",
+      "poster": "architecture-poster.webp"
+    },
+    "scaling-architecture": {
+      "seconds": 9,
+      "video": "scaling-architecture.mp4",
+      "poster": "scaling-architecture-poster.webp"
+    },
+    "world-model-outro": {
+      "seconds": 16,
+      "video": "world-model-outro.mp4",
+      "poster": "world-model-outro-poster.webp"
+    }
+  }
+}

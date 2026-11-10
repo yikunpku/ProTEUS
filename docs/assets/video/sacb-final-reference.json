@@ -1,0 +1,100 @@
+{
+  "asset": "sacb-final",
+  "name": "sacb-final-reference",
+  "frames": 192,
+  "fps": 24,
+  "seconds": 8,
+  "dimensions": [
+    1280,
+    720
+  ],
+  "palette": {
+    "helix": "#7BD0AC",
+    "strand": "#6B9BD1",
+    "coil": "#E6DED3",
+    "shell": "#BFC7D1",
+    "rose": "#C85F6B",
+    "wine": "#6B2233",
+    "ligand": "#F2B632",
+    "nad": "#D9962F"
+  },
+  "preview": false,
+  "rendered_frames": 192,
+  "supersample": 2,
+  "coordinate_integrity_verified": true,
+  "motion": "Orthographic camera yaw, \u00b118 degrees; atom coordinates unchanged.",
+  "annotations": {
+    "unresolved_site": "G23 lies in the signal peptide and has no coordinates in 1OYG.",
+    "structure": "WT reference 1OYG; sucrose transferred by alignment from 1PT2.",
+    "evolved_positions": [
+      34,
+      240
+    ],
+    "catalytic_positions": [
+      86,
+      247,
+      342
+    ]
+  },
+  "models": [
+    {
+      "name": "1oyg.pdb",
+      "coordinates_sha256": "0d0ce8861121385d22e188535d4461e84757adea52623044de7716f54cea2c6e",
+      "secondary_structure_sha256": "7618d97fc333c703abdf51aa6e0adc8338428e9df99a71ecb9fdb9e5df538251",
+      "model_matrix": [
+        [
+          -0.781907,
+          0.00256,
+          -0.623389,
+          42.705894
+        ],
+        [
+          -0.428052,
+          -0.729191,
+          0.533904,
+          30.878929
+        ],
+        [
+          -0.453203,
+          0.684306,
+          0.571255,
+          -0.0
+        ]
+      ],
+      "residues": 441
+    },
+    {
+      "name": "sucrose_1pt2_on_1oyg.pdb",
+      "coordinates_sha256": "9f48cb45c426fe11638a1958a9395caf8b182df17797e29d8088e44513060a32",
+      "secondary_structure_sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc",
+      "model_matrix": [
+        [
+          -0.781907,
+          0.00256,
+          -0.623389,
+          42.705894
+        ],
+        [
+          -0.428052,
+          -0.729191,
+          0.533904,
+          30.878929
+        ],
+        [
+          -0.453203,
+          0.684306,
+          0.571255,
+          -0.0
+        ]
+      ],
+      "residues": 2
+    }
+  ],
+  "sources": [
+    {
+      "path": "/Users/mhg/Dropbox/PROTEUS/Main Figure/proteus_figures/figures/RAW/cell_v9/protein_structures/lsc_overview.cxs",
+      "sha256": "9c0d2c00416406d0985a8e258bf706258e4890dc5611da67e35aee849c77bb49"
+    }
+  ],
+  "elapsed_seconds": 35.16603879100876
+}

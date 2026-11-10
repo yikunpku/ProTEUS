@@ -1,0 +1,17 @@
+{
+  "recipe": "tools/video/render_wetlab_story.py",
+  "size": [
+    1920,
+    1080
+  ],
+  "fps": 24,
+  "model_update": "Refit target-specific predictor; fixed ProTEUS representations.",
+  "diagram": "Conceptual workflow; plate wells do not encode fabricated activities.",
+  "semantic_palette": {
+    "prediction_nomination": "#5290d3",
+    "measurement": "#51aa8e",
+    "refit": "#da6457",
+    "mutation": "#e74c3c"
+  },
+  "duration": 8
+}
