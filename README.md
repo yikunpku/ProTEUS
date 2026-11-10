@@ -4,6 +4,8 @@
 
 **A mutation-resolved world model for closed-loop protein evolution**
 
+[Project page](https://yikunpku.github.io/ProTEUS/) · [Watch the 90-second film](https://yikunpku.github.io/ProTEUS/#film) · [Paper](https://yikunpku.github.io/ProTEUS/assets/ProTEUS-paper.pdf)
+
 </div>
 
 <!-- TABLE OF CONTENTS -->
