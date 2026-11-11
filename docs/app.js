@@ -241,6 +241,7 @@ document.querySelectorAll('[data-benchmark]').forEach(button => {
     selectTab(button, '[data-benchmark]', document.querySelector('#benchmark-panel'));
     ['title', 'description', 'note'].forEach(key => { document.querySelector('#benchmark-' + key).textContent = item[key]; });
     benchmarkChart.name = item.chart;
+    benchmarkChart.resize();
     benchmarkChart.canvas.setAttribute('aria-label', item.title + '. ' + item.description);
     benchmarkChart.animate();
   });
@@ -262,7 +263,7 @@ document.querySelector('#copy-citation').addEventListener('click', async () => {
     const selection = window.getSelection();
     selection.removeAllRanges();
     selection.addRange(range);
-    status.textContent = 'Citation selected. Press Ctrl+C or ⌘C to copy.';
+    status.textContent = 'Citation selected. Use Copy on your device, or press Ctrl+C / ⌘C.';
   }
 });
 const legacySections = { overview: 'model', benchmarks: 'structure', scaling: 'prediction', scientists: 'experiments' };

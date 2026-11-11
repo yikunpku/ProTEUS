@@ -4,7 +4,7 @@ window.ProTEUSCharts=(()=>{const module={exports:{}};
 // Published assay palettes and continuous numerical color scales stay separate.
 const C={ink:'#2C3E50',muted:'#7F8C8D',blue:'#5290D3',structure:'#DA6457',teal:'#51AA8E',rose:'#DA6457',gold:'#E74C3C',paper:'#FFFFFF',grid:'#EAECEF',axis:'#9AA3A8'};
 const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
-function text(c,s,x,y,size=36,col=C.ink,weight=400,align='left'){c.save();if(c.proteusCssUnit){const m=c.getTransform(),scale=Math.hypot(m.a,m.b)*c.proteusCssUnit,effective=size*scale;size=(effective<20?18:effective<32?24:40)/scale;}c.font=weight+' '+size+'px Georgia, "Times New Roman", serif';c.fillStyle=col;c.textAlign=align;c.textBaseline='middle';c.fillText(String(s),x,y);c.restore();}
+function text(c,s,x,y,size=36,col=C.ink,weight=400,align='left'){c.save();if(c.proteusCompactText){size=Math.max(12,size);}else if(c.proteusCssUnit){const m=c.getTransform(),scale=Math.hypot(m.a,m.b)*c.proteusCssUnit,effective=size*scale;size=(effective<20?18:effective<32?24:40)/scale;}c.font=weight+' '+size+'px Georgia, "Times New Roman", serif';c.fillStyle=col;c.textAlign=align;c.textBaseline='middle';c.fillText(String(s),x,y);c.restore();}
 const require=name=>{if(name!=='./overlay')throw Error('Unexpected dependency');return{C,text,clamp};};
 (function(){
 'use strict';
@@ -62,7 +62,7 @@ function scaling(c,box,p){const[x,y,w,h]=box,s=DATA.scaling;const bx=x+105,bw=w-
 }
 function zeroSummary(c,box,p,compact=false){
   const[x,y,w,h]=box,fs=compact?12:22,rows=ZERO_ASSAYS.models;
-  const left=x+(compact?164:205),right=x+w-24,top=y+55,bottom=y+h-60;
+  const left=x+(compact?130:205),right=x+w-(compact?15:24),top=y+55,bottom=y+h-60;
   const xm=v=>left+(right-left)*v/.35;
   t(c,'19 held-out assays · 15 models',x+6,y+12,compact?15:26,C.ink,'left',600);
   [0,.1,.2,.3].forEach(v=>{path(c,[[xm(v),top-10],[xm(v),bottom+12]],C.grid,1);t(c,v.toFixed(1),xm(v),bottom+32,fs,C.muted,'center');});
@@ -80,12 +80,13 @@ function heatColor(value){
 }
 function zeroHeatmap(c,box,p,all=false,compact=false){
   const[x,y,w,h]=box,models=ZERO_ASSAYS.models.slice(0,all?15:5),fs=compact?12:19;
-  const left=x+(compact?96:174),right=x+w-(all?74:14),top=y+(all?150:100),bottom=y+h-60;
+  const left=x+(compact?96:174),right=x+w-(all?74:14),top=y+(compact?170:all?150:100),bottom=y+h-(compact?92:60);
   const cw=(right-left)/models.length,rh=(bottom-top)/19;
   t(c,all?'19 assays × 15 models':'19 assays · five leading models',x+6,y+12,compact?16:27,C.ink,'left',600);
   models.forEach((model,i)=>{
     const col=model.name==='ProTEUS'?C.blue:C.muted;
-    if(all){c.save();c.translate(left+cw*(i+.5),top-12);c.rotate(-Math.PI/3);t(c,model.name,0,0,fs,col,'left');c.restore();}
+    if(compact){c.save();c.translate(left+cw*(i+.5),top-10);c.rotate(-Math.PI/2);t(c,model.name,0,0,12,col,'left');c.restore();}
+    else if(all){c.save();c.translate(left+cw*(i+.5),top-12);c.rotate(-Math.PI/3);t(c,model.name,0,0,fs,col,'left');c.restore();}
     else {
       const labels=model.name==='MSA Transformer'?(compact?['MSA','Transf.']:['MSA','Transformer']):model.name.startsWith('ESM3')?['ESM3','1.4B']:model.name.startsWith('SaProt')?['SaProt','650M']:[model.name];
       labels.forEach((label,j)=>t(c,label,left+cw*(i+.5),top-38+j*20,compact?10:17,col,'center',model.name==='ProTEUS'?600:400));
@@ -99,10 +100,10 @@ function zeroHeatmap(c,box,p,all=false,compact=false){
       });
     });
   });
-  const gw=Math.min(210,w*.38),gx=left,gy=bottom+25;
+  const gw=compact?w-48:Math.min(210,w*.38),gx=compact?x+24:left,gy=bottom+(compact?40:25);
   for(let i=0;i<gw;i++){c.fillStyle=heatColor(-.4+1.2*i/gw);c.fillRect(gx+i,gy,1,9);}
   [-.4,0,.4,.8].forEach(v=>t(c,v.toFixed(1),gx+(v+.4)/1.2*gw,gy+24,compact?10:17,C.muted,'center'));
-  t(c,'Spearman ρ',right,gy+5,compact?11:19,C.muted,'right');
+  t(c,'Spearman ρ',compact?x+w/2:right,compact?bottom+19:gy+5,compact?12:19,C.muted,compact?'center':'right');
 }
 function selectionQuality(c,box,p,mini=false){
   const[x,y,w,h]=box,fs=mini?17:25,top=y+12,bottom=y+h-42,plotH=bottom-top;
@@ -184,7 +185,7 @@ function higher(c,box,p){const[x,y,w,h]=box,b=[x+103,y+101,w-146,h-216],lo=-.25,
 // remain readable instead of shrinking a 1280 px chart into a phone viewport.
 function layoutForWidth(cssWidth,name){
   return cssWidth<600
-    ? {width:Math.max(240,Math.round(cssWidth)),height:['Fig2E','ZeroAssays','SelectionQuality'].includes(name)?650:400}
+    ? {width:Math.max(240,Math.round(cssWidth)),height:name==='SelectionQuality'?900:['Fig2E','ZeroAssays'].includes(name)?650:400}
     : {width:1280,height:760};
 }
 
@@ -212,12 +213,14 @@ function compactAxes(c,b,xticks,yticks,xlabel,ylabel){
 
 function compactScaling(c,box,p){
   const[x,y,w,h]=box,s=DATA.scaling,left=x+60,width=w-83;
-  const plotHeight=(h-163)/2,upper=[left,y+42,width,plotHeight];
+  const plotHeight=(h-175)/2,upper=[left,y+42,width,plotHeight];
   const lower=[left,y+109+plotHeight,width,plotHeight];
   const xf=v=>(v-s.source_bounds.x[0])/(s.source_bounds.x[1]-s.source_bounds.x[0]);
   const xm=v=>left+width*xf(v),yn=(v,lo)=>1-(v-lo)/65;
   compactAxes(c,upper,[],s.mse_ticks.map(([v,sy])=>[yn(sy,56),String(v)]),'','Test MSE · log scale');
-  compactAxes(c,lower,[0,2,4,7].map(i=>[xf(s.source_x[i]),String(s.fractions[i])]),s.rho_ticks.map(([v,sy])=>[yn(sy,145),v.toFixed(2)]),'Training-data fraction (%) · log scale','Test Spearman ρ');
+  compactAxes(c,lower,[0,2,4,7].map(i=>[xf(s.source_x[i]),String(s.fractions[i])]),s.rho_ticks.map(([v,sy])=>[yn(sy,145),v.toFixed(2)]),'','Test Spearman ρ');
+  t(c,'Training-data fraction (%)',x+w/2,y+h-27,13,C.muted,'center');
+  t(c,'Logarithmic scale',x+w/2,y+h-10,12,C.muted,'center');
   const mse=s.source_x.map((v,i)=>[xm(v),upper[1]+plotHeight*(s.source_mse_y[i]-56)/65]);
   const rho=s.source_x.map((v,i)=>[xm(v),lower[1]+plotHeight*(s.source_rho_y[i]-145)/65]);
   const fit=s.fit_source_endpoints.map(([sx,sy])=>[xm(sx),upper[1]+plotHeight*(sy-56)/65]);
@@ -238,8 +241,46 @@ function compactAssays(c,box,p){
 }
 function compactQualityPanel(c,box,p){
   const[x,y,w,h]=box;
-  c.save();c.translate(x,y);const scale=w/600;c.scale(scale,scale);
-  selectionPanel(c,[0,0,600,h/scale],p);c.restore();
+  t(c,'First-round variant selection',x+6,y+14,15,C.ink,'left',600);
+  t(c,'13 held-out single-mutant assays',x+6,y+38,13,C.muted);
+  compactLegend(c,[['ProTEUS','#4383AB'],['MULTI-evolve','#85919B']],x+10,y+66,w-20);
+  const ranges=[{lo:.05,hi:.35,ticks:[.1,.2,.3]},{lo:.52,hi:.72,ticks:[.6,.7]},{lo:.5,hi:.76,ticks:[.6,.7]}];
+  const panelHeight=158;
+  SELECTION_METRICS.forEach((metric,i)=>{
+    const top=y+105+i*panelHeight,bottom=top+102,left=x+45,right=x+w-15;
+    const {lo,hi,ticks}=ranges[i],ym=v=>bottom-(bottom-top)*(v-lo)/(hi-lo);
+    t(c,metric.metric==='Spearman'?'Spearman ρ':metric.metric,left,top-17,14,C.ink,'left',600);
+    ticks.forEach(v=>{path(c,[[left,ym(v)],[right,ym(v)]],C.grid,1);t(c,v.toFixed(1),left-9,ym(v),12,C.muted,'right');});
+    path(c,[[left,top],[left,bottom],[right,bottom]],C.axis,1);
+    path(c,[[left-4,bottom-4],[left+4,bottom-10]],C.ink,1.4);
+    path(c,[[left-4,bottom-10],[left+4,bottom-16]],C.ink,1.4);
+    const bw=Math.min(46,(right-left)*.22);
+    metric.models.forEach((m,j)=>{
+      const cx=left+(right-left)*(j?.73:.27),col=j?'#85919B':'#4383AB',q=clamp(p*1.5-i*.12);
+      reveal(c,q,()=>{
+        c.fillStyle=j?'#DADEE1':'#8BBBD5';
+        c.fillRect(cx-bw/2,ym(m.mean),bw,bottom-ym(m.mean));
+        path(c,[[cx-bw/2,bottom],[cx-bw/2,ym(m.mean)],[cx+bw/2,ym(m.mean)],[cx+bw/2,bottom]],col,1.5);
+        path(c,[[cx,ym(m.mean-m.sem)],[cx,ym(m.mean+m.sem)]],col,1.6);
+        [m.mean-m.sem,m.mean+m.sem].forEach(v=>path(c,[[cx-5,ym(v)],[cx+5,ym(v)]],col,1.3));
+      });
+      t(c,m.name,cx,bottom+19,12,col,'center');
+    });
+  });
+  const hitTop=y+595,b=[x+45,hitTop+32,w-65,h-595-105];
+  const xf=v=>Math.log(v/5)/Math.log(20),xm=v=>b[0]+b[2]*xf(v),ym=v=>b[1]+b[3]*(1-(v-.55)/.30);
+  t(c,'Fraction at or above assay mean',x+6,hitTop+4,13,C.ink,'left',600);
+  compactAxes(c,b,[5,10,24,50,100].map(v=>[xf(v),String(v)]),[.6,.7,.8].map(v=>[(v-.55)/.30,Math.round(v*100)+'%']),'','');
+  path(c,[[b[0]-4,b[1]+b[3]-4],[b[0]+4,b[1]+b[3]-10]],C.ink,1.4);
+  path(c,[[b[0]-4,b[1]+b[3]-10],[b[0]+4,b[1]+b[3]-16]],C.ink,1.4);
+  ['MULTI-evolve','ProTEUS'].forEach(name=>{
+    const rows=DATA.selection.filter(r=>r.name===name),col=name==='ProTEUS'?'#4383AB':'#85919B';
+    band(c,b,rows,xm,ym,p,col);
+    const pts=rows.map(r=>[xm(r.x),ym(r.y)]);
+    lineProgress(c,pts,p,col,2,name==='ProTEUS'?[]:[5,3]);points(c,pts,p,col,3.5);
+  });
+  t(c,'Selection budget K · log scale',x+w/2,y+h-26,13,C.muted,'center');
+  t(c,'Mean ± SEM across 13 assays',x+w/2,y+h-9,12,C.muted,'center');
 }
 function compactSelection(c,box,p){
   const[x,y,w,h]=box,b=[x+60,y+82,w-84,h-160],xm=v=>b[0]+b[2]*Math.log(v/5)/Math.log(20),ym=v=>b[1]+b[3]*(1-(v-.55)/.30);
@@ -339,10 +380,24 @@ function compactEvolution(c,box,p){
   t(c,'17 datasets · mean ± SEM',x+w/2,y+h-15,12,C.muted,'center');
 }
 
-const compactCharts={Fig2C:compactScaling,Fig2E:compactZero,ZeroAssays:compactAssays,SelectionQuality:compactQualityPanel,Fig2F_selection:compactSelection,Fig2G:compactFine,Fig3D:compactRuntime,Fig3F:compactHigher,Fig3G:compactEvolution};
+function compactSingleEvolution(c,box,p){
+  const[x,y,w,h]=box,b=[x+60,y+81,w-83,h-156],lo=.15,hi=.85;
+  const names=['ProTEUS','EVOLVEpro'],xm=v=>b[0]+b[2]*(v-1)/4,ym=v=>b[1]+b[3]*(1-(v-lo)/(hi-lo));
+  compactLegend(c,names.map(n=>[n,palette[n]]),x+15,y+22,w-30);
+  compactAxes(c,b,[1,2,3,4,5].map(v=>[(v-1)/4,String(v)]),[.25,.5,.75].map(v=>[(v-lo)/(hi-lo),v.toFixed(2)]),'Model-guided round','Normalized best fitness');
+  names.slice().reverse().forEach(name=>{
+    const rows=DATA.single.filter(r=>r.name===name),col=palette[name],pts=rows.map(r=>[xm(r.x),ym(r.y)]);
+    band(c,b,rows,xm,ym,p,col);lineProgress(c,pts,p,col,2.2);points(c,pts,p,col,3.5);
+  });
+  t(c,'10 datasets · mean ± SEM',x+w/2,y+h-15,12,C.muted,'center');
+}
+
+const compactCharts={Fig2C:compactScaling,Fig2E:compactZero,ZeroAssays:compactAssays,SelectionQuality:compactQualityPanel,Fig2F_selection:compactSelection,Fig2G:compactFine,Fig2H_fitness:compactSingleEvolution,Fig3D:compactRuntime,Fig3F:compactHigher,Fig3G:compactEvolution};
 function drawChart(c,name,box,p=1){p=clamp(p);const[x,y,w,h]=box;c.save();
   if(w<600&&compactCharts[name]){
-    compactCharts[name](c,box,p);c.restore();return{x,y,w,h};
+    const previous=c.proteusCompactText;c.proteusCompactText=true;
+    try{compactCharts[name](c,box,p);}finally{c.proteusCompactText=previous;c.restore();}
+    return{x,y,w,h};
   }
   if(name==='Fig2C')scaling(c,box,p);
   else if(name==='Fig2E')zero(c,box,p);
