@@ -4,9 +4,9 @@
 
 **A mutation-resolved world model for closed-loop protein evolution**
 
-[![Project Page](https://img.shields.io/badge/Project_Page-3C78CD?style=for-the-badge)](https://yikunpku.github.io/ProTEUS/)
-[![Video](https://img.shields.io/badge/Video-51AA8E?style=for-the-badge)](https://yikunpku.github.io/ProTEUS/#film)
-[![Paper](https://img.shields.io/badge/Paper-DA6457?style=for-the-badge)](https://arxiv.org/abs/2611.13348)
+[![Project Page](https://img.shields.io/badge/Project-Page-3C78CD?style=flat-square)](https://yikunpku.github.io/ProTEUS/)
+[![Video](https://img.shields.io/badge/Video-Demo-51AA8E?style=flat-square)](https://yikunpku.github.io/ProTEUS/#film)
+[![Paper](https://img.shields.io/badge/Paper-2611.13348-B31B1B?style=flat-square&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2611.13348)
 
 </div>
 
